@@ -1,0 +1,46 @@
+{
+  "config": {
+    "hidden": [
+      32
+    ],
+    "norm": "none",
+    "activation": "gelu",
+    "dropout": 0.1,
+    "lr": 0.0012204680039734717,
+    "weight_decay": 6.030364379156746e-05,
+    "batch_size": 256,
+    "smoothing": 0.0,
+    "class_weight": false,
+    "scaling": "robust",
+    "interactions": false,
+    "domain_features": false
+  },
+  "epochs": 40,
+  "seed": 42,
+  "rows": 7896,
+  "selected_cv_auroc": 0.8053453481390663,
+  "holdout_auroc": 0.813944045349203,
+  "holdout_rows": 1580,
+  "identical_inputs_grouped": false,
+  "versions": {
+    "numpy": "2.5.4",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.9.1",
+    "torch": "2.15.0"
+  },
+  "data_sha256": "5d217d2b9f87a52ff5c906c1309e8d8ee1def846360086324fa69816ef51f5d4",
+  "arguments": {
+    "command": "train",
+    "data": "data/heloc_release.csv",
+    "output": "runs/task1",
+    "trials": 24,
+    "folds": 5,
+    "epochs": 200,
+    "patience": 25,
+    "valid_size": 0.2,
+    "seed": 42,
+    "threads": 4,
+    "device": "cpu"
+  },
+  "note": "CV is used for selection; holdout measures the development-only model. Final model is refit on all supplied data; its private Test AUROC is unknown."
+}

@@ -1,0 +1,10 @@
+
+.venv/
+__pycache__/
+data/
+runs/
+*.pt
+*.bak
+
+# Keep only explicitly versioned inference weights.
+!models/task1-v1/task1.pt
