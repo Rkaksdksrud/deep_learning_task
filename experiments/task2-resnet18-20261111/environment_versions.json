@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "profiles": {
+    "c6536984cb1af4d4": {
+      "torch": "2.10.0",
+      "torchvision": "0.25.0",
+      "numpy": "1.26.4",
+      "pandas": "2.3.3",
+      "Pillow": "12.1.0",
+      "scikit-learn": "1.7.2",
+      "runtime": {
+        "cuda_build": "12.8",
+        "cudnn_version": 91002,
+        "device": "cuda",
+        "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+        "gpu_total_memory_mib": 7807.5625,
+        "python": "3.10.13"
+      }
+    }
+  },
+  "run_profiles": {
+    "control_f0_s42": "c6536984cb1af4d4",
+    "plain_ce_f0_s42": "c6536984cb1af4d4",
+    "geometry_f0_s42": "c6536984cb1af4d4",
+    "control_f0_s43": "c6536984cb1af4d4",
+    "geometry_f0_s43": "c6536984cb1af4d4",
+    "control_f1_s42": "c6536984cb1af4d4",
+    "geometry_f1_s42": "c6536984cb1af4d4"
+  },
+  "normalization": "Only recorded library/runtime versions and GPU characteristics are retained; the local executable path is omitted."
+}

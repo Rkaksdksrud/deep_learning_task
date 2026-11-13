@@ -1,0 +1,15 @@
+{
+  "model_name": "resnet",
+  "smoke_test": false,
+  "epochs_completed": 9,
+  "elapsed_seconds": 210.71347122399993,
+  "best_valid_balanced_accuracy": 0.4755364271457086,
+  "weights_reference": {
+    "path_base": "repository_root",
+    "manifest": "models/task2-resnet18-20261111/manifest.json",
+    "run_id": "control_f0_s42",
+    "release_tag": "task2-resnet18-20261111-v1",
+    "asset": "control_f0_s42.zip",
+    "checkpoint_filename": "resnet.pt"
+  }
+}

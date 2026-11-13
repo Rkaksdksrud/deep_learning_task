@@ -8,3 +8,11 @@ runs/
 
 # Keep only explicitly versioned inference weights.
 !models/task1-v1/task1.pt
+
+# Task2 environments, downloaded models and generated inference files stay local.
+.venv-task2/
+/downloads/
+/release_artifacts/
+/models/task2-resnet18-20261111/downloads/
+/models/task2-resnet18-20261111/*.zip
+/predictions*.csv

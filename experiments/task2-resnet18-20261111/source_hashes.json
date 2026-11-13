@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "scope": "Original training source snapshot bytes; no dataset hashes or source files are included.",
+  "runs": {
+    "control_f0_s42": {
+      "provenance": "Pre-training reference snapshot; this control predates automatic run-start source manifests. Re-training parity with the earlier baseline was checked in the original audit.",
+      "sha256": {
+        "code/common.py": "455656862b3011f9e48b0c4cb26b20e21e5cee16801469a7a56e492f4a02ddbe",
+        "code/data.py": "403140b5f12a031f7cab6efb7de3eb1211384c74d9a9731c3d8ddc1548d517bc",
+        "code/predict.py": "9b99615be5de9a93b46de8a507567ee56c1386622b8d00a4adf506e04536f6e5",
+        "code/resnet.py": "8befb278c4329c48b93db30ee5760dfbb87892d921b1662023419e228cd99156",
+        "code/validate.py": "5e8bb9e09cf0db8bcc6abb74bf733dc58f85a563b60ff32608dc4ea07de4dc9b"
+      }
+    },
+    "plain_ce_f0_s42": {
+      "provenance": "Run-start source snapshot and manifest; snapshot bytes checked against the manifest.",
+      "sha256": {
+        "code/common.py": "9e7c6f2f35b1327634bf024f5480fe7da9983d560159beedbed060c8fbb4fe50",
+        "code/data.py": "1c62a88819affe5cdd8bfe5cac4ed1f3cdb3ababc9b285ff39344f69b54c7ee0",
+        "code/predict.py": "9b99615be5de9a93b46de8a507567ee56c1386622b8d00a4adf506e04536f6e5",
+        "code/resnet.py": "8befb278c4329c48b93db30ee5760dfbb87892d921b1662023419e228cd99156",
+        "code/run_comparison.py": "349faa14d5d001dbd5de2b4629fcf5c58e565fc9119fc75bc99a6cd122c12ab3",
+        "code/validate.py": "5e8bb9e09cf0db8bcc6abb74bf733dc58f85a563b60ff32608dc4ea07de4dc9b"
+      }
+    },
+    "geometry_f0_s42": {
+      "provenance": "Run-start source snapshot and manifest; snapshot bytes checked against the manifest.",
+      "sha256": {
+        "code/common.py": "9e7c6f2f35b1327634bf024f5480fe7da9983d560159beedbed060c8fbb4fe50",
+        "code/data.py": "1c62a88819affe5cdd8bfe5cac4ed1f3cdb3ababc9b285ff39344f69b54c7ee0",
+        "code/predict.py": "9b99615be5de9a93b46de8a507567ee56c1386622b8d00a4adf506e04536f6e5",
+        "code/resnet.py": "8befb278c4329c48b93db30ee5760dfbb87892d921b1662023419e228cd99156",
+        "code/run_comparison.py": "349faa14d5d001dbd5de2b4629fcf5c58e565fc9119fc75bc99a6cd122c12ab3",
+        "code/validate.py": "5e8bb9e09cf0db8bcc6abb74bf733dc58f85a563b60ff32608dc4ea07de4dc9b"
+      }
+    },
+    "control_f0_s43": {
+      "provenance": "Run-start source snapshot and manifest; snapshot bytes checked against the manifest.",
+      "sha256": {
+        "code/common.py": "9e7c6f2f35b1327634bf024f5480fe7da9983d560159beedbed060c8fbb4fe50",
+        "code/data.py": "1c62a88819affe5cdd8bfe5cac4ed1f3cdb3ababc9b285ff39344f69b54c7ee0",
+        "code/predict.py": "9b99615be5de9a93b46de8a507567ee56c1386622b8d00a4adf506e04536f6e5",
+        "code/resnet.py": "8befb278c4329c48b93db30ee5760dfbb87892d921b1662023419e228cd99156",
+        "code/run_comparison.py": "0cf21cb11e3d64bc9d62bed5bac797d0f8b23706eb71739ec15ab8f0cad526c8",
+        "code/validate.py": "5e8bb9e09cf0db8bcc6abb74bf733dc58f85a563b60ff32608dc4ea07de4dc9b"
+      }
+    },
+    "geometry_f0_s43": {
+      "provenance": "Run-start source snapshot and manifest; snapshot bytes checked against the manifest.",
+      "sha256": {
+        "code/common.py": "9e7c6f2f35b1327634bf024f5480fe7da9983d560159beedbed060c8fbb4fe50",
+        "code/data.py": "1c62a88819affe5cdd8bfe5cac4ed1f3cdb3ababc9b285ff39344f69b54c7ee0",
+        "code/predict.py": "9b99615be5de9a93b46de8a507567ee56c1386622b8d00a4adf506e04536f6e5",
+        "code/resnet.py": "8befb278c4329c48b93db30ee5760dfbb87892d921b1662023419e228cd99156",
+        "code/run_comparison.py": "0cf21cb11e3d64bc9d62bed5bac797d0f8b23706eb71739ec15ab8f0cad526c8",
+        "code/validate.py": "5e8bb9e09cf0db8bcc6abb74bf733dc58f85a563b60ff32608dc4ea07de4dc9b"
+      }
+    },
+    "control_f1_s42": {
+      "provenance": "Run-start source snapshot and manifest; snapshot bytes checked against the manifest.",
+      "sha256": {
+        "code/common.py": "9e7c6f2f35b1327634bf024f5480fe7da9983d560159beedbed060c8fbb4fe50",
+        "code/data.py": "1c62a88819affe5cdd8bfe5cac4ed1f3cdb3ababc9b285ff39344f69b54c7ee0",
+        "code/predict.py": "9b99615be5de9a93b46de8a507567ee56c1386622b8d00a4adf506e04536f6e5",
+        "code/resnet.py": "8befb278c4329c48b93db30ee5760dfbb87892d921b1662023419e228cd99156",
+        "code/run_comparison.py": "0cf21cb11e3d64bc9d62bed5bac797d0f8b23706eb71739ec15ab8f0cad526c8",
+        "code/validate.py": "5e8bb9e09cf0db8bcc6abb74bf733dc58f85a563b60ff32608dc4ea07de4dc9b"
+      }
+    },
+    "geometry_f1_s42": {
+      "provenance": "Run-start source snapshot and manifest; snapshot bytes checked against the manifest.",
+      "sha256": {
+        "code/common.py": "9e7c6f2f35b1327634bf024f5480fe7da9983d560159beedbed060c8fbb4fe50",
+        "code/data.py": "1c62a88819affe5cdd8bfe5cac4ed1f3cdb3ababc9b285ff39344f69b54c7ee0",
+        "code/predict.py": "9b99615be5de9a93b46de8a507567ee56c1386622b8d00a4adf506e04536f6e5",
+        "code/resnet.py": "8befb278c4329c48b93db30ee5760dfbb87892d921b1662023419e228cd99156",
+        "code/run_comparison.py": "0cf21cb11e3d64bc9d62bed5bac797d0f8b23706eb71739ec15ab8f0cad526c8",
+        "code/validate.py": "5e8bb9e09cf0db8bcc6abb74bf733dc58f85a563b60ff32608dc4ea07de4dc9b"
+      }
+    }
+  }
+}

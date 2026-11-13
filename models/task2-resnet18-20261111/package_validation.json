@@ -1,0 +1,88 @@
+{
+  "models": [
+    {
+      "id": "control_f0_s42",
+      "archive_hash_verified": true,
+      "checkpoint_hash_verified": true,
+      "synthetic_images": 3,
+      "preprocessing_exact": true,
+      "probability_exact_cpu": true,
+      "binary_prediction_exact": true
+    },
+    {
+      "id": "plain_ce_f0_s42",
+      "archive_hash_verified": true,
+      "checkpoint_hash_verified": true,
+      "synthetic_images": 3,
+      "preprocessing_exact": true,
+      "probability_exact_cpu": true,
+      "binary_prediction_exact": true
+    },
+    {
+      "id": "geometry_f0_s42",
+      "archive_hash_verified": true,
+      "checkpoint_hash_verified": true,
+      "synthetic_images": 3,
+      "preprocessing_exact": true,
+      "probability_exact_cpu": true,
+      "binary_prediction_exact": true
+    },
+    {
+      "id": "control_f0_s43",
+      "archive_hash_verified": true,
+      "checkpoint_hash_verified": true,
+      "synthetic_images": 3,
+      "preprocessing_exact": true,
+      "probability_exact_cpu": true,
+      "binary_prediction_exact": true
+    },
+    {
+      "id": "geometry_f0_s43",
+      "archive_hash_verified": true,
+      "checkpoint_hash_verified": true,
+      "synthetic_images": 3,
+      "preprocessing_exact": true,
+      "probability_exact_cpu": true,
+      "binary_prediction_exact": true
+    },
+    {
+      "id": "control_f1_s42",
+      "archive_hash_verified": true,
+      "checkpoint_hash_verified": true,
+      "synthetic_images": 3,
+      "preprocessing_exact": true,
+      "probability_exact_cpu": true,
+      "binary_prediction_exact": true
+    },
+    {
+      "id": "geometry_f1_s42",
+      "archive_hash_verified": true,
+      "checkpoint_hash_verified": true,
+      "synthetic_images": 3,
+      "preprocessing_exact": true,
+      "probability_exact_cpu": true,
+      "binary_prediction_exact": true
+    }
+  ],
+  "tampered_archive_rejected": true,
+  "existing_output_preserved": true,
+  "python_ast_parse_passed": true,
+  "new_training_performed": false,
+  "course_images_used_for_this_check": false,
+  "checked_on": "2026-11-13",
+  "scope": "Seven release ZIPs verified locally; original preprocessing, CPU probabilities and binary outputs compared on three synthetic RGB/L/RGBA images each. This is a packaging/inference check, not new holdout evaluation or training.",
+  "release_publisher_offline_checks": {
+    "unexpected_asset_rejected": true,
+    "matching_digest_accepted": true,
+    "mismatched_digest_rejected": true,
+    "cross_host_authentication_removed": true,
+    "network_used_for_these_checks": false
+  },
+  "public_release_content_review": {
+    "seven_archives_each_contain_six_allowed_files": true,
+    "no_course_images_labels_or_sample_manifests": true,
+    "no_patient_identifiers_in_public_summaries": true,
+    "no_machine_absolute_paths_or_authentication_secrets": true,
+    "existing_task1_code_weights_and_results_preserved": true
+  }
+}

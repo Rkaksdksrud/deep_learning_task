@@ -1,0 +1,61 @@
+{
+  "scope": "Existing completion/independent-validation records and saved aggregate/history consistency were checked during export; no new holdout inference or training was run. Separate synthetic-input deployment checks are recorded in models/task2-resnet18-20261111/package_validation.json.",
+  "runs": {
+    "control_f0_s42": {
+      "training_completed": true,
+      "independent_checkpoint_validation_passed": true,
+      "non_smoke": true,
+      "saved_metrics_and_selected_epoch_match": true,
+      "history_epoch_count_matches_training_summary": true,
+      "history_selection_matches_max_BA_then_min_loss": true
+    },
+    "plain_ce_f0_s42": {
+      "training_completed": true,
+      "independent_checkpoint_validation_passed": true,
+      "non_smoke": true,
+      "saved_metrics_and_selected_epoch_match": true,
+      "history_epoch_count_matches_training_summary": true,
+      "history_selection_matches_max_BA_then_min_loss": true
+    },
+    "geometry_f0_s42": {
+      "training_completed": true,
+      "independent_checkpoint_validation_passed": true,
+      "non_smoke": true,
+      "saved_metrics_and_selected_epoch_match": true,
+      "history_epoch_count_matches_training_summary": true,
+      "history_selection_matches_max_BA_then_min_loss": true
+    },
+    "control_f0_s43": {
+      "training_completed": true,
+      "independent_checkpoint_validation_passed": true,
+      "non_smoke": true,
+      "saved_metrics_and_selected_epoch_match": true,
+      "history_epoch_count_matches_training_summary": true,
+      "history_selection_matches_max_BA_then_min_loss": true
+    },
+    "geometry_f0_s43": {
+      "training_completed": true,
+      "independent_checkpoint_validation_passed": true,
+      "non_smoke": true,
+      "saved_metrics_and_selected_epoch_match": true,
+      "history_epoch_count_matches_training_summary": true,
+      "history_selection_matches_max_BA_then_min_loss": true
+    },
+    "control_f1_s42": {
+      "training_completed": true,
+      "independent_checkpoint_validation_passed": true,
+      "non_smoke": true,
+      "saved_metrics_and_selected_epoch_match": true,
+      "history_epoch_count_matches_training_summary": true,
+      "history_selection_matches_max_BA_then_min_loss": true
+    },
+    "geometry_f1_s42": {
+      "training_completed": true,
+      "independent_checkpoint_validation_passed": true,
+      "non_smoke": true,
+      "saved_metrics_and_selected_epoch_match": true,
+      "history_epoch_count_matches_training_summary": true,
+      "history_selection_matches_max_BA_then_min_loss": true
+    }
+  }
+}

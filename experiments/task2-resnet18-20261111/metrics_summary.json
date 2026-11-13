@@ -1,0 +1,276 @@
+{
+  "schema_version": 1,
+  "experiment_date": "2026-11-11",
+  "shared_record_prepared_date": "2026-11-13",
+  "status": "Seven full ResNet18 runs completed and independently validated. No new training was performed while preparing these records.",
+  "metric_units": {
+    "balanced_accuracy": "fraction in [0,1]",
+    "sensitivity": "Present recall, fraction in [0,1]",
+    "specificity": "Absent recall, fraction in [0,1]",
+    "delta_balanced_accuracy": "fraction; multiply by 100 for percentage points",
+    "elapsed_seconds": "full training-loop wall time, excluding separate validation and preparation time"
+  },
+  "data_summary": {
+    "images": 2948,
+    "anonymous_patient_groups": 27,
+    "absent": 2160,
+    "present": 788,
+    "storage": "RGB PNG",
+    "width": 480,
+    "height": 724,
+    "split_method": "StratifiedGroupKFold(n_splits=5, shuffle=False); each run holds out its specified fold",
+    "fold_0": {
+      "train_images": 2301,
+      "train_patient_groups": 21,
+      "train_absent": 1680,
+      "train_present": 621,
+      "valid_images": 647,
+      "valid_patient_groups": 6,
+      "valid_absent": 480,
+      "valid_present": 167
+    },
+    "fold_1": {
+      "train_images": 2280,
+      "train_patient_groups": 21,
+      "train_absent": 1680,
+      "train_present": 600,
+      "valid_images": 668,
+      "valid_patient_groups": 6,
+      "valid_absent": 480,
+      "valid_present": 188
+    },
+    "geometry_unique_validation_images": 1315,
+    "geometry_unique_validation_patient_groups": 12,
+    "geometry_condition_image_observations": 1962
+  },
+  "execution_totals": {
+    "full_runs": 7,
+    "epochs_completed": 95,
+    "training_elapsed_seconds": 2308.7986770729995,
+    "training_elapsed_minutes": 38.47997795121666
+  },
+  "geometry_policy": {
+    "train_only": true,
+    "horizontal_flip_probability": 0.5,
+    "rotation_degrees": [
+      -7,
+      7
+    ],
+    "rotation_expand": true,
+    "evaluation_unchanged": true,
+    "effect_scope": "The full flip + rotation + associated interpolation/size-change policy was compared; individual operation effects were not isolated.",
+    "decision": "adopted_as_current_ResNet18_recipe",
+    "matched_conditions": 3,
+    "conditions": [
+      "fold0 seed42",
+      "fold0 seed43",
+      "fold1 seed42"
+    ],
+    "improved_conditions": 3,
+    "descriptive_statistics": {
+      "balanced_accuracy": {
+        "control": {
+          "mean": 0.5757019648645971,
+          "sample_standard_deviation": 0.09018862321823519,
+          "min": 0.4755364271457086,
+          "max": 0.6504654255319149
+        },
+        "geometry": {
+          "mean": 0.8979845716368681,
+          "sample_standard_deviation": 0.009145674149414857,
+          "min": 0.8875664893617021,
+          "max": 0.904690618762475
+        },
+        "delta": {
+          "mean": 0.32228260677227105,
+          "sample_standard_deviation": 0.09784653499983383,
+          "min": 0.23710106382978724,
+          "max": 0.42915419161676643
+        }
+      },
+      "sensitivity": {
+        "control": {
+          "mean": 0.6319594852847497,
+          "sample_standard_deviation": 0.2154178621330103,
+          "min": 0.4946808510638298,
+          "max": 0.8802395209580839
+        },
+        "geometry": {
+          "mean": 0.9341635877181806,
+          "sample_standard_deviation": 0.06742648930065569,
+          "min": 0.8563829787234043,
+          "max": 0.9760479041916168
+        },
+        "delta": {
+          "mean": 0.302204102433431,
+          "sample_standard_deviation": 0.18400834275198075,
+          "min": 0.09580838323353291,
+          "max": 0.4491017964071856
+        }
+      },
+      "specificity": {
+        "control": {
+          "mean": 0.5194444444444445,
+          "sample_standard_deviation": 0.39350374427603513,
+          "min": 0.07083333333333333,
+          "max": 0.80625
+        },
+        "geometry": {
+          "mean": 0.8618055555555556,
+          "sample_standard_deviation": 0.04931533549328049,
+          "min": 0.8333333333333334,
+          "max": 0.91875
+        },
+        "delta": {
+          "mean": 0.3423611111111111,
+          "sample_standard_deviation": 0.3643888370093643,
+          "min": 0.11249999999999993,
+          "max": 0.7625000000000001
+        }
+      },
+      "elapsed_seconds": {
+        "control": {
+          "mean": 202.99419965699994,
+          "sample_standard_deviation": 15.854963996056755,
+          "min": 184.75786334199984,
+          "max": 213.51126440500002
+        },
+        "geometry": {
+          "mean": 352.3867304666666,
+          "sample_standard_deviation": 23.538477793476073,
+          "min": 329.4246442409999,
+          "max": 376.46209309100004
+        },
+        "delta": {
+          "mean": 149.39253080966668,
+          "sample_standard_deviation": 26.630549545619196,
+          "min": 118.71117301699996,
+          "max": 166.51559072600003
+        }
+      }
+    },
+    "patient_condition_observations": {
+      "improved": 15,
+      "tied": 2,
+      "worse": 1,
+      "total": 18
+    }
+  },
+  "plain_CE": {
+    "tested_conditions": 1,
+    "condition": "fold0 seed42",
+    "balanced_accuracy": 0.5965319361277446,
+    "delta_balanced_accuracy_vs_matched_control": 0.12099550898203598,
+    "decision": "not_adopted; robustness_unconfirmed",
+    "reason": "The prespecified finite confirmation budget was allocated to the initial candidate with the larger improvement, geometry. No plain-CE replication on another seed or fold was performed."
+  },
+  "remaining_failures": {
+    "fold0_failure_patient": {
+      "geometry_balanced_accuracy_both_seeds": 0.5,
+      "aggregate_confusion_matrix_each_seed": [
+        [
+          0,
+          80
+        ],
+        [
+          0,
+          19
+        ]
+      ],
+      "interpretation": "Every frame predicted Present at threshold 0.5; the patient failure remains."
+    },
+    "fold1_failure_patient": {
+      "control_balanced_accuracy": 0.35625,
+      "geometry_balanced_accuracy": 0.2625,
+      "delta_balanced_accuracy": -0.09375,
+      "geometry_confusion_matrix": [
+        [
+          42,
+          38
+        ],
+        [
+          27,
+          0
+        ]
+      ],
+      "interpretation": "All 27 positives missed; one patient worsened despite the overall fold improvement."
+    }
+  },
+  "validation_checks": {
+    "control_f0_s42": {
+      "training_completed": true,
+      "independent_checkpoint_validation_passed": true,
+      "non_smoke": true,
+      "saved_metrics_and_selected_epoch_match": true,
+      "history_epoch_count_matches_training_summary": true,
+      "history_selection_matches_max_BA_then_min_loss": true
+    },
+    "plain_ce_f0_s42": {
+      "training_completed": true,
+      "independent_checkpoint_validation_passed": true,
+      "non_smoke": true,
+      "saved_metrics_and_selected_epoch_match": true,
+      "history_epoch_count_matches_training_summary": true,
+      "history_selection_matches_max_BA_then_min_loss": true
+    },
+    "geometry_f0_s42": {
+      "training_completed": true,
+      "independent_checkpoint_validation_passed": true,
+      "non_smoke": true,
+      "saved_metrics_and_selected_epoch_match": true,
+      "history_epoch_count_matches_training_summary": true,
+      "history_selection_matches_max_BA_then_min_loss": true
+    },
+    "control_f0_s43": {
+      "training_completed": true,
+      "independent_checkpoint_validation_passed": true,
+      "non_smoke": true,
+      "saved_metrics_and_selected_epoch_match": true,
+      "history_epoch_count_matches_training_summary": true,
+      "history_selection_matches_max_BA_then_min_loss": true
+    },
+    "geometry_f0_s43": {
+      "training_completed": true,
+      "independent_checkpoint_validation_passed": true,
+      "non_smoke": true,
+      "saved_metrics_and_selected_epoch_match": true,
+      "history_epoch_count_matches_training_summary": true,
+      "history_selection_matches_max_BA_then_min_loss": true
+    },
+    "control_f1_s42": {
+      "training_completed": true,
+      "independent_checkpoint_validation_passed": true,
+      "non_smoke": true,
+      "saved_metrics_and_selected_epoch_match": true,
+      "history_epoch_count_matches_training_summary": true,
+      "history_selection_matches_max_BA_then_min_loss": true
+    },
+    "geometry_f1_s42": {
+      "training_completed": true,
+      "independent_checkpoint_validation_passed": true,
+      "non_smoke": true,
+      "saved_metrics_and_selected_epoch_match": true,
+      "history_epoch_count_matches_training_summary": true,
+      "history_selection_matches_max_BA_then_min_loss": true
+    }
+  },
+  "limitations": [
+    "Three matched conditions are descriptive measurements, not three independent folds, external validation, a confidence interval, or private Test results.",
+    "The same six fold0 patients and images were reused across seeds; per-patient frames can be highly similar.",
+    "Validation was used for checkpoint and method selection; these are not unbiased final Test estimates.",
+    "No combination of geometry and plain CE was tested.",
+    "VGG and GoogLeNet full training, final full-data ResNet18 training, and the complete assignment submission were not completed in this experiment.",
+    "The seven weights are separate comparison checkpoints; they are not an ensemble."
+  ],
+  "links": {
+    "training_and_inference": "../../task2/",
+    "models_manifest": "../../models/task2-resnet18-20261111/manifest.json",
+    "selected_reference_run_id": "geometry_f0_s42",
+    "release_tag": "task2-resnet18-20261111-v1"
+  },
+  "portable_configuration": {
+    "config_recorded.json": "Exact recorded safe config values; original relative data_root=data/raw and output_root=runs are preserved.",
+    "config.json": "Portable copy with data_root=../data/task2 and output_root=../runs/task2; paths resolve relative to task2/. The effective default geometric_augmentation=false is written explicitly when it was omitted.",
+    "training_summary.json": "Numeric training results are preserved; the machine-specific weights_path field is replaced with weights_reference pointing to the repository model manifest and release asset."
+  }
+}
