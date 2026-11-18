@@ -1,0 +1,13 @@
+{
+  "run_id": "googlenet_20261118_geometry_f0_s42",
+  "status": "independently_verified",
+  "selected_epoch": 11,
+  "epochs_completed": 18,
+  "training_seconds": 466.3020694049992,
+  "peak_allocated_gpu_mib": 938.21923828125,
+  "max_train_balanced_accuracy": 1.0,
+  "selected_epoch_train_balanced_accuracy": 0.9884992523579481,
+  "checkpoint_kind": "selected best inference weights; no optimizer/scheduler/RNG",
+  "local_resume_state": "separate epoch-boundary last state retained locally; not included in public assets",
+  "resumed_from_epoch": 0
+}

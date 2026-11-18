@@ -1,8 +1,8 @@
-# Task2: ResNet18 실험 코드와 사용 방법
+# Task2: 지정 CNN 실험 코드와 사용 방법
 
 초음파 한 프레임의 Sheath를 `Absent=0 / Present=1`로 분류한다. 공식 지표는 이미지 기준 Balanced Accuracy(BA)다. 제공 데이터만 사용하며 random initialization, 단일 모델, 임계값0.5를 유지했다. 외부 가중치·다른 신경망 전처리·앙상블·TTA는 사용하지 않았다.
 
-공유한 **7개는 각각 환자 holdout으로 학습·평가한 ResNet18 checkpoint**다. 전체2,948장으로 재학습한 최종 제출 모델이 아니다. VGG11·GoogLeNet 학습 진입점도 제공하지만 이 두 모델의 full 학습 결과는 아직 없다.
+11월11일 **ResNet18 7개**에 이어 11월18일 **GoogLeNet 1개·VGG11 3개·ResNet18·320 1개**의 full 학습과 저장가중치 검증을 완료했다. 모두 환자 holdout 모델이며 전체2,948장으로 재학습한 최종 제출 모델이 아니다. [후속 실험 결과](../experiments/task2-followups-20261118/README.md)와 [후속5개 모델](../models/task2-followups-20261118/README.md)을 함께 확인한다.
 
 ## 환경과 데이터 위치
 
@@ -27,7 +27,7 @@ data/task2/
 
 `data_root`와 `output_root`의 상대 경로는 현재 터미널 위치가 아니라 `task2/` 기준이다. 세 config의 기본값은 `../data/task2`, `../runs/task2`다. 학습 결과는 저장소의 `runs/task2/<run-name>/` 아래에 생긴다.
 
-## 7개 체크포인트와 결과
+## 11월11일 ResNet18 7개 체크포인트와 결과
 
 다운로드 링크·Release asset 목록·해시·실험 원본 기록은 저장소의 Task2 공유 안내를 따른다. 모델 묶음을 받은 뒤 아래와 같이 각 원래 run 폴더를 `runs/task2/` 아래에 둔다. 모든 모델을 평균하거나 투표하지 않고 필요한 **checkpoint 하나**를 고른다.
 
@@ -113,13 +113,36 @@ python task2/code/resnet.py --config task2/configs/plain_ce.json --device cuda -
 
 기본 학습은 batch16, AdamW lr3e-4/WD1e-4, FP32, cosine 최대30epoch, patience7다. Valid BA 최대, 동률이면 Valid loss 최소로 checkpoint 하나를 고른다. 소규모 경로 점검은 `--smoke-test --device cpu`이며 해당 결과는 성능 보고·제출용으로 쓰지 않는다.
 
-VGG11·GoogLeNet은 각각 `task2/code/vgg.py`, `task2/code/googlenet.py`로 독립 학습한다. GoogLeNet 학습은 두 보조 손실을 각각0.3배 더하며 추론은 주 출력만 쓴다. 이전 CPU 소규모 점검 외 full 결과는 아직 없다. ResNet의 개선량이 그대로 전이된다고 가정하지 않는다.
+VGG11·GoogLeNet은 각각 `task2/code/vgg.py`, `task2/code/googlenet.py`로 독립 학습한다. GoogLeNet 학습은 두 보조 손실을 각각0.3배 더하며 추론은 주 출력만 쓴다. 11월18일 GoogLeNet224 fold0 BA90.03%를 얻었다. VGG11은 기본lr3e-4에서 BA50%로 학습에 실패했으며, **lr1e-4**에서 fold0/1 BA80.21%/76.28%로 회복했다. ResNet320은224를 개선하지 못했다. ResNet의 증강 개선량이 다른 구조에도 그대로 전이된다고 가정하지 않는다.
+
+실제 후속 run의 기록과 경로만 이 저장소에 맞춘 재실행 config는 `experiments/task2-followups-20261118/run_records/<run ID>/`에 있다. VGG의 작동한 설정을 다시 학습하려면 새 run 이름으로 다음을 사용한다.
+
+```bash
+python task2/code/vgg.py --config experiments/task2-followups-20261118/run_records/vgg11_20261118_lr1e4_f0_s42/config.json --device cuda --run-name vgg_new_lr1e4_f0
+```
+
+이 명령의 결과가 기존 점수와 정확히 같다는 보장은 없다. CUDA 비결정성과 제한된 환자 수·검증 기반 선택의 영향을 함께 고려한다.
+
+## 2026-11-18 추가: epoch 경계 학습 재개
+
+새 학습 코드는 매 epoch 완료 시 별도 `last_training_state.pt`에 model/optimizer/scheduler, 완료epoch/history, 최적epoch·지표, patience counter, Python/NumPy/torch CPU/CUDA RNG와 두 DataLoader generator를 원자 저장한다. 기존 추론용 `resnet.pt`/`vgg.pt`/`googlenet.pt` 형식과 학습·선택 정책은 유지한다.
+
+```bash
+python task2/code/googlenet.py --config task2/configs/geometry.json --device cuda --run-name googlenet_new_geometry
+python task2/code/googlenet.py --config task2/configs/geometry.json --device cuda --resume runs/task2/googlenet_new_geometry
+```
+
+`--resume`는 run 디렉터리 또는 그 안의 `last_training_state.pt`를 받는다. `--run-name`과 함께 쓰지 않는다. 최초 실행의 config와 CLI override를 동일하게 지정해야 하며, config/model/smoke/split/source snapshot/환경이 다르면 중단한다. 원래 run의 source를 덮어쓰지 않고 명시한 run만 이어 쓴다. epoch 도중 중단되면 마지막 완료 epoch 다음부터 다시 실행한다. max epoch/patience에 이미 도달했다면 추가 학습하지 않는다.
+
+**기존7개 모델과 새로 배포하는 best 모델은 모두 추론용 checkpoint다.** optimizer/scheduler/RNG를 담는 `last_training_state.pt`는 로컬 학습 재개 전용으로 Git/Release에 올리지 않는다. 추론용 best 가중치만으로 정확한 재개를 시도하면 거부한다.
+
+작은 Conv+BN+Dropout 모델과 합성 RGB 영상으로 CPU 검증을 수행했다. 변경 전 코드와 새 코드의 연속 학습, 연속4epoch와 epoch2 원자 커밋 직후 중단→재개에서 선택 가중치·수학적 지표·optimizer/scheduler·RNG가 정확히 일치했다. 시간·처리량은 비교에서 제외했다. 이는 과제 모델의 성능이나 CUDA 재개 수치 일치 검증이 아니다. GoogLeNet/VGG11의 adaptive-pooling CUDA backward에서 비결정적 경고를 관측했으므로 기존 `warn_only=True`를 유지하며 GPU bitwise 일치를 주장하지 않는다.
 
 ## 원본 코드·config와의 차이 및 한계
 
 - `common.py`, `data.py`, 세 모델 진입점, `predict.py`는 원본 알고리즘을 유지한다. 배포 config는 경로만 이 저장소 구조에 맞췄고 policy/loss 플래그를 명시했다.
 - `validate.py`에는 명시적인 `--data-root` override와 사용 경로 기록을 추가했다. 학습·metric·모델 선택·전처리 계산은 변경하지 않았다. 새 배포 소스를 과거 checkpoint의 실제 실행 snapshot과 동일하다고 주장하지 않는다.
 - 기존7개 checkpoint의 원래 config·환경·epoch·preprocessing metadata는 보존한다. 배포 config는 재실행 템플릿이며 과거 run의 원본 config를 대체하지 않는다. fold/seed·class_weighted_loss·geometry 여부는 각 run 기록을 확인한다.
-- 신규6개 실험은 당시 source snapshot/해시가 있고 최초 대조군 C0는 snapshot 보강 전 실행으로 별도 보관 코드·재현 parity 기록이 있다. 확인 가능한 범위를 넘어 소스 provenance를 소급 생성하지 않는다.
-- checkpoint는 모델 state_dict(가중치·BN buffer)와 선택epoch/config를 담는다. optimizer/scheduler/RNG 진행상태가 없어 정확한 중간 학습 resume는 지원하지 않는다. 선택epoch는 재개 가능한 마지막epoch를 뜻하지 않는다.
+- 기존7개 중6개와 후속5개 실험은 당시 source snapshot/해시가 있고, 최초 대조군 C0는 snapshot 보강 전 실행으로 별도 보관 코드·재현 parity 기록이 있다. 확인 가능한 범위를 넘어 소스 provenance를 소급 생성하지 않는다.
+- 배포한 best checkpoint는 모델 state_dict(가중치·BN buffer)와 선택epoch/config만 담고 optimizer/scheduler/RNG는 없다. 신규 학습의 별도 로컬 `last_training_state.pt`가 있을 때만 위 epoch 경계 재개를 지원한다. 선택epoch는 재개 가능한 마지막epoch를 뜻하지 않는다.
 - 제공 데이터 외 학습, 추가 신경망, 사전학습, 앙상블은 사용하지 않는다. 임계값 튜닝·광도 증강·CLAHE·새ROI·구조 변경·BN 재보정 등 미확정 방법은 이 공유본에 추가하지 않았다.

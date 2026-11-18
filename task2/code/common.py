@@ -35,6 +35,7 @@ from torch.nn import functional as F
 from torch.utils.data import DataLoader
 
 from data import ImageDataset, load_records, make_splits, split_summary
+from training_state import STATE_NAME, atomic_save, capture_rng, check_metadata, check_progress, read_state, restore_rng
 
 TASK_DIR = Path(__file__).resolve().parents[1]
 ARCHITECTURES = {"vgg": "vgg11", "resnet": "resnet18", "googlenet": "googlenet"}
@@ -193,7 +194,8 @@ def validate_config(config: dict) -> None:
         raise ValueError("learning_rate must be positive and threshold must be between 0 and 1")
 
 
-def train(model_name: str, config: dict, smoke_test: bool = False, run_name: str | None = None) -> Path:
+def train(model_name: str, config: dict, smoke_test: bool = False, run_name: str | None = None,
+          resume: str | Path | None = None) -> Path:
     """Train one model and save its best validation-BA checkpoint and predictions."""
     if model_name not in ARCHITECTURES:
         raise ValueError(f"Unknown model: {model_name}")
@@ -216,36 +218,11 @@ def train(model_name: str, config: dict, smoke_test: bool = False, run_name: str
     counts = parts["train"]["label"].value_counts().reindex([0, 1]).to_numpy()
     weights = len(parts["train"]) / (2 * counts) if config["class_weighted_loss"] else np.ones(2)
     class_weights = torch.tensor(weights, dtype=torch.float32, device=device)
-    stamp = datetime.now(ZoneInfo("Asia/Seoul")).strftime("%Y%m%d_%H%M%S_%f")
-    run_name = run_name or f"{model_name}_{stamp}"
-    if Path(run_name).name != run_name or run_name in (".", ".."):
-        raise ValueError("run_name must be a single directory name")
-    if smoke_test and not run_name.startswith("smoke_"):
-        run_name = "smoke_" + run_name
-    run_dir = task_path(config["output_root"]) / run_name
-    run_dir.mkdir(parents=True, exist_ok=False)
-    source_dir = run_dir / "source"
-    source_dir.mkdir()
-    source_hashes = {}
-    for source in sorted((TASK_DIR / "code").glob("*.py")):
-        source_hashes[str(source.relative_to(TASK_DIR))] = hashlib.sha256(source.read_bytes()).hexdigest()
-        shutil.copy2(source, source_dir / source.name)
+    source_hashes = {
+        str(source.relative_to(TASK_DIR)): hashlib.sha256(source.read_bytes()).hexdigest()
+        for source in sorted((TASK_DIR / "code").glob("*.py"))
+    }
     source_hashes["labels.csv"] = hashlib.sha256((task_path(config["data_root"]) / "labels.csv").read_bytes()).hexdigest()
-    write_json(run_dir / "source_manifest.json", source_hashes)
-    write_json(run_dir / "augmentation.json", {
-        "training_only": True,
-        "enabled": config["geometric_augmentation"],
-        "policy": "horizontal flip p=0.5; rotation uniform [-7,7] deg expand=True before letterbox"
-        if config["geometric_augmentation"] else "none",
-        "validation_and_inference": "unchanged preprocessing version 1",
-    })
-    records.to_csv(run_dir / "split_manifest.csv", index=False)
-    summary = split_summary(records)
-    write_json(run_dir / "split_summary.json", summary)
-    if smoke_test:
-        pd.concat([parts["train"], parts["valid"]]).to_csv(run_dir / "smoke_subset.csv", index=False)
-    write_json(run_dir / "config.json", {**config, "model_name": model_name,
-                                       "architecture": ARCHITECTURES[model_name], "smoke_test": smoke_test})
     versions = {name: importlib.metadata.version(name) for name in
                 ("torch", "torchvision", "numpy", "pandas", "Pillow", "scikit-learn")}
     versions["runtime"] = {
@@ -255,7 +232,61 @@ def train(model_name: str, config: dict, smoke_test: bool = False, run_name: str
         "gpu_total_memory_mib": torch.cuda.get_device_properties(device).total_memory / 2**20
         if device.type == "cuda" else None,
     }
-    write_json(run_dir / "environment.json", versions)
+    manifest_bytes = records.to_csv(index=False).encode("utf-8")
+    metadata = {
+        "model_name": model_name, "config": config, "smoke_test": smoke_test,
+        "split_sha256": hashlib.sha256(manifest_bytes).hexdigest(),
+        "source_manifest": source_hashes, "environment": versions,
+    }
+    state = None
+    if resume is not None:
+        if run_name is not None:
+            raise ValueError("Use --resume without --run-name; the existing run is continued")
+        run_dir, state = read_state(resume)
+        check_metadata(state["metadata"], metadata)
+        check_progress(state)
+        recorded_config = {**config, "model_name": model_name,
+                           "architecture": ARCHITECTURES[model_name], "smoke_test": smoke_test}
+        for filename, expected in (("source_manifest.json", source_hashes), ("environment.json", versions),
+                                   ("config.json", recorded_config)):
+            if json.loads((run_dir / filename).read_text()) != expected:
+                raise ValueError(f"Refusing resume: saved {filename} differs")
+        if (run_dir / "split_manifest.csv").read_bytes() != manifest_bytes:
+            raise ValueError("Refusing resume: saved split_manifest.csv differs")
+        for name, digest in source_hashes.items():
+            if name.startswith("code/"):
+                snapshot = run_dir / "source" / Path(name).name
+                if not snapshot.is_file() or hashlib.sha256(snapshot.read_bytes()).hexdigest() != digest:
+                    raise ValueError(f"Refusing resume: original source snapshot differs: {name}")
+    else:
+        stamp = datetime.now(ZoneInfo("Asia/Seoul")).strftime("%Y%m%d_%H%M%S_%f")
+        run_name = run_name or f"{model_name}_{stamp}"
+        if Path(run_name).name != run_name or run_name in (".", ".."):
+            raise ValueError("run_name must be a single directory name")
+        if smoke_test and not run_name.startswith("smoke_"):
+            run_name = "smoke_" + run_name
+        run_dir = task_path(config["output_root"]) / run_name
+        run_dir.mkdir(parents=True, exist_ok=False)
+        source_dir = run_dir / "source"
+        source_dir.mkdir()
+        for source in sorted((TASK_DIR / "code").glob("*.py")):
+            shutil.copy2(source, source_dir / source.name)
+        write_json(run_dir / "source_manifest.json", source_hashes)
+        write_json(run_dir / "augmentation.json", {
+            "training_only": True,
+            "enabled": config["geometric_augmentation"],
+            "policy": "horizontal flip p=0.5; rotation uniform [-7,7] deg expand=True before letterbox"
+            if config["geometric_augmentation"] else "none",
+            "validation_and_inference": "unchanged preprocessing version 1",
+        })
+        (run_dir / "split_manifest.csv").write_bytes(manifest_bytes)
+        write_json(run_dir / "split_summary.json", split_summary(records))
+        if smoke_test:
+            pd.concat([parts["train"], parts["valid"]]).to_csv(run_dir / "smoke_subset.csv", index=False)
+        write_json(run_dir / "config.json", {**config, "model_name": model_name,
+                                           "architecture": ARCHITECTURES[model_name], "smoke_test": smoke_test})
+        write_json(run_dir / "environment.json", versions)
+    summary = split_summary(records)
 
     def log(message: str) -> None:
         print(message, flush=True)
@@ -270,9 +301,58 @@ def train(model_name: str, config: dict, smoke_test: bool = False, run_name: str
     optimizer = torch.optim.AdamW(model.parameters(), lr=config["learning_rate"], weight_decay=config["weight_decay"])
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=config["epochs"])
     history, best_score, best_loss, stale_epochs = [], -1.0, float("inf"), 0
+    best_result = None
     weights_path = run_dir / f"{model_name}.pt"
+    completed_epoch, previous_elapsed, save_seconds = 0, 0.0, 0.0
+
+    def checkpoint_for_current(result: dict) -> dict:
+        return {
+            "format_version": 1, "model_name": model_name, "architecture": ARCHITECTURES[model_name],
+            "state_dict": model.state_dict(), "config": config, "epoch": result["epoch"],
+            "valid_metrics": result["metrics"], "threshold": config["threshold"],
+            "class_weights": weights.tolist(), "smoke_test": smoke_test,
+            "initialization": "random; weights=None", "label_mapping": {0: "absent", 1: "present"},
+            "preprocessing": {**PREPROCESSING, "image_size": config["image_size"]},
+        }
+
+    def write_best_records(result: dict, save_weights: bool) -> None:
+        if save_weights:
+            atomic_save(weights_path, checkpoint_for_current(result))
+        write_json(run_dir / "best_metrics.json", {"epoch": result["epoch"], "smoke_test": smoke_test, **result["metrics"]})
+        predictions = parts["valid"].copy()
+        predictions["probability"] = result["probabilities"]
+        predictions["prediction"] = (predictions["probability"].to_numpy() >= config["threshold"]).astype(int)
+        predictions.to_csv(run_dir / "valid_predictions.csv", index=False)
+
+    if state is not None:
+        model.load_state_dict(state["model_state_dict"], strict=True)
+        optimizer.load_state_dict(state["optimizer_state_dict"])
+        scheduler.load_state_dict(state["scheduler_state_dict"])
+        completed_epoch = state["completed_epoch"]
+        history, best_score, best_loss = state["history"], state["best_score"], state["best_loss"]
+        stale_epochs, best_result = state["stale_epochs"], state["best_result"]
+        previous_elapsed = state["elapsed_seconds"]
+        save_seconds = state.get("state_save_seconds_before_latest", 0.0)
+        # A committed state is authoritative. Recreate text files if interrupted
+        # between the atomic state rename and the following report-file writes.
+        recover_current_best = best_result["epoch"] == completed_epoch
+        if not recover_current_best:
+            if not weights_path.is_file():
+                raise ValueError("Selected earlier best checkpoint is missing; refusing unsafe resume")
+            selected = torch.load(weights_path, map_location="cpu", weights_only=True)
+            if selected.get("epoch") != best_result["epoch"] or selected.get("model_name") != model_name:
+                raise ValueError("Selected earlier best checkpoint disagrees with committed training state")
+            del selected
+        write_best_records(best_result, save_weights=recover_current_best)
+        pd.DataFrame(history).to_csv(run_dir / "history.csv", index=False)
+        restore_rng(state["rng"], loaders)
+        log(json.dumps({"resume_from_completed_epoch": completed_epoch,
+                        "resume_policy": "atomic epoch boundary; reports reconciled from committed state"}))
+        del state
     training_started = time.perf_counter()
-    for epoch in range(1, config["epochs"] + 1):
+    for epoch in range(completed_epoch + 1, config["epochs"] + 1):
+        if stale_epochs >= config["patience"]:
+            break
         if device.type == "cuda":
             torch.cuda.reset_peak_memory_stats(device)
         train_metrics, _ = run_epoch(model, loaders["train"], device, class_weights,
@@ -284,38 +364,39 @@ def train(model_name: str, config: dict, smoke_test: bool = False, run_name: str
             row.update({f"{prefix}_{key}": value for key, value in metrics.items()
                         if key not in ("confusion_matrix", "threshold", "samples")})
         history.append(row)
-        pd.DataFrame(history).to_csv(run_dir / "history.csv", index=False)
-        log(json.dumps(row, allow_nan=False))
         score, valid_loss = valid_metrics["balanced_accuracy"], valid_metrics["loss"]
         improved = score > best_score or (score == best_score and valid_loss < best_loss)
         if improved:
             best_score, best_loss, stale_epochs = score, valid_loss, 0
-            checkpoint = {
-                "format_version": 1, "model_name": model_name, "architecture": ARCHITECTURES[model_name],
-                "state_dict": model.state_dict(), "config": config, "epoch": epoch,
-                "valid_metrics": valid_metrics, "threshold": config["threshold"],
-                "class_weights": weights.tolist(), "smoke_test": smoke_test,
-                "initialization": "random; weights=None", "label_mapping": {0: "absent", 1: "present"},
-                "preprocessing": {**PREPROCESSING, "image_size": config["image_size"]},
-            }
-            temporary_path = weights_path.with_suffix(".pt.tmp")
-            torch.save(checkpoint, temporary_path)
-            temporary_path.replace(weights_path)
-            write_json(run_dir / "best_metrics.json", {"epoch": epoch, "smoke_test": smoke_test, **valid_metrics})
-            predictions = parts["valid"].copy()
-            predictions["probability"] = probabilities
-            predictions["prediction"] = (probabilities >= config["threshold"]).astype(int)
-            predictions.to_csv(run_dir / "valid_predictions.csv", index=False)
+            best_result = {"epoch": epoch, "metrics": valid_metrics, "probabilities": probabilities.tolist()}
         else:
             stale_epochs += 1
         scheduler.step()
+        # Commit before report files: an interruption after this rename can be
+        # repaired from the last state without repeating a committed epoch.
+        save_seconds += atomic_save(run_dir / STATE_NAME, {
+            "training_state_version": 1, "purpose": "epoch_boundary_resume", "metadata": metadata,
+            "model_state_dict": model.state_dict(), "optimizer_state_dict": optimizer.state_dict(),
+            "scheduler_state_dict": scheduler.state_dict(), "completed_epoch": epoch,
+            "history": history, "best_score": best_score, "best_loss": best_loss,
+            "stale_epochs": stale_epochs, "best_result": best_result,
+            "elapsed_seconds": previous_elapsed + time.perf_counter() - training_started,
+            "state_save_seconds_before_latest": save_seconds, "rng": capture_rng(loaders),
+        })
+        pd.DataFrame(history).to_csv(run_dir / "history.csv", index=False)
+        log(json.dumps(row, allow_nan=False))
+        if improved:
+            write_best_records(best_result, save_weights=True)
         if stale_epochs >= config["patience"]:
             log(f"Early stopping after epoch {epoch}.")
             break
     write_json(run_dir / "training_summary.json", {
         "model_name": model_name, "smoke_test": smoke_test, "epochs_completed": len(history),
-        "elapsed_seconds": time.perf_counter() - training_started,
+        "elapsed_seconds": previous_elapsed + time.perf_counter() - training_started,
         "best_valid_balanced_accuracy": best_score, "weights_path": str(weights_path),
+        "resumable_state_path": str(run_dir / STATE_NAME), "state_save_seconds": save_seconds,
+        "resumed_from_epoch": completed_epoch,
+        "state_save_seconds_note": "cumulative; after resume excludes the last save before interruption",
     })
     log(f"Saved best validation BA={best_score:.4f}: {weights_path}")
     return run_dir
@@ -340,6 +421,7 @@ def training_cli(model_name: str) -> None:
     parser.add_argument("--image-size", type=int)
     parser.add_argument("--device")
     parser.add_argument("--run-name")
+    parser.add_argument("--resume", type=Path, help="existing run directory or last_training_state.pt; requires identical config/source/environment")
     parser.add_argument("--smoke-test", action="store_true", help="1 epoch, 4 images per split at 96px; not a performance result")
     args = parser.parse_args()
     config = load_config(args.config)
@@ -347,4 +429,4 @@ def training_cli(model_name: str) -> None:
         value = getattr(args, key)
         if value is not None:
             config[key] = value
-    train(model_name, config, smoke_test=args.smoke_test, run_name=args.run_name)
+    train(model_name, config, smoke_test=args.smoke_test, run_name=args.run_name, resume=args.resume)

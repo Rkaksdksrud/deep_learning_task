@@ -1,0 +1,13 @@
+{
+  "run_id": "vgg11_20261118_lr1e4_f0_s42",
+  "status": "independently_verified",
+  "selected_epoch": 4,
+  "epochs_completed": 11,
+  "training_seconds": 485.1915276810014,
+  "peak_allocated_gpu_mib": 2818.90625,
+  "max_train_balanced_accuracy": 1.0,
+  "selected_epoch_train_balanced_accuracy": 0.9741100184034966,
+  "checkpoint_kind": "selected best inference weights; no optimizer/scheduler/RNG",
+  "local_resume_state": "separate epoch-boundary last state retained locally; not included in public assets",
+  "resumed_from_epoch": 0
+}

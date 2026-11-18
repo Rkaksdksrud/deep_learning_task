@@ -16,3 +16,6 @@ runs/
 /models/task2-resnet18-20261111/downloads/
 /models/task2-resnet18-20261111/*.zip
 /predictions*.csv
+
+/models/task2-followups-20261118/downloads/
+/models/task2-followups-20261118/*.zip

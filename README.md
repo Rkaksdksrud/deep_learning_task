@@ -7,8 +7,8 @@
 |---|---|---|
 | 기존 Task1 v1 | 단일 DNN 학습·배포 기록 보존 | [모델](models/task1-v1/README.md), [실험](experiments/task1-v1/README.md) |
 | Task2 ResNet18 | 전체7개 run 학습·저장가중치 검증 완료 | [실험 비교](experiments/task2-resnet18-20261111/README.md), [학습 코드](task2/README.md) |
-| Task2 모든 full try의 가중치 | run별 ZIP7개를 GitHub Release로 배포 | [모델 목록·다운로드](models/task2-resnet18-20261111/README.md) |
-| Task2 VGG·GoogLeNet | 학습 진입점은 있으나 전체 학습·검증 미완료 | [자료 검토·다음 작업](experiments/task2-resnet18-20261111/RESEARCH_AND_NEXT_STEPS.md) |
+| Task2 후속 실험 | GoogLeNet·VGG11·ResNet320, 전체5개 run 학습·저장가중치 검증 완료 | [새 실험 비교](experiments/task2-followups-20261118/README.md) |
+| Task2 모든 full try의 가중치 | 기존7개 + 후속5개, run별 독립 모델 ZIP | [기존7개](models/task2-resnet18-20261111/README.md), [후속5개](models/task2-followups-20261118/README.md) |
 
 ## Task2 결과
 
@@ -18,6 +18,20 @@ ResNet18의 학습 전용 수평반전 p=.5 + ±7° 회전 정책을 채택했�
 같은 환자 fold를 두 seed에서 반복했으므로 독립3-fold나 private Test 점수가 아닙니다.
 특정 검증 환자의 BA50%,26.25% 실패도 남아 있습니다.
 모델은 모두 제공 데이터의 Train partition으로 학습한 단일 holdout 모델이며 전체 데이터 최종 제출 모델은 아닙니다.
+
+11월18일에는 같은 환자 분할·seed42로 **5개 full run, 70epoch, 순수 학습43.77분**을 추가했습니다.
+
+| 후속 시도 | Valid BA | 판단 |
+|---|---:|---|
+| GoogLeNet224, fold0 |90.0262%|지정 모델의 첫 full baseline 확보. 다른 fold 확인 필요|
+| VGG11·224, lr3e-4, fold0 |50.0000%|전부 Absent로 예측하는 학습 실패|
+| VGG11·224, lr1e-4, fold0 |80.2102%|학습 회복, 과적합과 환자별 실패 남음|
+| 같은 VGG lr1e-4, fold1 |76.2810%|두 fold 레시피 평균78.2456%. 추가 seed 검증 없음|
+| ResNet18·320, fold0 |89.5709%|224의90.4691%보다0.8982%p 하락, 시간1.47배여서 기각|
+
+ResNet18·224를 참조 설정으로 유지합니다. 낮춘 VGG 학습률의 직접 대조는 fold0에서만 수행했으며,
+위 두 fold 평균을 학습률 개선의 평균 효과로 해석하지 않습니다. GoogLeNet에는 자체 무증강 full 대조군이 없습니다.
+모든 점수는 방법·checkpoint 선택에 사용한 개발용 validation 결과입니다.
 
 ## 팀원이 이번 브랜치와 모델 받기
 
@@ -34,6 +48,14 @@ python models/task2-resnet18-20261111/download.py --run geometry_f0_s42 --output
 `download.py`는 ZIP과 가중치 해시를 확인합니다. Release가 게시되어 있어야 URL 다운로드가 가능합니다.
 다른6개 try도 `--list`에 나온 ID로 같은 방법으로 받을 수 있습니다.
 
+후속5개 모델은 별도 manifest와 Release를 사용합니다.
+
+```bash
+python models/task2-followups-20261118/download.py --list
+python models/task2-followups-20261118/download.py --run googlenet_20261118_geometry_f0_s42 --output downloads/task2/googlenet-followup
+python downloads/task2/googlenet-followup/predict.py --images input_images --output googlenet_predictions.csv --device cpu
+```
+
 Task2는 Python3.10.13에서 확인했습니다. Task1 환경과 분리해 필요한 패키지를 설치한 뒤 추론합니다.
 
 ```bash
@@ -41,7 +63,7 @@ python -m pip install -r task2/requirements.txt
 python downloads/task2/geometry_f0_s42/predict.py --images input_images --output predictions.csv --device cpu
 ```
 
-가중치는 Git commit에 넣지 않고 [버전별 Release](https://github.com/Rkaksdksrud/deep_learning_task/releases/tag/task2-resnet18-20261111-v1)에 연결합니다.
+가중치는 Git commit에 넣지 않고 [기존 Release](https://github.com/Rkaksdksrud/deep_learning_task/releases/tag/task2-resnet18-20261111-v1)와 [후속 Release](https://github.com/Rkaksdksrud/deep_learning_task/releases/tag/task2-followups-20261118-v1)에 연결합니다. 다운로드 URL은 해당 Release가 게시되어 있어야 동작합니다.
 원본 과제 데이터·영상/라벨·표본별 예측·분할표·영상이 포함된 노트북·과제 PDF는 이 공유본에 포함하지 않습니다.
 재학습/검증에는 허가받은 데이터를 각자 `data/task2/`에 준비합니다.
 

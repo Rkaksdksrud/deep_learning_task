@@ -1,0 +1,34 @@
+[
+  {
+    "fold": 0,
+    "seed": 42,
+    "baseline": "resnet18_20261111_geometry_f0_s42",
+    "candidate": "resnet18_20261118_320_f0_s42",
+    "baseline_ba": 0.904690618762475,
+    "candidate_ba": 0.8957085828343314,
+    "delta_ba": -0.008982035928143617,
+    "positive_recall_delta": -0.017964071856287456,
+    "negative_recall_delta": 0.0,
+    "training_time_ratio": 1.4702349513555928,
+    "peak_memory_ratio": 1.61011270746651,
+    "config_differences": {
+      "image_size": [
+        224,
+        320
+      ]
+    },
+    "improved": 1,
+    "tied": 4,
+    "worsened": 1,
+    "baseline_worst_patient": {
+      "before_ba": 0.5,
+      "after_ba": 0.5,
+      "delta_ba": 0.0
+    },
+    "largest_patient_change_downwards": {
+      "before_ba": 0.9791666666666667,
+      "after_ba": 0.9270833333333333,
+      "delta_ba": -0.05208333333333348
+    }
+  }
+]

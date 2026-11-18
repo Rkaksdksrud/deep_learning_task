@@ -1,0 +1,18 @@
+{
+  "status": "diagnostic_completed",
+  "model": "vgg11_20261118_geometry_f0_s42",
+  "selected_epoch": 8,
+  "input_cross_image_mean_variance": 0.01072591170668602,
+  "last_feature_zero_fraction": 0.9999949932098389,
+  "last_feature_cross_image_mean_variance": 5.5354344256897375e-15,
+  "logit_cross_image_std": [
+    1.3930979037013458e-08,
+    6.160119969678135e-09
+  ],
+  "present_probability_min": 0.4852719008922577,
+  "present_probability_max": 0.4852719306945801,
+  "all_eight_predictions_absent": true,
+  "parameters_updated": false,
+  "scope": "8 local training images, 4 per class, evaluation mode; no patient IDs or image list retained",
+  "limitation": "Small training-only subset suggests zero/constant deep features; learning-rate causality is unproven"
+}

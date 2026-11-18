@@ -1,0 +1,150 @@
+{
+  "runs": [
+    {
+      "id": "googlenet_20261118_geometry_f0_s42",
+      "checkpoint_sha256": "ff30fadb0a6c70943f30956ff4b44cbca914b3f58850a5158f83c5f8ff20aec1",
+      "all_checks_passed": true,
+      "checkpoint_bytes_unchanged_during_validation": true,
+      "selected_epoch": 11,
+      "metrics": {
+        "balanced_accuracy": 0.9002619760479043,
+        "accuracy": 0.8578052550231839,
+        "sensitivity": 0.9880239520958084,
+        "specificity": 0.8125,
+        "precision": 0.6470588235294118,
+        "f1": 0.7819905213270142,
+        "auroc": 0.8460703592814371,
+        "confusion_matrix": [
+          [
+            390,
+            90
+          ],
+          [
+            2,
+            165
+          ]
+        ],
+        "samples": 647,
+        "threshold": 0.5,
+        "loss": 1.0068534188691765
+      }
+    },
+    {
+      "id": "vgg11_20261118_geometry_f0_s42",
+      "checkpoint_sha256": "bdbcb2e5fabf2050850999273fcdd3ff1fb51c4d0ef95586f4dad6ed47bcfee2",
+      "all_checks_passed": true,
+      "checkpoint_bytes_unchanged_during_validation": true,
+      "selected_epoch": 8,
+      "metrics": {
+        "balanced_accuracy": 0.5,
+        "accuracy": 0.7418856259659969,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1": 0.0,
+        "auroc": 0.5,
+        "confusion_matrix": [
+          [
+            480,
+            0
+          ],
+          [
+            167,
+            0
+          ]
+        ],
+        "samples": 647,
+        "threshold": 0.5,
+        "loss": 0.6926890185948045
+      }
+    },
+    {
+      "id": "resnet18_20261118_320_f0_s42",
+      "checkpoint_sha256": "3bc10f6d152a489f918a0486a9a009b882da875bec0b9fe6a73eacf098fcb6f6",
+      "all_checks_passed": true,
+      "checkpoint_bytes_unchanged_during_validation": true,
+      "selected_epoch": 7,
+      "metrics": {
+        "balanced_accuracy": 0.8957085828343314,
+        "accuracy": 0.865533230293663,
+        "sensitivity": 0.9580838323353293,
+        "specificity": 0.8333333333333334,
+        "precision": 0.6666666666666666,
+        "f1": 0.7862407862407862,
+        "auroc": 0.8782185628742515,
+        "confusion_matrix": [
+          [
+            400,
+            80
+          ],
+          [
+            7,
+            160
+          ]
+        ],
+        "samples": 647,
+        "threshold": 0.5,
+        "loss": 0.7515527629175693
+      }
+    },
+    {
+      "id": "vgg11_20261118_lr1e4_f0_s42",
+      "checkpoint_sha256": "80f5fbb2a982359ba3452748b492076321d8ffc13002bca196e17ddf7d7648dd",
+      "all_checks_passed": true,
+      "checkpoint_bytes_unchanged_during_validation": true,
+      "selected_epoch": 4,
+      "metrics": {
+        "balanced_accuracy": 0.8021020459081836,
+        "accuracy": 0.7758887171561051,
+        "sensitivity": 0.8562874251497006,
+        "specificity": 0.7479166666666667,
+        "precision": 0.5416666666666666,
+        "f1": 0.6635730858468677,
+        "auroc": 0.8723677644710579,
+        "confusion_matrix": [
+          [
+            359,
+            121
+          ],
+          [
+            24,
+            143
+          ]
+        ],
+        "samples": 647,
+        "threshold": 0.5,
+        "loss": 0.43151552243795754
+      }
+    },
+    {
+      "id": "vgg11_20261118_lr1e4_f1_s42",
+      "checkpoint_sha256": "f2829daf9866a8df3a9865631856230ffbe7a5c5cb08721561ba4d90dcdde523",
+      "all_checks_passed": true,
+      "checkpoint_bytes_unchanged_during_validation": true,
+      "selected_epoch": 5,
+      "metrics": {
+        "balanced_accuracy": 0.7628102836879432,
+        "accuracy": 0.7335329341317365,
+        "sensitivity": 0.8297872340425532,
+        "specificity": 0.6958333333333333,
+        "precision": 0.5165562913907285,
+        "f1": 0.636734693877551,
+        "auroc": 0.8491356382978723,
+        "confusion_matrix": [
+          [
+            334,
+            146
+          ],
+          [
+            32,
+            156
+          ]
+        ],
+        "samples": 668,
+        "threshold": 0.5,
+        "loss": 1.6859430896776393
+      }
+    }
+  ],
+  "all_checks_passed": true
+}

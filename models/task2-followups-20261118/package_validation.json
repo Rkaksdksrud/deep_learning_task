@@ -1,0 +1,66 @@
+{
+  "checked_on": "2026-11-18",
+  "models": [
+    {
+      "id": "googlenet_20261118_geometry_f0_s42",
+      "archive_and_all_internal_sha256_passed": true,
+      "original_checkpoint_sha256_passed": true,
+      "checkpoint_metadata_privacy_checked": true,
+      "synthetic_images": 3,
+      "preprocessing_exact": true,
+      "cpu_probability_exact": true,
+      "binary_predictions_exact": true,
+      "gpu_holdout_audit_bound_to_exact_checkpoint_bytes": true
+    },
+    {
+      "id": "vgg11_20261118_geometry_f0_s42",
+      "archive_and_all_internal_sha256_passed": true,
+      "original_checkpoint_sha256_passed": true,
+      "checkpoint_metadata_privacy_checked": true,
+      "synthetic_images": 3,
+      "preprocessing_exact": true,
+      "cpu_probability_exact": true,
+      "binary_predictions_exact": true,
+      "gpu_holdout_audit_bound_to_exact_checkpoint_bytes": true
+    },
+    {
+      "id": "resnet18_20261118_320_f0_s42",
+      "archive_and_all_internal_sha256_passed": true,
+      "original_checkpoint_sha256_passed": true,
+      "checkpoint_metadata_privacy_checked": true,
+      "synthetic_images": 3,
+      "preprocessing_exact": true,
+      "cpu_probability_exact": true,
+      "binary_predictions_exact": true,
+      "gpu_holdout_audit_bound_to_exact_checkpoint_bytes": true
+    },
+    {
+      "id": "vgg11_20261118_lr1e4_f0_s42",
+      "archive_and_all_internal_sha256_passed": true,
+      "original_checkpoint_sha256_passed": true,
+      "checkpoint_metadata_privacy_checked": true,
+      "synthetic_images": 3,
+      "preprocessing_exact": true,
+      "cpu_probability_exact": true,
+      "binary_predictions_exact": true,
+      "gpu_holdout_audit_bound_to_exact_checkpoint_bytes": true
+    },
+    {
+      "id": "vgg11_20261118_lr1e4_f1_s42",
+      "archive_and_all_internal_sha256_passed": true,
+      "original_checkpoint_sha256_passed": true,
+      "checkpoint_metadata_privacy_checked": true,
+      "synthetic_images": 3,
+      "preprocessing_exact": true,
+      "cpu_probability_exact": true,
+      "binary_predictions_exact": true,
+      "gpu_holdout_audit_bound_to_exact_checkpoint_bytes": true
+    }
+  ],
+  "all_checks_passed": true,
+  "tampered_archive_rejected": true,
+  "existing_output_preserved": true,
+  "course_images_in_package_tests": false,
+  "new_training_performed": false,
+  "limitation": "Exact parity checks use three synthetic images on CPU. Original GPU holdout audits are recorded separately; GPU bitwise training reproduction is not asserted."
+}

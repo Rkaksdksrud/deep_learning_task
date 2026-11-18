@@ -1,0 +1,31 @@
+{
+  "status": "검증 완료",
+  "test": "CPU toy model / synthetic images only; no assignment data or GPU",
+  "checks": {
+    "legacy_training_policy_weights_metrics_rng_exact": true,
+    "interruption_after_state_commit_before_reports": true,
+    "post_training_python_numpy_torch_rng_exact": true,
+    "model_state_dict_exact": true,
+    "optimizer_state_dict_exact": true,
+    "scheduler_state_dict_exact": true,
+    "completed_epoch_exact": true,
+    "best_score_exact": true,
+    "best_loss_exact": true,
+    "stale_epochs_exact": true,
+    "rng_exact": true,
+    "history_numeric_metrics_exact_excluding_runtime": true,
+    "selected_best_weights_epoch_config_exact": true,
+    "source_snapshots_unchanged": true,
+    "max_epoch_resume_runs_zero_epochs": true,
+    "config_mismatch_rejected": true,
+    "best_checkpoint_only_resume_rejected": true,
+    "environment_mismatch_rejected": true,
+    "split_sha256_mismatch_rejected": true,
+    "smoke_test_mismatch_rejected": true,
+    "model_name_mismatch_rejected": true,
+    "patience_stop_resume_runs_zero_epochs": true,
+    "source_mismatch_rejected": true
+  },
+  "passed": true,
+  "limitation": "CUDA GoogLeNet adaptive pooling backward is nondeterministic; exact GPU numerical reproduction is not promised"
+}

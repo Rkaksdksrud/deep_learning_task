@@ -1,0 +1,16 @@
+{
+  "all_checks_passed": true,
+  "source_snapshot_integrity_passed": true,
+  "checks": {
+    "manifest_matches_current_data": true,
+    "patient_groups_disjoint": true,
+    "sample_count_matches_checkpoint": true,
+    "probabilities_finite_and_in_range": true,
+    "saved_probabilities_match": true,
+    "max_absolute_probability_difference": 5.551115123125783e-17,
+    "saved_prediction_mismatches": 0,
+    "saved_balanced_accuracy_matches": true
+  },
+  "metric_unit": "image",
+  "single_class_patient_ba": "undefined; report available-class recall locally"
+}

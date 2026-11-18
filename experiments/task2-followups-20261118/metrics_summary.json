@@ -1,0 +1,402 @@
+{
+  "format_version": 1,
+  "experiment_date": "2026-11-18",
+  "publication_status": "prepared; publication must be verified separately",
+  "release_tag": "task2-followups-20261118-v1",
+  "completed_full_runs": 5,
+  "independently_verified_runs": 5,
+  "total_training_seconds": 2626.4122778380015,
+  "runs": [
+    {
+      "run_id": "googlenet_20261118_geometry_f0_s42",
+      "display_name": "GoogLeNet",
+      "status": "independently_verified",
+      "metrics": {
+        "balanced_accuracy": 0.9002619760479043,
+        "accuracy": 0.8578052550231839,
+        "sensitivity": 0.9880239520958084,
+        "specificity": 0.8125,
+        "precision": 0.6470588235294118,
+        "f1": 0.7819905213270142,
+        "auroc": 0.8460703592814371,
+        "confusion_matrix": [
+          [
+            390,
+            90
+          ],
+          [
+            2,
+            165
+          ]
+        ],
+        "samples": 647,
+        "threshold": 0.5,
+        "loss": 1.0068534188691765
+      },
+      "selected_epoch": 11,
+      "epochs_completed": 18,
+      "training_seconds": 466.3020694049992,
+      "peak_allocated_gpu_mib": 938.21923828125,
+      "max_train_balanced_accuracy": 1.0,
+      "selected_epoch_train_balanced_accuracy": 0.9884992523579481,
+      "validation_patient_count": 6,
+      "single_class_patient_count": 0,
+      "worst_defined_patient_ba": 0.5,
+      "model_download_registry": "../../models/task2-followups-20261118/manifest.json",
+      "checkpoint_kind": "selected best inference weights; no optimizer/scheduler/RNG",
+      "local_resume_state": "separate epoch-boundary last state retained locally; not included in public assets",
+      "resumed_from_epoch": 0
+    },
+    {
+      "run_id": "vgg11_20261118_geometry_f0_s42",
+      "display_name": "VGG11",
+      "status": "independently_verified",
+      "metrics": {
+        "balanced_accuracy": 0.5,
+        "accuracy": 0.7418856259659969,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1": 0.0,
+        "auroc": 0.5,
+        "confusion_matrix": [
+          [
+            480,
+            0
+          ],
+          [
+            167,
+            0
+          ]
+        ],
+        "samples": 647,
+        "threshold": 0.5,
+        "loss": 0.6926890185948045
+      },
+      "selected_epoch": 8,
+      "epochs_completed": 15,
+      "training_seconds": 660.6822856850004,
+      "peak_allocated_gpu_mib": 2818.90625,
+      "max_train_balanced_accuracy": 0.5036217506326203,
+      "selected_epoch_train_balanced_accuracy": 0.5,
+      "validation_patient_count": 6,
+      "single_class_patient_count": 0,
+      "worst_defined_patient_ba": 0.5,
+      "model_download_registry": "../../models/task2-followups-20261118/manifest.json",
+      "checkpoint_kind": "selected best inference weights; no optimizer/scheduler/RNG",
+      "local_resume_state": "separate epoch-boundary last state retained locally; not included in public assets",
+      "resumed_from_epoch": 0
+    },
+    {
+      "run_id": "resnet18_20261118_320_f0_s42",
+      "display_name": "ResNet18/320/fold0",
+      "status": "independently_verified",
+      "metrics": {
+        "balanced_accuracy": 0.8957085828343314,
+        "accuracy": 0.865533230293663,
+        "sensitivity": 0.9580838323353293,
+        "specificity": 0.8333333333333334,
+        "precision": 0.6666666666666666,
+        "f1": 0.7862407862407862,
+        "auroc": 0.8782185628742515,
+        "confusion_matrix": [
+          [
+            400,
+            80
+          ],
+          [
+            7,
+            160
+          ]
+        ],
+        "samples": 647,
+        "threshold": 0.5,
+        "loss": 0.7515527629175693
+      },
+      "selected_epoch": 7,
+      "epochs_completed": 14,
+      "training_seconds": 484.331625801,
+      "peak_allocated_gpu_mib": 929.2724609375,
+      "max_train_balanced_accuracy": 1.0,
+      "selected_epoch_train_balanced_accuracy": 0.9930857487922705,
+      "validation_patient_count": 6,
+      "single_class_patient_count": 0,
+      "worst_defined_patient_ba": 0.5,
+      "model_download_registry": "../../models/task2-followups-20261118/manifest.json",
+      "checkpoint_kind": "selected best inference weights; no optimizer/scheduler/RNG",
+      "local_resume_state": "separate epoch-boundary last state retained locally; not included in public assets",
+      "resumed_from_epoch": 0
+    },
+    {
+      "run_id": "vgg11_20261118_lr1e4_f0_s42",
+      "display_name": "VGG11/lr1e-4",
+      "status": "independently_verified",
+      "metrics": {
+        "balanced_accuracy": 0.8021020459081836,
+        "accuracy": 0.7758887171561051,
+        "sensitivity": 0.8562874251497006,
+        "specificity": 0.7479166666666667,
+        "precision": 0.5416666666666666,
+        "f1": 0.6635730858468677,
+        "auroc": 0.8723677644710579,
+        "confusion_matrix": [
+          [
+            359,
+            121
+          ],
+          [
+            24,
+            143
+          ]
+        ],
+        "samples": 647,
+        "threshold": 0.5,
+        "loss": 0.43151552243795754
+      },
+      "selected_epoch": 4,
+      "epochs_completed": 11,
+      "training_seconds": 485.1915276810014,
+      "peak_allocated_gpu_mib": 2818.90625,
+      "max_train_balanced_accuracy": 1.0,
+      "selected_epoch_train_balanced_accuracy": 0.9741100184034966,
+      "validation_patient_count": 6,
+      "single_class_patient_count": 0,
+      "worst_defined_patient_ba": 0.44605263157894737,
+      "model_download_registry": "../../models/task2-followups-20261118/manifest.json",
+      "checkpoint_kind": "selected best inference weights; no optimizer/scheduler/RNG",
+      "local_resume_state": "separate epoch-boundary last state retained locally; not included in public assets",
+      "resumed_from_epoch": 0
+    },
+    {
+      "run_id": "vgg11_20261118_lr1e4_f1_s42",
+      "display_name": "VGG11/lr1e-4/fold1",
+      "status": "independently_verified",
+      "metrics": {
+        "balanced_accuracy": 0.7628102836879432,
+        "accuracy": 0.7335329341317365,
+        "sensitivity": 0.8297872340425532,
+        "specificity": 0.6958333333333333,
+        "precision": 0.5165562913907285,
+        "f1": 0.636734693877551,
+        "auroc": 0.8491356382978723,
+        "confusion_matrix": [
+          [
+            334,
+            146
+          ],
+          [
+            32,
+            156
+          ]
+        ],
+        "samples": 668,
+        "threshold": 0.5,
+        "loss": 1.6859430896776393
+      },
+      "selected_epoch": 5,
+      "epochs_completed": 12,
+      "training_seconds": 529.9047692660006,
+      "peak_allocated_gpu_mib": 2818.90625,
+      "max_train_balanced_accuracy": 1.0,
+      "selected_epoch_train_balanced_accuracy": 0.981547619047619,
+      "validation_patient_count": 6,
+      "single_class_patient_count": 0,
+      "worst_defined_patient_ba": 0.5,
+      "model_download_registry": "../../models/task2-followups-20261118/manifest.json",
+      "checkpoint_kind": "selected best inference weights; no optimizer/scheduler/RNG",
+      "local_resume_state": "separate epoch-boundary last state retained locally; not included in public assets",
+      "resumed_from_epoch": 0
+    }
+  ],
+  "planned_run_statuses": [
+    {
+      "run_id": "googlenet_20261118_geometry_f0_s42",
+      "display_name": "GoogLeNet",
+      "status": "검증 완료"
+    },
+    {
+      "run_id": "vgg11_20261118_geometry_f0_s42",
+      "display_name": "VGG11",
+      "status": "검증 완료"
+    },
+    {
+      "run_id": "resnet18_20261118_320_f0_s42",
+      "display_name": "ResNet18/320/fold0",
+      "status": "검증 완료"
+    },
+    {
+      "run_id": "resnet18_20261118_320_f1_s42",
+      "display_name": "ResNet18/320/fold1",
+      "status": "미실행·사전 gate로 중단"
+    },
+    {
+      "run_id": "vgg11_20261118_lr1e4_f0_s42",
+      "display_name": "VGG11/lr1e-4",
+      "status": "검증 완료"
+    },
+    {
+      "run_id": "vgg11_20261118_lr1e4_f1_s42",
+      "display_name": "VGG11/lr1e-4/fold1",
+      "status": "검증 완료"
+    }
+  ],
+  "resolution_pairs": [
+    {
+      "fold": 0,
+      "seed": 42,
+      "baseline": "resnet18_20261111_geometry_f0_s42",
+      "candidate": "resnet18_20261118_320_f0_s42",
+      "baseline_ba": 0.904690618762475,
+      "candidate_ba": 0.8957085828343314,
+      "delta_ba": -0.008982035928143617,
+      "positive_recall_delta": -0.017964071856287456,
+      "negative_recall_delta": 0.0,
+      "training_time_ratio": 1.4702349513555928,
+      "peak_memory_ratio": 1.61011270746651,
+      "config_differences": {
+        "image_size": [
+          224,
+          320
+        ]
+      },
+      "improved": 1,
+      "tied": 4,
+      "worsened": 1,
+      "baseline_worst_patient": {
+        "before_ba": 0.5,
+        "after_ba": 0.5,
+        "delta_ba": 0.0
+      },
+      "largest_patient_change_downwards": {
+        "before_ba": 0.9791666666666667,
+        "after_ba": 0.9270833333333333,
+        "delta_ba": -0.05208333333333348
+      }
+    }
+  ],
+  "resolution_decision": {
+    "matched_folds_measured": 1,
+    "mean_delta_ba": -0.008982035928143617,
+    "two_fold_numeric_gate_passed": false,
+    "adopted": false,
+    "reason": "insufficient matched folds; do not adopt from a single run",
+    "predeclared_criterion": "two matched folds mean BA gain >=1pp; neither fold worsens; inspect recalls, worst patients, measured cost; confirm another seed",
+    "fold1_advancement_gate": {
+      "first_fold_ba_delta": -0.008982035928143617,
+      "baseline_worst_patient_ba_gain": 0.0,
+      "additional_fold_authorized_by_predeclared_gate": false
+    }
+  },
+  "learning_rate_pairs": [
+    {
+      "fold": 0,
+      "seed": 42,
+      "baseline": "vgg11_20261118_geometry_f0_s42",
+      "candidate": "vgg11_20261118_lr1e4_f0_s42",
+      "baseline_ba": 0.5,
+      "candidate_ba": 0.8021020459081836,
+      "delta_ba": 0.30210204590818357,
+      "training_time_ratio": 0.7343795016056033,
+      "config_differences": {
+        "learning_rate": [
+          0.0003,
+          0.0001
+        ]
+      },
+      "improved": 5,
+      "tied": 0,
+      "worsened": 1,
+      "baseline_max_train_ba": 0.5036217506326203,
+      "candidate_max_train_ba": 1.0,
+      "stability": "one fold/seed exploratory diagnostic; no stable-improvement claim",
+      "baseline_worst_patient": {
+        "before_ba": 0.5,
+        "after_ba": 0.7714285714285714,
+        "delta_ba": 0.27142857142857135
+      },
+      "largest_patient_change_downwards": {
+        "before_ba": 0.5,
+        "after_ba": 0.44605263157894737,
+        "delta_ba": -0.05394736842105263
+      }
+    }
+  ],
+  "vgg_recipe_summary": {
+    "recipe": "VGG11 random initialization / geometry / RGB224 / weighted CE / lr1e-4 / seed42",
+    "runs": [
+      "vgg11_20261118_lr1e4_f0_s42",
+      "vgg11_20261118_lr1e4_f1_s42"
+    ],
+    "folds_measured": 2,
+    "mean_validation_ba": 0.7824561647980635,
+    "validation_ba_sample_sd": 0.027783471510701336,
+    "minimum_validation_ba": 0.7628102836879432,
+    "maximum_validation_ba": 0.8021020459081836,
+    "mean_positive_recall": 0.8430373295961269,
+    "mean_negative_recall": 0.721875,
+    "unique_validation_patients": 12,
+    "unique_validation_images": 1315,
+    "interpretation": "unweighted descriptive mean/sample SD across observed fold0/fold1, same seed; overlapping training sets and selected checkpoints; not independent Test",
+    "learning_rate_effect_scope": "matched lr3e-4 vs lr1e-4 comparison exists only for fold0; fold1 has no lr3e-4 VGG control; no two-fold mean learning-rate improvement claim",
+    "descriptive_patient_comparisons_vs_resnet224": [
+      {
+        "fold": 0,
+        "seed": 42,
+        "baseline": "resnet18_20261111_geometry_f0_s42",
+        "candidate": "vgg11_20261118_lr1e4_f0_s42",
+        "baseline_ba": 0.904690618762475,
+        "candidate_ba": 0.8021020459081836,
+        "delta_ba": -0.10258857285429146,
+        "improved": 1,
+        "tied": 2,
+        "worsened": 3,
+        "comparison_scope": "descriptive patient diagnosis across different architectures and learning rates; not a causal learning-rate ablation",
+        "baseline_worst_patient": {
+          "before_ba": 0.5,
+          "after_ba": 0.44605263157894737,
+          "delta_ba": -0.05394736842105263
+        },
+        "largest_patient_change_downwards": {
+          "before_ba": 1.0,
+          "after_ba": 0.5044642857142857,
+          "delta_ba": -0.4955357142857143
+        }
+      },
+      {
+        "fold": 1,
+        "seed": 42,
+        "baseline": "resnet18_20261111_geometry_f1_s42",
+        "candidate": "vgg11_20261118_lr1e4_f1_s42",
+        "baseline_ba": 0.8875664893617021,
+        "candidate_ba": 0.7628102836879432,
+        "delta_ba": -0.12475620567375889,
+        "improved": 1,
+        "tied": 0,
+        "worsened": 5,
+        "comparison_scope": "descriptive patient diagnosis across different architectures and learning rates; not a causal learning-rate ablation",
+        "baseline_worst_patient": {
+          "before_ba": 0.2625,
+          "after_ba": 0.5,
+          "delta_ba": 0.2375
+        },
+        "largest_patient_change_downwards": {
+          "before_ba": 0.99375,
+          "after_ba": 0.5375,
+          "delta_ba": -0.45625000000000004
+        }
+      }
+    ]
+  },
+  "run_budget": {
+    "maximum_full_runs": 5,
+    "measured_full_runs": 5,
+    "note": "unspent gated-off ResNet320 fold1 slot may confirm VGG lr1e-4 fold1; no new hyperparameter search"
+  },
+  "limits": [
+    "Patient holdout validation selected checkpoints; not private Test and not full-data final submission models.",
+    "Base GoogLeNet/VGG11 runs use fold0/seed42 and have no matched no-augmentation controls. VGG learning-rate effect is matched only on fold0; a conditional fold1 confirmation tests the fixed lr1e-4 recipe without a fold1 lr3e-4 VGG control.",
+    "Patient-level worst BA is aggregate diagnostics; one-class patient BA is undefined and excluded from worst two-class BA.",
+    "320 changes resampling/augmentation grids and compute in addition to input dimensions.",
+    "GoogLeNet/VGG11 CUDA adaptive-pooling backward emitted nondeterminism warnings; exact CPU synthetic resume tests do not promise GPU bitwise reproduction."
+  ]
+}

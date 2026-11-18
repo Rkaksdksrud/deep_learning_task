@@ -1,0 +1,13 @@
+{
+  "run_id": "resnet18_20261118_320_f0_s42",
+  "status": "independently_verified",
+  "selected_epoch": 7,
+  "epochs_completed": 14,
+  "training_seconds": 484.331625801,
+  "peak_allocated_gpu_mib": 929.2724609375,
+  "max_train_balanced_accuracy": 1.0,
+  "selected_epoch_train_balanced_accuracy": 0.9930857487922705,
+  "checkpoint_kind": "selected best inference weights; no optimizer/scheduler/RNG",
+  "local_resume_state": "separate epoch-boundary last state retained locally; not included in public assets",
+  "resumed_from_epoch": 0
+}

@@ -1,0 +1,107 @@
+{
+  "format_version": 1,
+  "repository": "Rkaksdksrud/deep_learning_task",
+  "release_tag": "task2-followups-20261118-v1",
+  "checkpoint_filename": "model.pt",
+  "total_models": 5,
+  "models": [
+    {
+      "id": "googlenet_20261118_geometry_f0_s42",
+      "architecture": "googlenet",
+      "image_size": 224,
+      "validation_fold": 0,
+      "seed": 42,
+      "selected_epoch": 11,
+      "balanced_accuracy": 0.9002619760479043,
+      "sensitivity": 0.9880239520958084,
+      "specificity": 0.8125,
+      "checkpoint_filename": "model.pt",
+      "checkpoint_sha256": "ff30fadb0a6c70943f30956ff4b44cbca914b3f58850a5158f83c5f8ff20aec1",
+      "asset_name": "googlenet_20261118_geometry_f0_s42.zip",
+      "archive_size_bytes": 36936104,
+      "archive_sha256": "c309334ccfab81a9292fb0b892f32b47ca7fee37d13136fec308c5344ff0e78c",
+      "download_url": "https://github.com/Rkaksdksrud/deep_learning_task/releases/download/task2-followups-20261118-v1/googlenet_20261118_geometry_f0_s42.zip"
+    },
+    {
+      "id": "vgg11_20261118_geometry_f0_s42",
+      "architecture": "vgg11",
+      "image_size": 224,
+      "validation_fold": 0,
+      "seed": 42,
+      "selected_epoch": 8,
+      "balanced_accuracy": 0.5,
+      "sensitivity": 0.0,
+      "specificity": 1.0,
+      "checkpoint_filename": "model.pt",
+      "checkpoint_sha256": "bdbcb2e5fabf2050850999273fcdd3ff1fb51c4d0ef95586f4dad6ed47bcfee2",
+      "asset_name": "vgg11_20261118_geometry_f0_s42.zip",
+      "archive_size_bytes": 477631121,
+      "archive_sha256": "e0c4480fba5c811bc2dc7b3bbcf0aa7ff1daf95f15c5c06d7787969594de4ae0",
+      "download_url": "https://github.com/Rkaksdksrud/deep_learning_task/releases/download/task2-followups-20261118-v1/vgg11_20261118_geometry_f0_s42.zip"
+    },
+    {
+      "id": "resnet18_20261118_320_f0_s42",
+      "architecture": "resnet18",
+      "image_size": 320,
+      "validation_fold": 0,
+      "seed": 42,
+      "selected_epoch": 7,
+      "balanced_accuracy": 0.8957085828343314,
+      "sensitivity": 0.9580838323353293,
+      "specificity": 0.8333333333333334,
+      "checkpoint_filename": "model.pt",
+      "checkpoint_sha256": "3bc10f6d152a489f918a0486a9a009b882da875bec0b9fe6a73eacf098fcb6f6",
+      "asset_name": "resnet18_20261118_320_f0_s42.zip",
+      "archive_size_bytes": 41560600,
+      "archive_sha256": "3f94204a36af33cb17f14164224935c6a19b71ee76cfc05cdc2ac5aef091afe5",
+      "download_url": "https://github.com/Rkaksdksrud/deep_learning_task/releases/download/task2-followups-20261118-v1/resnet18_20261118_320_f0_s42.zip"
+    },
+    {
+      "id": "vgg11_20261118_lr1e4_f0_s42",
+      "architecture": "vgg11",
+      "image_size": 224,
+      "validation_fold": 0,
+      "seed": 42,
+      "selected_epoch": 4,
+      "balanced_accuracy": 0.8021020459081836,
+      "sensitivity": 0.8562874251497006,
+      "specificity": 0.7479166666666667,
+      "checkpoint_filename": "model.pt",
+      "checkpoint_sha256": "80f5fbb2a982359ba3452748b492076321d8ffc13002bca196e17ddf7d7648dd",
+      "asset_name": "vgg11_20261118_lr1e4_f0_s42.zip",
+      "archive_size_bytes": 477720680,
+      "archive_sha256": "178b1c4b5007b8998cca8be6fb6a19e23fe655e2896eeca206ee5df55d89c189",
+      "download_url": "https://github.com/Rkaksdksrud/deep_learning_task/releases/download/task2-followups-20261118-v1/vgg11_20261118_lr1e4_f0_s42.zip"
+    },
+    {
+      "id": "vgg11_20261118_lr1e4_f1_s42",
+      "architecture": "vgg11",
+      "image_size": 224,
+      "validation_fold": 1,
+      "seed": 42,
+      "selected_epoch": 5,
+      "balanced_accuracy": 0.7628102836879432,
+      "sensitivity": 0.8297872340425532,
+      "specificity": 0.6958333333333333,
+      "checkpoint_filename": "model.pt",
+      "checkpoint_sha256": "f2829daf9866a8df3a9865631856230ffbe7a5c5cb08721561ba4d90dcdde523",
+      "asset_name": "vgg11_20261118_lr1e4_f1_s42.zip",
+      "archive_size_bytes": 477711261,
+      "archive_sha256": "d020d8c13aed48af1dfdaf0a8cb5b7233c13a0b2029f28eeccc64c11019dcd24",
+      "download_url": "https://github.com/Rkaksdksrud/deep_learning_task/releases/download/task2-followups-20261118-v1/vgg11_20261118_lr1e4_f1_s42.zip"
+    }
+  ],
+  "omitted_runs": [
+    {
+      "id": "resnet18_20261118_320_f1_s42",
+      "status": "not_run_predeclared_gate_not_met"
+    }
+  ],
+  "contains_training_data": false,
+  "contains_ensembles": false,
+  "notes": [
+    "Completed patient-disjoint holdout experiments; not all-data final submission models",
+    "Downloads become available only after the named release is published",
+    "Conditional fold1/320 experiment may be omitted when its preregistered gate is not met"
+  ]
+}

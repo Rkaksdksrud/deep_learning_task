@@ -1,0 +1,13 @@
+{
+  "run_id": "vgg11_20261118_geometry_f0_s42",
+  "status": "independently_verified",
+  "selected_epoch": 8,
+  "epochs_completed": 15,
+  "training_seconds": 660.6822856850004,
+  "peak_allocated_gpu_mib": 2818.90625,
+  "max_train_balanced_accuracy": 0.5036217506326203,
+  "selected_epoch_train_balanced_accuracy": 0.5,
+  "checkpoint_kind": "selected best inference weights; no optimizer/scheduler/RNG",
+  "local_resume_state": "separate epoch-boundary last state retained locally; not included in public assets",
+  "resumed_from_epoch": 0
+}
