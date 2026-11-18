@@ -1,6 +1,6 @@
 # Task2 후속 실험 모델 — 2026-11-18
 
-GoogLeNet224, VGG11·224와 ResNet18·320의 **전체5개 run을 학습하고 저장 checkpoint를 독립 재검증**했습니다. 성공·실패한 시도를 모두 개별 ZIP으로 남깁니다. 실제 포함 모델·파일 크기·SHA256은 [manifest.json](manifest.json)에 기록했습니다. 링크는 해당 Release가 게시된 이후 동작합니다.
+GoogLeNet224, VGG11·224와 ResNet18·320의 **전체5개 run을 학습하고 저장 checkpoint를 독립 재검증**했습니다. 성공·실패한 시도를 모두 개별 ZIP으로 공개했습니다. 실제 포함 모델·파일 크기·SHA256은 [manifest.json](manifest.json)에 기록했습니다. [공개 확인 기록](../../experiments/task2-followups-20261118/publication.json)에 모든 원격 asset 해시 및 GoogLeNet의 실제 공개 다운로드 검증을 남겼습니다.
 
 - [후속 Release](https://github.com/Rkaksdksrud/deep_learning_task/releases/tag/task2-followups-20261118-v1)
 - [전체 비교와 채택·기각 이유](../../experiments/task2-followups-20261118/README.md)

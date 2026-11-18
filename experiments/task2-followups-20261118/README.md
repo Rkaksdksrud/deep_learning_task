@@ -1,6 +1,6 @@
 # Task2 후속 실험 — 2026-11-18
 
-기록 상태: **전체5개 학습·저장 checkpoint 독립 검증·다운로드 패키지 검사 완료**. 다운로드 링크는 아래 이름의 GitHub Release가 공개된 뒤 동작한다.
+기록 상태: **전체5개 학습·저장 checkpoint 독립 검증·패키지 검사·Release 공개 완료**. [배포 검증 기록](publication.json)에 새6개 asset의 원격 SHA256 확인과 GoogLeNet의 인증 없는 실제 다운로드 검증을 남겼다. 기존7개 모델 Release는 보존했다.
 
 완료 5개, 총 학습 43.77분. [지표 원본](metrics_summary.json)·[학습 기록](run_records/)·[모델 다운로드 레지스트리](../../models/task2-followups-20261118/manifest.json)·[학습 코드](../../task2/README.md). 모델 Release 태그는 `task2-followups-20261118-v1`이며 모델 링크는 Release 공개 뒤 동작한다.
 
@@ -26,7 +26,7 @@
 
 [VGG 내부 진단](vgg_failure_diagnostic.json)은 기본 lr3e-4 모델을 고정한 training-only 8장(클래스별4장)의 eval 관측이다. 마지막 feature가 거의0이며 이미지 간 거의 상수인 출력이 확인됐으나 작은 표본이고 학습률이 원인이라고 확정하지 않는다. 파라미터 업데이트·새 라벨·환자별 표본 공개 없이 집계값만 보존했다.
 
-ResNet224/320 비교에서는 입력 크기 외 seed·fold·batch·최대 학습 예산·checkpoint 선택 절차를 유지했다. 보간·증강 격자도 달라져 설정 전체의 효과다. 동일 환자를 여러 seed/fold에서 개발에 사용한 validation이며 독립 private Test로 부르지 않는다.
+ResNet224/320 비교에서는 입력 크기 외 seed·fold·batch·최대 학습 예산·checkpoint 선택 절차를 유지했다. 시간 배율은 기존224 실행에 없던 epoch 경계 재개 state 저장이320 실행에 추가된 전체 run 실측값이므로 순수한 해상도 연산비용 효과를 뜻하지 않는다. 보간·증강 격자도 달라져 설정 전체의 효과다. 동일 환자를 여러 seed/fold에서 개발에 사용한 validation이며 독립 private Test로 부르지 않는다.
 
 ## 비교 범위와 규칙
 
@@ -45,3 +45,5 @@ python task2/code/googlenet.py --config experiments/task2-followups-20261118/run
 출력 이름은 새 이름으로 정한다. 새 full run의 source hash는 각 run_records/source_hashes.json에 보존했다. 코드가 변경된 미래 실행을 과거 결과의 정확 재현이라고 단정하지 않는다. 선택된 best 모델은 inference 가중치이고 optimizer/scheduler/RNG는 없다. 별도 last state는 로컬 epoch 경계 재개용이며 공개 패키지에서 제외했다. 중간 batch 재개·GoogLeNet/VGG11 GPU 수치의 완전한 일치는 보장하지 않는다.
 
 전체 제공 데이터 최종 모델, 정식 채점 인터페이스 확인과 최종 제출은 미완료다. 전체 full run 최대5개 예산에서 실행하지 않은320 fold1의 자리1개를 VGG lr1e-4 fold0가 사전 gate를 통과한 뒤 동일 레시피 fold1 확인에 재배정했다. 총5개 full run을 완료했으며 새 튜닝 예산은 추가하지 않았다. 기존 Task1/7개 ResNet 공개 기록은 수정하지 않았다. 원본 영상·과제 문서·환자별 목록·개별 예측·학습 state는 이 공유 기록에 포함하지 않았다.
+
+**다음 우선순위:** 기존 ResNet18/224 geometry를 비교 기준으로 유지하고, GoogLeNet224의 동일 레시피를 fold1/seed42에서 확인하는 것을 다음 실험 후보로 둔다. 개발 환자 fold의 추가 확인이며 이번에는 실행하지 않았다. VGG는 학습 회복을 확인했지만 train/validation 격차와 환자별 악화가 남아 추가 튜닝 우선순위를 낮춘다. 그 뒤 채점 추론 인터페이스와 모델별 학습 길이·전처리를 고정하고 전체 제공 데이터의 최종 모델을 준비한다.

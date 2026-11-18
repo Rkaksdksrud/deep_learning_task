@@ -1,0 +1,61 @@
+{
+  "repository": "Rkaksdksrud/deep_learning_task",
+  "branch": "ktg_tried",
+  "commit": "48939cf57cf632d3f285e4ecbc8d98a27e82d405",
+  "release_tag": "task2-followups-20261118-v1",
+  "release_url": "https://github.com/Rkaksdksrud/deep_learning_task/releases/tag/task2-followups-20261118-v1",
+  "published": true,
+  "all_remote_sizes_and_sha256_verified": true,
+  "models": 5,
+  "assets": [
+    {
+      "name": "googlenet_20261118_geometry_f0_s42.zip",
+      "size": 36936104,
+      "digest": "sha256:c309334ccfab81a9292fb0b892f32b47ca7fee37d13136fec308c5344ff0e78c",
+      "url": "https://github.com/Rkaksdksrud/deep_learning_task/releases/download/task2-followups-20261118-v1/googlenet_20261118_geometry_f0_s42.zip"
+    },
+    {
+      "name": "manifest.json",
+      "size": 4599,
+      "digest": "sha256:d6e51e5e472e4e1c7bf8fab52d31674fb908f6135f4d98ed952c7db99f554a6c",
+      "url": "https://github.com/Rkaksdksrud/deep_learning_task/releases/download/task2-followups-20261118-v1/manifest.json"
+    },
+    {
+      "name": "resnet18_20261118_320_f0_s42.zip",
+      "size": 41560600,
+      "digest": "sha256:3f94204a36af33cb17f14164224935c6a19b71ee76cfc05cdc2ac5aef091afe5",
+      "url": "https://github.com/Rkaksdksrud/deep_learning_task/releases/download/task2-followups-20261118-v1/resnet18_20261118_320_f0_s42.zip"
+    },
+    {
+      "name": "vgg11_20261118_geometry_f0_s42.zip",
+      "size": 477631121,
+      "digest": "sha256:e0c4480fba5c811bc2dc7b3bbcf0aa7ff1daf95f15c5c06d7787969594de4ae0",
+      "url": "https://github.com/Rkaksdksrud/deep_learning_task/releases/download/task2-followups-20261118-v1/vgg11_20261118_geometry_f0_s42.zip"
+    },
+    {
+      "name": "vgg11_20261118_lr1e4_f0_s42.zip",
+      "size": 477720680,
+      "digest": "sha256:178b1c4b5007b8998cca8be6fb6a19e23fe655e2896eeca206ee5df55d89c189",
+      "url": "https://github.com/Rkaksdksrud/deep_learning_task/releases/download/task2-followups-20261118-v1/vgg11_20261118_lr1e4_f0_s42.zip"
+    },
+    {
+      "name": "vgg11_20261118_lr1e4_f1_s42.zip",
+      "size": 477711261,
+      "digest": "sha256:d020d8c13aed48af1dfdaf0a8cb5b7233c13a0b2029f28eeccc64c11019dcd24",
+      "url": "https://github.com/Rkaksdksrud/deep_learning_task/releases/download/task2-followups-20261118-v1/vgg11_20261118_lr1e4_f1_s42.zip"
+    }
+  ],
+  "checked_on": "2026-11-18",
+  "anonymous_download_check": {
+    "run_id": "googlenet_20261118_geometry_f0_s42",
+    "no_authentication_header_used": true,
+    "archive_and_all_internal_sha256_passed": true,
+    "checkpoint_sha256": "ff30fadb0a6c70943f30956ff4b44cbca914b3f58850a5158f83c5f8ff20aec1"
+  },
+  "previous_release_preserved": {
+    "tag": "task2-resnet18-20261111-v1",
+    "published": true,
+    "assets": 8,
+    "target_commit": "c832cfdd29ef6c8f23dd8e96223b07927bfd3742"
+  }
+}
