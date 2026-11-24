@@ -1,0 +1,236 @@
+{
+  "format_version": 1,
+  "repository": "Rkaksdksrud/deep_learning_task",
+  "release_tag": "task2-augmentation-lr-20261125-v1",
+  "build_status": "packaged",
+  "checkpoint_filename": "model.pt",
+  "total_models": 8,
+  "models": [
+    {
+      "id": "resnet18_20261125_rotation_f0_s42",
+      "architecture": "resnet18",
+      "axis": "rotation",
+      "rule_status": "within_confirmed_scope",
+      "validation_fold": 0,
+      "seed": 42,
+      "selected_epoch": 4,
+      "balanced_accuracy": 0.9020833333333333,
+      "sensitivity": 1.0,
+      "specificity": 0.8041666666666667,
+      "checkpoint_filename": "model.pt",
+      "checkpoint_sha256": "3363c0f725dae40492551d63102e8de7467403a5f93df4d3a57b51c487503127",
+      "original_checkpoint_sha256": "92efa4ccdb94f0a02332b631fc000be03290bc21c58b8338f78f4dfeaa852d14",
+      "published_checkpoint_sha256": "3363c0f725dae40492551d63102e8de7467403a5f93df4d3a57b51c487503127",
+      "changed_metadata_fields": [
+        "config.data_root",
+        "config.output_root"
+      ],
+      "all_122_model_tensors_exact": true,
+      "asset_name": "resnet18_20261125_rotation_f0_s42.zip",
+      "archive_size_bytes": 41559074,
+      "archive_sha256": "7a0bb9a4188d316e105eb44d9c89cd62a9a820b8657fd89fcfae469132d566fb",
+      "download_url": "https://github.com/Rkaksdksrud/deep_learning_task/releases/download/task2-augmentation-lr-20261125-v1/resnet18_20261125_rotation_f0_s42.zip"
+    },
+    {
+      "id": "resnet18_20261125_lr1e4_f0_s43",
+      "architecture": "resnet18",
+      "axis": "lr1e4",
+      "rule_status": "within_confirmed_scope",
+      "validation_fold": 0,
+      "seed": 43,
+      "selected_epoch": 5,
+      "balanced_accuracy": 0.6393712574850299,
+      "sensitivity": 0.6287425149700598,
+      "specificity": 0.65,
+      "checkpoint_filename": "model.pt",
+      "checkpoint_sha256": "07086ce7c04024f99d4cfd10a31a784ba5732765280572fc5662120340f41b0d",
+      "original_checkpoint_sha256": "594515962cebf0b8b46d01d0dc91ec4de20891d90e9472b2b78b3f874439a2aa",
+      "published_checkpoint_sha256": "07086ce7c04024f99d4cfd10a31a784ba5732765280572fc5662120340f41b0d",
+      "changed_metadata_fields": [
+        "config.data_root",
+        "config.output_root"
+      ],
+      "all_122_model_tensors_exact": true,
+      "asset_name": "resnet18_20261125_lr1e4_f0_s43.zip",
+      "archive_size_bytes": 41552065,
+      "archive_sha256": "98133073b44bd46bfd5d0f03ac66363de852344b817faf7d9c124c5b1a90ff34",
+      "download_url": "https://github.com/Rkaksdksrud/deep_learning_task/releases/download/task2-augmentation-lr-20261125-v1/resnet18_20261125_lr1e4_f0_s43.zip"
+    },
+    {
+      "id": "resnet18_20261125_brightness_f0_s42",
+      "architecture": "resnet18",
+      "axis": "brightness",
+      "rule_status": "unconfirmed_exploratory_only",
+      "validation_fold": 0,
+      "seed": 42,
+      "selected_epoch": 2,
+      "balanced_accuracy": 0.9181137724550898,
+      "sensitivity": 0.8862275449101796,
+      "specificity": 0.95,
+      "checkpoint_filename": "model.pt",
+      "checkpoint_sha256": "d972270e70f2dd7498c3bbf447cb7417e44e4159eefc2d7e0c42200664284cc3",
+      "original_checkpoint_sha256": "6b73686133bfd3e409d710b11a5728db5064cbb62b4c6aa82524f3dd6242c083",
+      "published_checkpoint_sha256": "d972270e70f2dd7498c3bbf447cb7417e44e4159eefc2d7e0c42200664284cc3",
+      "changed_metadata_fields": [
+        "config.data_root",
+        "config.output_root"
+      ],
+      "all_122_model_tensors_exact": true,
+      "asset_name": "resnet18_20261125_brightness_f0_s42.zip",
+      "archive_size_bytes": 41554935,
+      "archive_sha256": "19f5aa59d845d773b9c4a8ddcf7fe3eff7ae1bda6db974b26846f2f6e61a9eb5",
+      "download_url": "https://github.com/Rkaksdksrud/deep_learning_task/releases/download/task2-augmentation-lr-20261125-v1/resnet18_20261125_brightness_f0_s42.zip"
+    },
+    {
+      "id": "resnet18_20261125_contrast_f0_s42",
+      "architecture": "resnet18",
+      "axis": "contrast",
+      "rule_status": "unconfirmed_exploratory_only",
+      "validation_fold": 0,
+      "seed": 42,
+      "selected_epoch": 18,
+      "balanced_accuracy": 0.9145833333333333,
+      "sensitivity": 1.0,
+      "specificity": 0.8291666666666667,
+      "checkpoint_filename": "model.pt",
+      "checkpoint_sha256": "cc3c51a0a30fdc05d94344d8e42d92dc2885755188be867c094606d4132d66a7",
+      "original_checkpoint_sha256": "9f25aff5ac3c093867c7f5b4cc6ececa8e77c141d9461da1585f6ac07df404a2",
+      "published_checkpoint_sha256": "cc3c51a0a30fdc05d94344d8e42d92dc2885755188be867c094606d4132d66a7",
+      "changed_metadata_fields": [
+        "config.data_root",
+        "config.output_root"
+      ],
+      "all_122_model_tensors_exact": true,
+      "asset_name": "resnet18_20261125_contrast_f0_s42.zip",
+      "archive_size_bytes": 41562883,
+      "archive_sha256": "f76922ad6faf648d8e8ac3d52a13d3435e7c50b828c0ae94243c3b5d663af05f",
+      "download_url": "https://github.com/Rkaksdksrud/deep_learning_task/releases/download/task2-augmentation-lr-20261125-v1/resnet18_20261125_contrast_f0_s42.zip"
+    },
+    {
+      "id": "resnet18_20261125_rotation_f0_s43",
+      "architecture": "resnet18",
+      "axis": "rotation",
+      "rule_status": "within_confirmed_scope",
+      "validation_fold": 0,
+      "seed": 43,
+      "selected_epoch": 9,
+      "balanced_accuracy": 0.8747567365269461,
+      "sensitivity": 0.8682634730538922,
+      "specificity": 0.88125,
+      "checkpoint_filename": "model.pt",
+      "checkpoint_sha256": "6af27e3baecc1b874a9223f0021671e2ce978118de87e01a6630d06c529afcb1",
+      "original_checkpoint_sha256": "44214e8dd0aded7091c4d8df6e22c649548e48757b70a5b40bbfeacc69477cdd",
+      "published_checkpoint_sha256": "6af27e3baecc1b874a9223f0021671e2ce978118de87e01a6630d06c529afcb1",
+      "changed_metadata_fields": [
+        "config.data_root",
+        "config.output_root"
+      ],
+      "all_122_model_tensors_exact": true,
+      "asset_name": "resnet18_20261125_rotation_f0_s43.zip",
+      "archive_size_bytes": 41560614,
+      "archive_sha256": "8b2845bd5523043faccc0ca0ed81d8c8c352364d19279143c3dd1fb43e48fe16",
+      "download_url": "https://github.com/Rkaksdksrud/deep_learning_task/releases/download/task2-augmentation-lr-20261125-v1/resnet18_20261125_rotation_f0_s43.zip"
+    },
+    {
+      "id": "resnet18_20261125_rotation_f1_s42",
+      "architecture": "resnet18",
+      "axis": "rotation",
+      "rule_status": "within_confirmed_scope",
+      "validation_fold": 1,
+      "seed": 42,
+      "selected_epoch": 26,
+      "balanced_accuracy": 0.873825354609929,
+      "sensitivity": 0.7872340425531915,
+      "specificity": 0.9604166666666667,
+      "checkpoint_filename": "model.pt",
+      "checkpoint_sha256": "0ed0d5da7340679b0351f9aaf561b1e9518efff2619312e90f1e68aae0d621a1",
+      "original_checkpoint_sha256": "0548f2304b52c9c5fd17167eff2879b31452ef8604b8525db298405b9aafa119",
+      "published_checkpoint_sha256": "0ed0d5da7340679b0351f9aaf561b1e9518efff2619312e90f1e68aae0d621a1",
+      "changed_metadata_fields": [
+        "config.data_root",
+        "config.output_root"
+      ],
+      "all_122_model_tensors_exact": true,
+      "asset_name": "resnet18_20261125_rotation_f1_s42.zip",
+      "archive_size_bytes": 41562629,
+      "archive_sha256": "b9c73c3a5ce895cb4c2126d11f9249b95f75a66595454c1fda04f4134b4b3d3d",
+      "download_url": "https://github.com/Rkaksdksrud/deep_learning_task/releases/download/task2-augmentation-lr-20261125-v1/resnet18_20261125_rotation_f1_s42.zip"
+    },
+    {
+      "id": "resnet18_20261125_brightness_f1_s42",
+      "architecture": "resnet18",
+      "axis": "brightness",
+      "rule_status": "unconfirmed_exploratory_only",
+      "validation_fold": 1,
+      "seed": 42,
+      "selected_epoch": 6,
+      "balanced_accuracy": 0.8845966312056738,
+      "sensitivity": 0.7712765957446809,
+      "specificity": 0.9979166666666667,
+      "checkpoint_filename": "model.pt",
+      "checkpoint_sha256": "e66452c44731f0219cd552749fa167d992c55af174ab5e31027971142a1b4cd1",
+      "original_checkpoint_sha256": "0c5be6e333d90b84e150a191c5b72a152824e5f3b5cc9fbb22deffc1535fb4a1",
+      "published_checkpoint_sha256": "e66452c44731f0219cd552749fa167d992c55af174ab5e31027971142a1b4cd1",
+      "changed_metadata_fields": [
+        "config.data_root",
+        "config.output_root"
+      ],
+      "all_122_model_tensors_exact": true,
+      "asset_name": "resnet18_20261125_brightness_f1_s42.zip",
+      "archive_size_bytes": 41559004,
+      "archive_sha256": "8b6527d542a5ee4a960d1d5add06db2c6fc8a7fd18faa76ff6fb4277a46a0e27",
+      "download_url": "https://github.com/Rkaksdksrud/deep_learning_task/releases/download/task2-augmentation-lr-20261125-v1/resnet18_20261125_brightness_f1_s42.zip"
+    },
+    {
+      "id": "resnet18_20261125_brightness_f0_s43",
+      "architecture": "resnet18",
+      "axis": "brightness",
+      "rule_status": "unconfirmed_exploratory_only",
+      "validation_fold": 0,
+      "seed": 43,
+      "selected_epoch": 14,
+      "balanced_accuracy": 0.8807385229540918,
+      "sensitivity": 0.9281437125748503,
+      "specificity": 0.8333333333333334,
+      "checkpoint_filename": "model.pt",
+      "checkpoint_sha256": "92cbebfe7505316094289f3221843a3f40fa512e1f785cf08f1c65beef089dfc",
+      "original_checkpoint_sha256": "695027b11c7133a8a0a276692b521f27083a4d821816999da48af98bedcd1592",
+      "published_checkpoint_sha256": "92cbebfe7505316094289f3221843a3f40fa512e1f785cf08f1c65beef089dfc",
+      "changed_metadata_fields": [
+        "config.data_root",
+        "config.output_root"
+      ],
+      "all_122_model_tensors_exact": true,
+      "asset_name": "resnet18_20261125_brightness_f0_s43.zip",
+      "archive_size_bytes": 41562555,
+      "archive_sha256": "766e58492ac3bff0ad24d5ba370dbb0f5597fb8e5f85105de3669686857097c9",
+      "download_url": "https://github.com/Rkaksdksrud/deep_learning_task/releases/download/task2-augmentation-lr-20261125-v1/resnet18_20261125_brightness_f0_s43.zip"
+    }
+  ],
+  "omitted_runs": [
+    {
+      "id": "resnet18_20261125_contrast_f1_s42",
+      "axis": "contrast",
+      "status": "not_run_predeclared_gate",
+      "role": "conditional_fold_confirmation"
+    },
+    {
+      "id": "resnet18_20261125_contrast_f0_s43",
+      "axis": "contrast",
+      "status": "not_run_predeclared_gate",
+      "role": "conditional_seed_confirmation"
+    }
+  ],
+  "contains_training_data": false,
+  "contains_ensembles": false,
+  "contains_training_resume_state": false,
+  "final_selection": {
+    "status": "not_provided",
+    "run_id": null
+  },
+  "checkpoint_repackaging": "Only config.data_root and config.output_root changed. All122 model tensors and all other metadata are exact. Original/published SHA256 are recorded separately.",
+  "notes": [
+    "URLs require this release to be published; packaging itself does not upload.",
+    "Brightness/contrast remain exploratory with unconfirmed assignment permission; threshold remains0.5 in all released models."
+  ]
+}

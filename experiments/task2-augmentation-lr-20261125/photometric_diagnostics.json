@@ -1,0 +1,49 @@
+{
+  "status": "measured pixel diagnostic; not model performance",
+  "selection": "fixed middle sample_id per train patient and class; no validation images",
+  "representative_images": 42,
+  "resize": "same224thumbnail before geometry/blackpadding",
+  "statistics": [
+    {
+      "kind": "brightness",
+      "factor": 0.85,
+      "representative_images": 42,
+      "source_pixel_fraction_255": 0.0,
+      "adjusted_pixel_fraction_255": 0.0,
+      "source_pixel_fraction_0": 0.002024551431310779,
+      "adjusted_pixel_fraction_0": 0.004639062000639182,
+      "mean_absolute_8bit_difference": 4.0923023292090885
+    },
+    {
+      "kind": "brightness",
+      "factor": 1.15,
+      "representative_images": 42,
+      "source_pixel_fraction_255": 0.0,
+      "adjusted_pixel_fraction_255": 2.8297113028656652e-05,
+      "source_pixel_fraction_0": 0.002024551431310779,
+      "adjusted_pixel_fraction_0": 0.002024551431310779,
+      "mean_absolute_8bit_difference": 3.122136046812461
+    },
+    {
+      "kind": "contrast",
+      "factor": 0.85,
+      "representative_images": 42,
+      "source_pixel_fraction_255": 0.0,
+      "adjusted_pixel_fraction_255": 0.0,
+      "source_pixel_fraction_0": 0.002024551431310779,
+      "adjusted_pixel_fraction_0": 0.0,
+      "mean_absolute_8bit_difference": 2.543909272321904
+    },
+    {
+      "kind": "contrast",
+      "factor": 1.15,
+      "representative_images": 42,
+      "source_pixel_fraction_255": 0.0,
+      "adjusted_pixel_fraction_255": 1.9261060128749487e-05,
+      "source_pixel_fraction_0": 0.002024551431310779,
+      "adjusted_pixel_fraction_0": 0.0459435731787122,
+      "mean_absolute_8bit_difference": 2.862508845820207
+    }
+  ],
+  "limitation": "8bit clipping/quantization changes are measured; class preservation and clinical signal quality are not independently established"
+}

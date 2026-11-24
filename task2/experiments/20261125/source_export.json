@@ -1,0 +1,156 @@
+{
+  "original_study": "research_20261125",
+  "original_workspace_source_sha256": {
+    "code/audit_integrity.py": "32d7e6429be32235a71586f4f9bb6c45439807e845c3ecc91db71c7cef3aae8d",
+    "code/audit_preprocessing.py": "117494d052686084f98d35025a39ffb29cb82e70a8141d3a644246f731498925",
+    "code/audit_priority1.py": "bb6142c1c944e73daa17765bc53bb41af6b19ef2e49c24c5e710cbcf79f72432",
+    "code/common.py": "649001dd765208000f541f7ce61670d7e503a99db34fa98fa01b7cb0ce4a7f41",
+    "code/compare_experiments.py": "ea192571900393a08252bcdd86458d26ceb745710ef37089f5f469fceb76bcb0",
+    "code/data.py": "7cf24fab31da984f64def13fd2c43ef2e3b9afc06f2906cb660ccdfb8136273a",
+    "code/googlenet.py": "59e688183ad8b1393697b374f7e0e4426d718fe1694fea1a35f647efdea66ad0",
+    "code/predict.py": "9b99615be5de9a93b46de8a507567ee56c1386622b8d00a4adf506e04536f6e5",
+    "code/resnet.py": "8befb278c4329c48b93db30ee5760dfbb87892d921b1662023419e228cd99156",
+    "code/run_comparison.py": "0cf21cb11e3d64bc9d62bed5bac797d0f8b23706eb71739ec15ab8f0cad526c8",
+    "code/training_state.py": "81919a14eb9fb4387dd2d3ec6273fcb1cbd29cdf5e8f293f95f8c32a9b95b023",
+    "code/validate.py": "6a3d2053330ec315649d013eb5ac9f8b2461d409b4faa924b8ee22419fc87dbb",
+    "code/vgg.py": "a8c219005ac3b07f617d4ec7ce562d197e233641c7d30a4ea3dc82cd9ced05a1"
+  },
+  "public_source_sha256": {
+    "code/common.py": "649001dd765208000f541f7ce61670d7e503a99db34fa98fa01b7cb0ce4a7f41",
+    "code/compare_experiments.py": "ea192571900393a08252bcdd86458d26ceb745710ef37089f5f469fceb76bcb0",
+    "code/data.py": "7cf24fab31da984f64def13fd2c43ef2e3b9afc06f2906cb660ccdfb8136273a",
+    "code/googlenet.py": "59e688183ad8b1393697b374f7e0e4426d718fe1694fea1a35f647efdea66ad0",
+    "code/predict.py": "9b99615be5de9a93b46de8a507567ee56c1386622b8d00a4adf506e04536f6e5",
+    "code/resnet.py": "8befb278c4329c48b93db30ee5760dfbb87892d921b1662023419e228cd99156",
+    "code/run_comparison.py": "0cf21cb11e3d64bc9d62bed5bac797d0f8b23706eb71739ec15ab8f0cad526c8",
+    "code/training_state.py": "81919a14eb9fb4387dd2d3ec6273fcb1cbd29cdf5e8f293f95f8c32a9b95b023",
+    "code/validate.py": "6a3d2053330ec315649d013eb5ac9f8b2461d409b4faa924b8ee22419fc87dbb",
+    "code/vgg.py": "a8c219005ac3b07f617d4ec7ce562d197e233641c7d30a4ea3dc82cd9ced05a1",
+    "analysis/threshold_analysis.py": "675dd5eb233c682999f6f236d551635c4ef3755f342a3fca3b405b11a29cc8d3",
+    "analysis/test_threshold_analysis.py": "0515112ef109de660d5163429827a401ed914f931831eb2e258b95723c889b21"
+  },
+  "omitted_source": [
+    "code/audit_integrity.py",
+    "code/audit_preprocessing.py",
+    "code/audit_priority1.py"
+  ],
+  "omission_reason": "Local diagnostic scripts include dataset-specific patient identifiers; generic training/inference/comparison sources remain byte-identical.",
+  "portable_configs": {
+    "configs/brightness_f0_s42.json": {
+      "original_sha256": "58b4bc2c7e3de6dc8af1086ac7f47b4f65083c6e1b5148e7d2ba3b63b1bbab31",
+      "public_sha256": "012677cb919cddc71a2f7525efa99c77da4d68e50c51c7ec35cf10638d117ec4",
+      "changed_fields": [
+        "data_root",
+        "output_root"
+      ]
+    },
+    "configs/brightness_f0_s43.json": {
+      "original_sha256": "5d1cc30bc671dc6b51d52eb49ac262af57a2efbba45b83089955cacfd33ec7a0",
+      "public_sha256": "7d1ef60425a31d4bb0e92efeacdfd6f81d7f6011e03653b79d822605d79b93cd",
+      "changed_fields": [
+        "data_root",
+        "output_root"
+      ]
+    },
+    "configs/brightness_f1_s42.json": {
+      "original_sha256": "12e1d7e8b29287605d0bdb6e7161cd25d25fa6a076c126993a454b1c822bac00",
+      "public_sha256": "405c5dbef01664a7b9908959def4a9a7195e7ad83c3e21ee72599071b605d968",
+      "changed_fields": [
+        "data_root",
+        "output_root"
+      ]
+    },
+    "configs/contrast_f0_s42.json": {
+      "original_sha256": "5205a059401b399627951e3e3e62b93bcdfa9f2a542fc4040cbc6f63d671dbd6",
+      "public_sha256": "bf15d86a22ed325013ace4b729410d152e8b34c44ceaabffe6c48e8d851fbcb5",
+      "changed_fields": [
+        "data_root",
+        "output_root"
+      ]
+    },
+    "configs/contrast_f0_s43.json": {
+      "original_sha256": "a80b6dbc60f2d292b2ce531e06771a2c09e981d51edad483c4ab9c8e98920812",
+      "public_sha256": "58c8433beddc0ec95ee8c1100da53d3544d1878a7dcb30eaa090548d71295f91",
+      "changed_fields": [
+        "data_root",
+        "output_root"
+      ]
+    },
+    "configs/contrast_f1_s42.json": {
+      "original_sha256": "644a9dccbabaa569d19e6e298f82cdbdecf2213ab08a1434658ee4f424a74902",
+      "public_sha256": "b1835f167fee1ae12177196f76dfa7860f92a302ed243d01fedf742f4fdf5c98",
+      "changed_fields": [
+        "data_root",
+        "output_root"
+      ]
+    },
+    "configs/lr1e4_f0_s43.json": {
+      "original_sha256": "cde2452219beb52a6c7e3ea9facc71e1645036233f46ad1c4aaf9be9b9f79c84",
+      "public_sha256": "0f2e88a670f6e2cdfb57662a0c25b46de8781156da38a196b8475ec24babb2a2",
+      "changed_fields": [
+        "data_root",
+        "output_root"
+      ]
+    },
+    "configs/rotation_f0_s42.json": {
+      "original_sha256": "cb811b51530f116572165b30acee4ea06da01c1a1647260c5719c2a00d52d9ed",
+      "public_sha256": "5c7d990f7b6e41f44d5dab077f087f7cf7cd0253b46927003fc4be30dfd6a265",
+      "changed_fields": [
+        "data_root",
+        "output_root"
+      ]
+    },
+    "configs/rotation_f0_s43.json": {
+      "original_sha256": "f52cee35cd012ced16651fe65d9fac6ee618270387ba995f12e1104b5f06c29b",
+      "public_sha256": "ff658e773d1800bbaccc35c5f0ca5fe2cc39f2b9d9325428143144e5a456745c",
+      "changed_fields": [
+        "data_root",
+        "output_root"
+      ]
+    },
+    "configs/rotation_f1_s42.json": {
+      "original_sha256": "a148ab2265af77886c9d334bf296a36ace908fd96cc5aac5a73d457d815e2ee2",
+      "public_sha256": "6cd67e324ea7debc537057895ce4a6a80fc9604b4ee61f8789702e245e68181f",
+      "changed_fields": [
+        "data_root",
+        "output_root"
+      ]
+    },
+    "configs/smoke_brightness.json": {
+      "original_sha256": "cc6cf31912d232950a44b0a20161728a5f0c863b5b6131e33de73c28385bfe20",
+      "public_sha256": "012677cb919cddc71a2f7525efa99c77da4d68e50c51c7ec35cf10638d117ec4",
+      "changed_fields": [
+        "data_root",
+        "output_root"
+      ]
+    },
+    "configs/smoke_contrast.json": {
+      "original_sha256": "4f5203caba8c8524269ede9d221d2ac670d8b65ab0e83ae6b81eadff8c8be34d",
+      "public_sha256": "bf15d86a22ed325013ace4b729410d152e8b34c44ceaabffe6c48e8d851fbcb5",
+      "changed_fields": [
+        "data_root",
+        "output_root"
+      ]
+    },
+    "configs/smoke_lr1e4.json": {
+      "original_sha256": "d1ef3817675718bf9689ddb92e5b7b1a7d09fca1f2cd6b61b4a32915617e0b87",
+      "public_sha256": "0f2e88a670f6e2cdfb57662a0c25b46de8781156da38a196b8475ec24babb2a2",
+      "changed_fields": [
+        "data_root",
+        "output_root"
+      ]
+    },
+    "configs/smoke_rotation.json": {
+      "original_sha256": "fe1eeb5608b3e6d3673f99627b733c53e7d1f14bf446921d06517b07881856c3",
+      "public_sha256": "5c7d990f7b6e41f44d5dab077f087f7cf7cd0253b46927003fc4be30dfd6a265",
+      "changed_fields": [
+        "data_root",
+        "output_root"
+      ]
+    }
+  },
+  "training_config_base": "task2/experiments/20261125",
+  "data_root_semantics": "Paths in configs resolve relative to the parent of code/, not shell cwd.",
+  "original_source_preserved": true,
+  "original_data_included": false
+}

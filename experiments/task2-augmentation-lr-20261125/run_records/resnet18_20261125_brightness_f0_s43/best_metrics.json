@@ -1,0 +1,26 @@
+{
+  "epoch": 14,
+  "smoke_test": false,
+  "balanced_accuracy": 0.8807385229540918,
+  "accuracy": 0.8578052550231839,
+  "sensitivity": 0.9281437125748503,
+  "specificity": 0.8333333333333334,
+  "precision": 0.6595744680851063,
+  "f1": 0.7711442786069652,
+  "auroc": 0.9043288423153693,
+  "confusion_matrix": [
+    [
+      400,
+      80
+    ],
+    [
+      12,
+      155
+    ]
+  ],
+  "samples": 647,
+  "threshold": 0.5,
+  "loss": 0.5967793623488779,
+  "elapsed_seconds": 4.182815742000457,
+  "images_per_second": 154.68049273683002
+}

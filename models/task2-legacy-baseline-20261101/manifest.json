@@ -1,0 +1,50 @@
+{
+  "format_version": 1,
+  "repository": "Rkaksdksrud/deep_learning_task",
+  "release_tag": "task2-augmentation-lr-20261125-v1",
+  "checkpoint_filename": "model.pt",
+  "total_models": 1,
+  "models": [
+    {
+      "id": "resnet18_baseline_20261101",
+      "architecture": "resnet18",
+      "image_size": 224,
+      "validation_fold": 0,
+      "seed": 42,
+      "selected_epoch": 2,
+      "balanced_accuracy": 0.4755364271457086,
+      "sensitivity": 0.8802395209580839,
+      "specificity": 0.07083333333333333,
+      "checkpoint_filename": "model.pt",
+      "checkpoint_sha256": "18fab64e80e123b7a97357a6fed94d4ba021ed9f3d7f8f848a44db3eaad62572",
+      "original_checkpoint_sha256": "5e42a1b56ea37086742628c69770d31662a092aa40f78e34356defc9442c00d9",
+      "published_checkpoint_sha256": "18fab64e80e123b7a97357a6fed94d4ba021ed9f3d7f8f848a44db3eaad62572",
+      "changed_metadata_fields": [
+        "config.data_root",
+        "config.output_root"
+      ],
+      "all_122_model_tensors_exact": true,
+      "other_metadata_exact": true,
+      "original_local_checkpoint_preserved": true,
+      "parity_control_checkpoint_sha256": "18436a4adfafb39ac99025798939c41f23b1e9e0e8dce8ac9f0bde979f53e5bf",
+      "control_all_tensors_exact": true,
+      "saved_predictions_and_split_bytes_equal_control": true,
+      "direct_sha_bound_legacy_reinference_this_export": false,
+      "historical_control_audit_included_checkpoint_digest": false,
+      "control_checkpoint_matches_preserved_published_manifest": true,
+      "original_training_source_snapshot_available": false,
+      "asset_name": "resnet18_baseline_20261101.zip",
+      "archive_size_bytes": 41553794,
+      "archive_sha256": "6428c1012344e4663a6aeb555b259d90cf5d703f097d250c2dcc200760ec9a36",
+      "download_url": "https://github.com/Rkaksdksrud/deep_learning_task/releases/download/task2-augmentation-lr-20261125-v1/resnet18_baseline_20261101.zip"
+    }
+  ],
+  "omitted_runs": [],
+  "contains_training_data": false,
+  "contains_ensembles": false,
+  "contains_training_resume_state": false,
+  "notes": [
+    "Separately preserved initial baseline; original training source snapshot unavailable.",
+    "Not a new performance-improvement trial; same tensors/predictions as the audited control."
+  ]
+}

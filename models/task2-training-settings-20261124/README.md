@@ -1,5 +1,7 @@
 # Task2 학습 설정 비교 모델 — 2026-11-24
 
+> **11/25 후속 확인:** 무증강 LR1e-4의 추가 seed도 +3.83%p 상승해, 세 matched 조건 평균은 +6.32±2.53%p입니다. 환자별 큰 악화가 남아 기존 geometry 참조 모델을 대체하지 않습니다. [최신 결과](../../experiments/task2-augmentation-lr-20261125/README.md)를 참고하세요. 아래 수치·“추가 seed 미확인” 문구는 11/24 당시 기록으로 보존합니다.
+
 **무증강 ResNet18의 새 full run 8개를 모두 학습하고 저장 checkpoint를 독립 검증했습니다.** 모든 실제 시도는 결과가 나빠도 별도 ZIP으로 보존합니다. 5개 조건부 template는 사전 예산에 따라 미실행했으며 점수를 부여하지 않습니다. 파일 크기·원본 가중치 및 ZIP SHA256은 [manifest.json](manifest.json)에 있습니다.
 
 현재 공유 상태: 로컬 8개 ZIP 빌드와 실제 모델 CPU 패키지 검증 완료, Release 게시 확인 중입니다. 아래 URL은 Release 공개 후 사용할 수 있습니다.

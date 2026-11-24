@@ -1,5 +1,7 @@
 # ResNet18 학습 설정 단일 변경 비교 — 2026-11-24
 
+> **11/25 후속 확인:** 무증강 LR1e-4의 추가 seed도 +3.83%p 상승해, 세 matched 조건 평균은 +6.32±2.53%p입니다. 환자별 큰 악화가 남아 기존 geometry 참조 모델을 대체하지 않습니다. [최신 결과](../../experiments/task2-augmentation-lr-20261125/README.md)를 참고하세요. 아래 수치·“추가 seed 미확인” 문구는 11/24 당시 기록으로 보존합니다.
+
 기록 상태: **학습·독립검증 완료 / 공유 기록 준비**. push·Release 공개 성공은 이 exporter가 확인하지 않는다.
 
 사용자 선택에 따라 **수평반전·회전 등 모든 학습 증강을 껐다**. 공통 reference는 ResNet18/random init, weighted CE·lr3e-4·WD1e-4·cosine이며 fold0/seed42 BA 47.55%다. 기존 geometry 모델의90%대 점수와 비교한 개선이 아니다. 실제 신규 full run 8개, 학습 합계 47.13분.

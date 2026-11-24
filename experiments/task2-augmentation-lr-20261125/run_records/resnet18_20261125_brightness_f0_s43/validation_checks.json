@@ -1,0 +1,38 @@
+{
+  "all_checks_passed": true,
+  "checks": {
+    "manifest_matches_current_data": true,
+    "patient_groups_disjoint": true,
+    "sample_count_matches_checkpoint": true,
+    "probabilities_finite_and_in_range": true,
+    "saved_probabilities_match": true,
+    "max_absolute_probability_difference": 1.1102230246251565e-16,
+    "saved_prediction_mismatches": 0,
+    "saved_balanced_accuracy_matches": true
+  },
+  "original_checkpoint_sha256": "695027b11c7133a8a0a276692b521f27083a4d821816999da48af98bedcd1592",
+  "checkpoint_bytes_unchanged_during_validation": true,
+  "selected_epoch": 14,
+  "metrics": {
+    "balanced_accuracy": 0.8807385229540918,
+    "accuracy": 0.8578052550231839,
+    "sensitivity": 0.9281437125748503,
+    "specificity": 0.8333333333333334,
+    "precision": 0.6595744680851063,
+    "f1": 0.7711442786069652,
+    "auroc": 0.9043288423153693,
+    "confusion_matrix": [
+      [
+        400,
+        80
+      ],
+      [
+        12,
+        155
+      ]
+    ],
+    "samples": 647,
+    "threshold": 0.5,
+    "loss": 0.5967793623488779
+  }
+}

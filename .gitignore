@@ -22,3 +22,8 @@ runs/
 
 models/task2-training-settings-20261124/downloads/
 models/task2-training-settings-20261124/*.zip
+
+models/task2-augmentation-lr-20261125/downloads/
+models/task2-augmentation-lr-20261125/*.zip
+models/task2-legacy-baseline-20261101/downloads/
+models/task2-legacy-baseline-20261101/*.zip

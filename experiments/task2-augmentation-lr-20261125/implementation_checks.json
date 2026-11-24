@@ -1,0 +1,73 @@
+{
+  "cpu_augmentation_checks": {
+    "status": "검증 완료",
+    "passed": true,
+    "checks": {
+      "legacy_geometry_and_noaug_tensor_and_torch_rng_exact_4seeds_3modes": true,
+      "rotation_only_preserves_flip_decision_draw_and_all_sample_angles_rng": true,
+      "flip_disabled_image_matches_manual_no_mirror_and_differs_from_flipped": true,
+      "brightness_and_contrast_individual_manual_factor_order_range_and_black_corners": true,
+      "zero_photometric_amplitudes_do_not_consume_rng": true,
+      "explicit_validation_ignores_all_augmentation_and_consumes_no_rng": true,
+      "geometry_false_ignores_flip_option_exact": true,
+      "photo_first_image_rotation_angle_matches_pre_sampled_legacy_draw": true,
+      "record_loading_and_group_split_unchanged": true,
+      "loader_explicit_training_flag_valid_noaug_and_photo_only_train": true,
+      "existing_dataset_augment_argument_compatible": true,
+      "invalid_flip_flags_jitter_types_ranges_and_nonfinite_rejected": true,
+      "zero_option_cpu_training_model_optimizer_scheduler_rng_metrics_exact": true,
+      "all_13_canonical_source_files_preserved": true
+    },
+    "scope": "CPU-only synthetic RGB/L/RGBA tensors and tiny Conv/BN/dropout training; no assignment data or GPU",
+    "workspace_source_sha256": {
+      "code/audit_integrity.py": "32d7e6429be32235a71586f4f9bb6c45439807e845c3ecc91db71c7cef3aae8d",
+      "code/audit_preprocessing.py": "117494d052686084f98d35025a39ffb29cb82e70a8141d3a644246f731498925",
+      "code/audit_priority1.py": "bb6142c1c944e73daa17765bc53bb41af6b19ef2e49c24c5e710cbcf79f72432",
+      "code/common.py": "649001dd765208000f541f7ce61670d7e503a99db34fa98fa01b7cb0ce4a7f41",
+      "code/compare_experiments.py": "ea192571900393a08252bcdd86458d26ceb745710ef37089f5f469fceb76bcb0",
+      "code/data.py": "7cf24fab31da984f64def13fd2c43ef2e3b9afc06f2906cb660ccdfb8136273a",
+      "code/googlenet.py": "59e688183ad8b1393697b374f7e0e4426d718fe1694fea1a35f647efdea66ad0",
+      "code/predict.py": "9b99615be5de9a93b46de8a507567ee56c1386622b8d00a4adf506e04536f6e5",
+      "code/resnet.py": "8befb278c4329c48b93db30ee5760dfbb87892d921b1662023419e228cd99156",
+      "code/run_comparison.py": "0cf21cb11e3d64bc9d62bed5bac797d0f8b23706eb71739ec15ab8f0cad526c8",
+      "code/training_state.py": "81919a14eb9fb4387dd2d3ec6273fcb1cbd29cdf5e8f293f95f8c32a9b95b023",
+      "code/validate.py": "6a3d2053330ec315649d013eb5ac9f8b2461d409b4faa924b8ee22419fc87dbb",
+      "code/vgg.py": "a8c219005ac3b07f617d4ec7ce562d197e233641c7d30a4ea3dc82cd9ced05a1"
+    },
+    "geometry_trace_without_photo": [
+      5.810055255889893,
+      6.430278778076172,
+      1.4125348329544067
+    ],
+    "geometry_trace_with_photo": [
+      5.810055255889893,
+      -1.5337250232696533,
+      4.110978603363037
+    ],
+    "limitations": [
+      "Photo factors add shared torch RNG draws; later-image geometry draw traces can differ from the zero-photo run.",
+      "Photometric transforms act on RGB/thumbnail pixels before black geometry/padding; PIL integer quantization and clipping are part of the policy.",
+      "Rotation-only removes flip from the existing geometry policy; it does not isolate pure rotation from thumbnail/interpolation changes.",
+      "No Task2 score, full-model learning or GPU numerical reproduction was measured here."
+    ]
+  },
+  "threshold_checks": {
+    "status": "검증 완료",
+    "passed": true,
+    "tests_run": 11,
+    "scope": "synthetic CPU-only rows and a hash-only dummy file; no assignment data, model loading, GPU, or training",
+    "checks": {
+      "checkpoint_digest_mismatch_is_rejected_without_loading": true,
+      "combined_metric_is_image_pooled_not_patient_mean": true,
+      "degenerate_calibration_does_not_use_heldout_fallback": true,
+      "equal_distance_tie_chooses_lower_threshold": true,
+      "fixed_grid_is_independent_and_contains_05": true,
+      "flat_plateau_prefers_05": true,
+      "heldout_labels_do_not_affect_its_threshold": true,
+      "heldout_probabilities_do_not_affect_its_threshold": true,
+      "invalid_and_empty_rows_are_rejected": true,
+      "nonfinite_and_out_of_range_are_rejected": true,
+      "single_class_heldout_ba_is_undefined": true
+    }
+  }
+}

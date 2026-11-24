@@ -1,0 +1,18 @@
+{
+  "original_checkpoint_sha256": "5e42a1b56ea37086742628c69770d31662a092aa40f78e34356defc9442c00d9",
+  "published_checkpoint_sha256": "18fab64e80e123b7a97357a6fed94d4ba021ed9f3d7f8f848a44db3eaad62572",
+  "changed_metadata_fields": [
+    "config.data_root",
+    "config.output_root"
+  ],
+  "all_122_model_tensors_exact": true,
+  "other_metadata_exact": true,
+  "original_local_checkpoint_preserved": true,
+  "parity_control_checkpoint_sha256": "18436a4adfafb39ac99025798939c41f23b1e9e0e8dce8ac9f0bde979f53e5bf",
+  "control_all_tensors_exact": true,
+  "saved_predictions_and_split_bytes_equal_control": true,
+  "direct_sha_bound_legacy_reinference_this_export": false,
+  "historical_control_audit_included_checkpoint_digest": false,
+  "control_checkpoint_matches_preserved_published_manifest": true,
+  "original_training_source_snapshot_available": false
+}

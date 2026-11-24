@@ -1,0 +1,15 @@
+{
+  "code/audit_integrity.py": "32d7e6429be32235a71586f4f9bb6c45439807e845c3ecc91db71c7cef3aae8d",
+  "code/audit_preprocessing.py": "117494d052686084f98d35025a39ffb29cb82e70a8141d3a644246f731498925",
+  "code/audit_priority1.py": "bb6142c1c944e73daa17765bc53bb41af6b19ef2e49c24c5e710cbcf79f72432",
+  "code/common.py": "649001dd765208000f541f7ce61670d7e503a99db34fa98fa01b7cb0ce4a7f41",
+  "code/compare_experiments.py": "ea192571900393a08252bcdd86458d26ceb745710ef37089f5f469fceb76bcb0",
+  "code/data.py": "7cf24fab31da984f64def13fd2c43ef2e3b9afc06f2906cb660ccdfb8136273a",
+  "code/googlenet.py": "59e688183ad8b1393697b374f7e0e4426d718fe1694fea1a35f647efdea66ad0",
+  "code/predict.py": "9b99615be5de9a93b46de8a507567ee56c1386622b8d00a4adf506e04536f6e5",
+  "code/resnet.py": "8befb278c4329c48b93db30ee5760dfbb87892d921b1662023419e228cd99156",
+  "code/run_comparison.py": "0cf21cb11e3d64bc9d62bed5bac797d0f8b23706eb71739ec15ab8f0cad526c8",
+  "code/training_state.py": "81919a14eb9fb4387dd2d3ec6273fcb1cbd29cdf5e8f293f95f8c32a9b95b023",
+  "code/validate.py": "6a3d2053330ec315649d013eb5ac9f8b2461d409b4faa924b8ee22419fc87dbb",
+  "code/vgg.py": "a8c219005ac3b07f617d4ec7ce562d197e233641c7d30a4ea3dc82cd9ced05a1"
+}

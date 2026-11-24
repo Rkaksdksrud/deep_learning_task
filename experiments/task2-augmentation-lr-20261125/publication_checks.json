@@ -1,0 +1,21 @@
+{
+  "checked_at": "2026-11-25T06:50:48.795073+09:00",
+  "scope": "Public source/config/notebook and preservation checks; not a new assignment performance evaluation",
+  "source_export_generic_files": 10,
+  "portable_configs": 14,
+  "smoke_configs": 4,
+  "threshold_synthetic_tests_passed": 11,
+  "synthetic_threshold_adapter_and_existing_output_protection_passed": true,
+  "data_and_output_path_resolution_passed": true,
+  "notebook_nbformat_valid": true,
+  "notebook_catalog_execution_models": 29,
+  "notebook_outputs_and_attachments_empty": true,
+  "local_markdown_links_valid": true,
+  "public_patient_identifiers_or_machine_paths_found": false,
+  "existing_tracked_files_unchanged_except_documentation_allowlist": true,
+  "task1_readme_body_preserved": true,
+  "new_models_package_validation": "../../models/task2-augmentation-lr-20261125/package_validation.json",
+  "legacy_package_validation": "../../models/task2-legacy-baseline-20261101/package_validation.json",
+  "existing_remote_models_size_and_sha256_match": 20,
+  "github_publication_status": "pending"
+}

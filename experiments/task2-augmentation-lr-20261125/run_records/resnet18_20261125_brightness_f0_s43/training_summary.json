@@ -1,0 +1,11 @@
+{
+  "model_name": "resnet",
+  "smoke_test": false,
+  "epochs_completed": 21,
+  "lr_scheduler": "cosine",
+  "elapsed_seconds": 533.1423570550005,
+  "best_valid_balanced_accuracy": 0.8807385229540918,
+  "state_save_seconds": 2.317908394998085,
+  "resumed_from_epoch": 0,
+  "state_save_seconds_note": "cumulative; after resume excludes the last save before interruption"
+}

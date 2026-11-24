@@ -1,0 +1,10 @@
+{
+  "original_checkpoint_sha256": "0c5be6e333d90b84e150a191c5b72a152824e5f3b5cc9fbb22deffc1535fb4a1",
+  "checkpoint_sha256": "e66452c44731f0219cd552749fa167d992c55af174ab5e31027971142a1b4cd1",
+  "published_checkpoint_sha256": "e66452c44731f0219cd552749fa167d992c55af174ab5e31027971142a1b4cd1",
+  "changed_metadata_fields": [
+    "config.data_root",
+    "config.output_root"
+  ],
+  "all_122_model_tensors_exact": true
+}

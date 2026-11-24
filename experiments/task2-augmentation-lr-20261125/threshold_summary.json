@@ -1,0 +1,263 @@
+{
+  "status": "exploratory conditional cached-CPU analysis completed",
+  "method": "fixed-checkpoint leave-one-validation-patient-out global threshold selection",
+  "threshold_grid": [
+    0.05,
+    0.06,
+    0.07,
+    0.08,
+    0.09,
+    0.1,
+    0.11,
+    0.12,
+    0.13,
+    0.14,
+    0.15,
+    0.16,
+    0.17,
+    0.18,
+    0.19,
+    0.2,
+    0.21,
+    0.22,
+    0.23,
+    0.24,
+    0.25,
+    0.26,
+    0.27,
+    0.28,
+    0.29,
+    0.3,
+    0.31,
+    0.32,
+    0.33,
+    0.34,
+    0.35,
+    0.36,
+    0.37,
+    0.38,
+    0.39,
+    0.4,
+    0.41,
+    0.42,
+    0.43,
+    0.44,
+    0.45,
+    0.46,
+    0.47,
+    0.48,
+    0.49,
+    0.5,
+    0.51,
+    0.52,
+    0.53,
+    0.54,
+    0.55,
+    0.56,
+    0.57,
+    0.58,
+    0.59,
+    0.6,
+    0.61,
+    0.62,
+    0.63,
+    0.64,
+    0.65,
+    0.66,
+    0.67,
+    0.68,
+    0.69,
+    0.7,
+    0.71,
+    0.72,
+    0.73,
+    0.74,
+    0.75,
+    0.76,
+    0.77,
+    0.78,
+    0.79,
+    0.8,
+    0.81,
+    0.82,
+    0.83,
+    0.84,
+    0.85,
+    0.86,
+    0.87,
+    0.88,
+    0.89,
+    0.9,
+    0.91,
+    0.92,
+    0.93,
+    0.94,
+    0.95
+  ],
+  "selection_objective": "pooled image-level BA on other patients only",
+  "tie_break": "maximum exact rational BA, then closest to .5, then smaller threshold",
+  "candidate_2_rule_status": "unconfirmed for assignment deployment; this is exploratory diagnosis only",
+  "unique_validation_patients": 12,
+  "unique_validation_images": 1315,
+  "analysis_seconds": 0.8528570660000696,
+  "original_inputs_unchanged": true,
+  "deployment_threshold": null,
+  "limitations": [
+    "Checkpoint epoch selection already used all of these validation patients. LOPO threshold separation does not remove this earlier selection dependence.",
+    "This is not independent Test, an unbiased generalization estimate, or nested patient validation.",
+    "Each held-out patient's diagnostic threshold is fit on the other patients; this is not a patient-specific deployment threshold policy.",
+    "No single deployment threshold is selected. Independently evaluating a calibration rule would require new nested patient training, which was not performed.",
+    "Do not select one fold0 threshold and call its use on an existing fold1 model independent: calibration patients can be in that other model's training set.",
+    "Fold0 seed42/43 share validation patients. Three model conditions are not three independent patient cohorts.",
+    "This evaluates only the predeclared [.05,.95] grid with step .01; probability tails or finer thresholds are not explored, so no universal threshold-utility conclusion follows.",
+    "Photometric model fixed-.5 results and conditional LOPO diagnostics are different procedures and cannot be ranked as directly matched treatment effects."
+  ],
+  "results": [
+    {
+      "run_id": "resnet18_20261111_geometry_f0_s42",
+      "role": "primary",
+      "fixed_threshold": 0.5,
+      "fixed_05": {
+        "balanced_accuracy": 0.904690618762475,
+        "sensitivity": 0.9760479041916168,
+        "specificity": 0.8333333333333334,
+        "confusion_matrix": [
+          [
+            400,
+            80
+          ],
+          [
+            4,
+            163
+          ]
+        ],
+        "accuracy": 0.8701700154559505,
+        "samples": 647,
+        "positive_samples": 167,
+        "negative_samples": 480,
+        "ba_interpretation": "image-level two-class BA"
+      },
+      "crossfitted": {
+        "balanced_accuracy": 0.9136726546906188,
+        "sensitivity": 0.9940119760479041,
+        "specificity": 0.8333333333333334,
+        "confusion_matrix": [
+          [
+            400,
+            80
+          ],
+          [
+            1,
+            166
+          ]
+        ],
+        "accuracy": 0.874806800618238,
+        "samples": 647,
+        "positive_samples": 167,
+        "negative_samples": 480,
+        "ba_interpretation": "image-level two-class BA"
+      },
+      "delta_ba": 0.008982035928143728,
+      "deployment_threshold": null,
+      "protocol_scope": "conditional LOPO diagnosis with fixed checkpoint; no deployable per-patient threshold map"
+    },
+    {
+      "run_id": "resnet18_20261111_geometry_f0_s43",
+      "role": "seed_confirmation_same_validation_patients",
+      "fixed_threshold": 0.5,
+      "fixed_05": {
+        "balanced_accuracy": 0.9016966067864272,
+        "sensitivity": 0.9700598802395209,
+        "specificity": 0.8333333333333334,
+        "confusion_matrix": [
+          [
+            400,
+            80
+          ],
+          [
+            5,
+            162
+          ]
+        ],
+        "accuracy": 0.8686244204018547,
+        "samples": 647,
+        "positive_samples": 167,
+        "negative_samples": 480,
+        "ba_interpretation": "image-level two-class BA"
+      },
+      "crossfitted": {
+        "balanced_accuracy": 0.9006549401197605,
+        "sensitivity": 0.9700598802395209,
+        "specificity": 0.83125,
+        "confusion_matrix": [
+          [
+            399,
+            81
+          ],
+          [
+            5,
+            162
+          ]
+        ],
+        "accuracy": 0.8670788253477589,
+        "samples": 647,
+        "positive_samples": 167,
+        "negative_samples": 480,
+        "ba_interpretation": "image-level two-class BA"
+      },
+      "delta_ba": -0.0010416666666666075,
+      "deployment_threshold": null,
+      "protocol_scope": "conditional LOPO diagnosis with fixed checkpoint; no deployable per-patient threshold map"
+    },
+    {
+      "run_id": "resnet18_20261111_geometry_f1_s42",
+      "role": "fold_confirmation",
+      "fixed_threshold": 0.5,
+      "fixed_05": {
+        "balanced_accuracy": 0.8875664893617021,
+        "sensitivity": 0.8563829787234043,
+        "specificity": 0.91875,
+        "confusion_matrix": [
+          [
+            441,
+            39
+          ],
+          [
+            27,
+            161
+          ]
+        ],
+        "accuracy": 0.9011976047904192,
+        "samples": 668,
+        "positive_samples": 188,
+        "negative_samples": 480,
+        "ba_interpretation": "image-level two-class BA"
+      },
+      "crossfitted": {
+        "balanced_accuracy": 0.906781914893617,
+        "sensitivity": 0.851063829787234,
+        "specificity": 0.9625,
+        "confusion_matrix": [
+          [
+            462,
+            18
+          ],
+          [
+            28,
+            160
+          ]
+        ],
+        "accuracy": 0.9311377245508982,
+        "samples": 668,
+        "positive_samples": 188,
+        "negative_samples": 480,
+        "ba_interpretation": "image-level two-class BA"
+      },
+      "delta_ba": 0.01921542553191491,
+      "deployment_threshold": null,
+      "protocol_scope": "conditional LOPO diagnosis with fixed checkpoint; no deployable per-patient threshold map"
+    }
+  ],
+  "mean_delta_ba": 0.009051931597797344,
+  "interpretation": "Conditional diagnosis on checkpoints already selected by validation; no deployment threshold/held-patient map and no independent Test claim"
+}

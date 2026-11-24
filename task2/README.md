@@ -4,7 +4,22 @@
 
 11월11일 **ResNet18 7개**에 이어 11월18일 **GoogLeNet 1개·VGG11 3개·ResNet18·320 1개**의 full 학습과 저장가중치 검증을 완료했다. 모두 환자 holdout 모델이며 전체2,948장으로 재학습한 최종 제출 모델이 아니다. [후속 실험 결과](../experiments/task2-followups-20261118/README.md)와 [후속5개 모델](../models/task2-followups-20261118/README.md)을 함께 확인한다.
 
-11월24일에는 **무증강 ResNet18 학습 설정 8개**를 추가 실행·독립 검증했다. [새 설정 비교](../experiments/task2-training-settings-20261124/README.md)와 [8개 모델](../models/task2-training-settings-20261124/README.md)은 이전 증강 실험과 별개다. 일반 CE는 추가 seed에서 악화해 채택 보류, LR1e-4는 추가 확인 우선 후보이며 기존 기하 증강 참조 모델 선택은 유지한다.
+11월24일에는 **무증강 ResNet18 학습 설정 8개**를 추가 실행·독립 검증했다. [설정 비교](../experiments/task2-training-settings-20261124/README.md)와 [8개 모델](../models/task2-training-settings-20261124/README.md)은 이전 증강 실험과 별개다. 일반 CE는 추가 seed에서 악화해 채택 gate를 통과하지 못했다.
+
+11월25일에는 **회전 단독3개·무증강 LR 추가 seed1개·밝기3개·대비1개**, 총8개 full run/137epoch/56.94분을 추가했고 모두 독립 검증했다. 기존20개와 신규8개 외에 초기 원형1개를 별도로 보존해 총29개 모델을 공유 관리한다. [최신 실험](../experiments/task2-augmentation-lr-20261125/README.md) · [새8개 모델 manifest](../models/task2-augmentation-lr-20261125/manifest.json) · [집계 노트북](notebooks/task2_experiment_overview.ipynb).
+
+- 회전 단독은 기존 flip+rotation보다 세 조건 모두 낮아 평균−1.44±1.22%p다. flip을 제거한 정책 비교이며 회전의 독립 기여나 flip-only 비교가 아니다.
+- 무증강 LR1e-4는 새 seed에서도+3.83%p, 세 조건 평균+6.32±2.53%p로 수치 gate를 통과했다. 그러나 한 환자 BA가33.75%p 악화했고 geometry에 낮춘 LR을 적용한 조합은 시험하지 않았다. **기존 geometry/LR3e-4 참조 모델은 유지한다.**
+- 밝기는 세 조건 평균−0.35±1.72%p로 개선이 유지되지 않았고, 대비는 단발+0.99%p로 추가 확인 gate 미달이다. 밝기/대비와 threshold 변경은 공식 허용 미확정인 탐색 기록이며 제출 설정 채택에서 제외한다. 새 모델 추론 threshold는.5다.
+- 기존 geometry 모델의 LOPO threshold 진단은 checkpoint 선택에 사용한 validation을 다시 쓰는 조건부 분석이다. 독립 Test·nested 검증·환자별 배포 정책이 아니며 단일 배포 threshold를 고르지 않았다.
+
+새8개 모델은 **공유 준비 상태**다. Release 태그 `task2-augmentation-lr-20261125-v1`의 실제 게시 확인은 모델 manifest/배포 기록을 따른다. 새 공개 checkpoint는 개인 경로 두 값만 portable하게 바꾸므로 원본/공개 SHA가 다를 수 있고, 원본 로컬 모델과 tensor·추론 동등성 검증을 구분한다. 기존20개 모델은 보존한다.
+
+## 초기 baseline 원형과 전체 inventory
+
+[11/01 legacy baseline](../models/task2-legacy-baseline-20261101/README.md)은 새 학습8개에 포함하지 않는 초기 full run이다. BA47.5536%, 9epoch/best2, 학습216.043초이며 기존 독립 재검증이 통과했다. 이번 CPU 비교에서는11/11 재학습 대조군과 모든 tensor·저장 예측·split bytes가 일치했다. 원본 checkpoint bytes/SHA는 다르고 당시 source snapshot이 없어 원래 실행 소스라고 소급 주장하지 않는다.
+
+이번 Release 태그 `task2-augmentation-lr-20261125-v1`에 신규8개와 legacy1개 총9개 ZIP을 연결하고, [legacy 별도 manifest](../models/task2-legacy-baseline-20261101/manifest.json)를 제공한다. 공유 준비 상태이며 실제 게시·패키지 검사 범위는 해당 모델 기록을 따른다. 로컬 `runs/`는 full29개+smoke5개다. smoke는 성과·배포 모델에서 제외하며2개는 기능 검증 완료,3개는 완료 기록 부족이다. [분류 근거](../experiments/task2-augmentation-lr-20261125/README.md)를 참고한다.
 
 ## 환경과 데이터 위치
 
@@ -27,7 +42,7 @@ data/task2/
 └── images/                 # CSV path가 images/<id>.png인 원본 영상
 ```
 
-`data_root`와 `output_root`의 상대 경로는 현재 터미널 위치가 아니라 `task2/` 기준이다. 세 config의 기본값은 `../data/task2`, `../runs/task2`다. 학습 결과는 저장소의 `runs/task2/<run-name>/` 아래에 생긴다.
+기존 `task2/code`의 `data_root`와 `output_root` 상대 경로는 현재 터미널 위치가 아니라 `task2/` 기준이다. 11/25 버전 소스는 아래 별도 기준 경로를 사용한다. 세 config의 기본값은 `../data/task2`, `../runs/task2`다. 학습 결과는 저장소의 `runs/task2/<run-name>/` 아래에 생긴다.
 
 ## 11월11일 ResNet18 7개 체크포인트와 결과
 
@@ -125,6 +140,30 @@ python task2/code/vgg.py --config experiments/task2-followups-20261118/run_recor
 
 이 명령의 결과가 기존 점수와 정확히 같다는 보장은 없다. CUDA 비결정성과 제한된 환자 수·검증 기반 선택의 영향을 함께 고려한다.
 
+## 2026-11-25 별도 버전 코드와 재실행
+
+기존 `task2/code`와 이전 설정을 보존하고 이번 실험은 [task2/experiments/20261125](experiments/20261125/README.md)에 분리했다. `code/`, `configs/`, `analysis/`에 해당 버전의 학습·추론 소스, 재실행 설정, cached CSV용 threshold 분석을 둔다. 실제 학습에서 고정한 원래13개 source의 hash 목록을 보존하고, 환자별 로컬 감사용3개 스크립트는 공개하지 않는다. 공개용 일반 소스10개와 팀 경로 config를 원래 학습 snapshot/config와 구분한다.
+
+| 새 옵션 | 기본값 | 이번 비교 |
+|---|---|---|
+| `geometric_horizontal_flip` | `true` | `false`는 flip 적용만 끄고 기존 flip decision RNG draw와 회전 각도 경로를 유지 |
+| `brightness_jitter` | `0.0` | `.15`는 Train에서 실영상 영역 brightness factor U[.85,1.15] 적용 |
+| `contrast_jitter` | `0.0` | `.15`는 Train에서 실영상 영역 contrast factor U[.85,1.15] 적용 |
+
+광도 변환은 회전/검정 padding 전에 적용하며 brightness와 contrast를 결합하지 않았다. Valid/추론에는 어느 증강도 적용하지 않는다. 기본값0은 기존 변환/RNG 경로를 보존한다. 합성 CPU14검사와4개 모드 GPU smoke를 통과했지만 이를 과제 성능으로 보고하지 않는다.
+
+**새 버전 config의 경로 기준은 `task2/experiments/20261125/`**다. `data_root=../../../data/task2`, `output_root=../../../runs/task2/20261125`이며 모두 저장소의 데이터/새 run 디렉터리로 연결된다. 저장소 루트에서:
+
+```bash
+python task2/experiments/20261125/code/resnet.py --config task2/experiments/20261125/configs/rotation_f0_s42.json --device cuda --run-name your_unique_rotation_run
+```
+
+LR/brightness/contrast 또는 다른 fold/seed는 해당 버전 config를 선택하고 새 run 이름을 쓴다. config10개 중 대비 추가 fold/seed2개는 사전 gate로 **실행하지 않은 template**이며 기존 결과나 가중치가 없다. 이 예시를 전부 재실행하거나 최종 제출용 설정으로 자동 채택하라는 뜻은 아니다.
+
+원본 영상·환자별 cached prediction은 공유하지 않는다. `analysis/`의 threshold 도구를 각자 허가받은 로컬 prediction CSV에 적용할 때도 다른 환자에서 선택한 전역 threshold의 LOPO 진단으로만 해석한다. 기존 checkpoint의 validation epoch 선택 의존성은 남고, 공개 모델의 기본 threshold.5를 바꾸지 않는다.
+
+새 모델 다운로드·추론은 [모델 manifest](../models/task2-augmentation-lr-20261125/manifest.json)를 따른다. 새 checkpoint의 공개 복사본은 데이터/출력 경로만 바꾼 것으로, 모델의 원본 SHA와 배포 SHA를 따로 기록한다. 로컬 원본 재개 state와 공개 추론 checkpoint는 다르며 새 버전 소스로 과거 state를 강제 재개하지 않는다.
+
 ## 2026-11-18 추가: epoch 경계 학습 재개
 
 새 학습 코드는 매 epoch 완료 시 별도 `last_training_state.pt`에 model/optimizer/scheduler, 완료epoch/history, 최적epoch·지표, patience counter, Python/NumPy/torch CPU/CUDA RNG와 두 DataLoader generator를 원자 저장한다. 기존 추론용 `resnet.pt`/`vgg.pt`/`googlenet.pt` 형식과 학습·선택 정책은 유지한다.
@@ -158,4 +197,4 @@ python task2/code/googlenet.py --config task2/configs/geometry.json --device cud
 - 기존7개 checkpoint의 원래 config·환경·epoch·preprocessing metadata는 보존한다. 배포 config는 재실행 템플릿이며 과거 run의 원본 config를 대체하지 않는다. fold/seed·class_weighted_loss·geometry 여부는 각 run 기록을 확인한다.
 - 기존7개 중6개와 후속5개 실험은 당시 source snapshot/해시가 있고, 최초 대조군 C0는 snapshot 보강 전 실행으로 별도 보관 코드·재현 parity 기록이 있다. 확인 가능한 범위를 넘어 소스 provenance를 소급 생성하지 않는다.
 - 배포한 best checkpoint는 모델 state_dict(가중치·BN buffer)와 선택epoch/config만 담고 optimizer/scheduler/RNG는 없다. 신규 학습의 별도 로컬 `last_training_state.pt`가 있을 때만 위 epoch 경계 재개를 지원한다. 선택epoch는 재개 가능한 마지막epoch를 뜻하지 않는다.
-- 제공 데이터 외 학습, 추가 신경망, 사전학습, 앙상블은 사용하지 않는다. 임계값 튜닝·광도 증강·CLAHE·새ROI·구조 변경·BN 재보정 등 미확정 방법은 이 공유본에 추가하지 않았다.
+- 제공 데이터 외 학습, 추가 신경망, 사전학습, 앙상블은 사용하지 않는다. 11/25 별도 버전에는 공식 허용 미확정인 밝기/대비 및 threshold 조건부 진단을 탐색 기록으로 공유하지만 제출 설정 채택에서 제외한다. CLAHE·새ROI·구조 변경·BN 재보정 등은 적용하지 않았다.

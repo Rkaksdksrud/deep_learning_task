@@ -1,0 +1,713 @@
+{
+  "format_version": 1,
+  "experiment_date": "2026-11-25",
+  "experiment_id": "rotation_photometric_threshold_20261125",
+  "publication_status": "packaged locally; remote publication must be verified separately",
+  "release_tag": "task2-augmentation-lr-20261125-v1",
+  "completed_full_runs": 8,
+  "independently_verified_runs": 8,
+  "new_training_seconds": 3416.467451012001,
+  "runs": [
+    {
+      "run_id": "resnet18_20261125_rotation_f0_s42",
+      "axis": "rotation",
+      "role": "discovery",
+      "rule_status": "within_confirmed_scope",
+      "fold": 0,
+      "seed": 42,
+      "control_id": "resnet18_20261111_geometry_f0_s42",
+      "status": "independently_verified",
+      "metrics": {
+        "auroc": 0.9392340319361278,
+        "loss": 0.37149806262697116,
+        "f1": 0.780373831775701,
+        "precision": 0.6398467432950191,
+        "sensitivity": 1.0,
+        "balanced_accuracy": 0.9020833333333333,
+        "samples": 647,
+        "confusion_matrix": [
+          [
+            386,
+            94
+          ],
+          [
+            0,
+            167
+          ]
+        ],
+        "specificity": 0.8041666666666667,
+        "threshold": 0.5,
+        "accuracy": 0.8547140649149922
+      },
+      "selected_epoch": 4,
+      "epochs_completed": 11,
+      "training_seconds": 278.72978876499997,
+      "peak_gpu_memory_mib": 578.33544921875,
+      "max_train_balanced_accuracy": 1.0,
+      "worst_defined_patient_ba": 0.5,
+      "original_checkpoint_sha256": "92efa4ccdb94f0a02332b631fc000be03290bc21c58b8338f78f4dfeaa852d14",
+      "published_checkpoint_sha256": "3363c0f725dae40492551d63102e8de7467403a5f93df4d3a57b51c487503127"
+    },
+    {
+      "run_id": "resnet18_20261125_lr1e4_f0_s43",
+      "axis": "lr1e4",
+      "role": "additional_seed_no_augmentation",
+      "rule_status": "within_confirmed_scope",
+      "fold": 0,
+      "seed": 43,
+      "control_id": "resnet18_20261111_control_f0_s43",
+      "status": "independently_verified",
+      "metrics": {
+        "auroc": 0.6821107784431139,
+        "loss": 1.2669313574834693,
+        "f1": 0.4772727272727273,
+        "precision": 0.38461538461538464,
+        "sensitivity": 0.6287425149700598,
+        "balanced_accuracy": 0.6393712574850299,
+        "samples": 647,
+        "confusion_matrix": [
+          [
+            312,
+            168
+          ],
+          [
+            62,
+            105
+          ]
+        ],
+        "specificity": 0.65,
+        "threshold": 0.5,
+        "accuracy": 0.6445131375579598
+      },
+      "selected_epoch": 5,
+      "epochs_completed": 12,
+      "training_seconds": 281.439013765,
+      "peak_gpu_memory_mib": 578.33544921875,
+      "max_train_balanced_accuracy": 1.0,
+      "worst_defined_patient_ba": 0.1625,
+      "original_checkpoint_sha256": "594515962cebf0b8b46d01d0dc91ec4de20891d90e9472b2b78b3f874439a2aa",
+      "published_checkpoint_sha256": "07086ce7c04024f99d4cfd10a31a784ba5732765280572fc5662120340f41b0d"
+    },
+    {
+      "run_id": "resnet18_20261125_brightness_f0_s42",
+      "axis": "brightness",
+      "role": "discovery",
+      "rule_status": "unconfirmed_exploratory_only",
+      "fold": 0,
+      "seed": 42,
+      "control_id": "resnet18_20261111_geometry_f0_s42",
+      "status": "independently_verified",
+      "metrics": {
+        "auroc": 0.9815993013972055,
+        "loss": 0.1851372799182048,
+        "f1": 0.8731563421828908,
+        "precision": 0.8604651162790697,
+        "sensitivity": 0.8862275449101796,
+        "balanced_accuracy": 0.9181137724550898,
+        "samples": 647,
+        "confusion_matrix": [
+          [
+            456,
+            24
+          ],
+          [
+            19,
+            148
+          ]
+        ],
+        "specificity": 0.95,
+        "threshold": 0.5,
+        "accuracy": 0.9335394126738794
+      },
+      "selected_epoch": 2,
+      "epochs_completed": 9,
+      "training_seconds": 230.00686435299986,
+      "peak_gpu_memory_mib": 578.33544921875,
+      "max_train_balanced_accuracy": 1.0,
+      "worst_defined_patient_ba": 0.7447368421052631,
+      "original_checkpoint_sha256": "6b73686133bfd3e409d710b11a5728db5064cbb62b4c6aa82524f3dd6242c083",
+      "published_checkpoint_sha256": "d972270e70f2dd7498c3bbf447cb7417e44e4159eefc2d7e0c42200664284cc3"
+    },
+    {
+      "run_id": "resnet18_20261125_contrast_f0_s42",
+      "axis": "contrast",
+      "role": "discovery",
+      "rule_status": "unconfirmed_exploratory_only",
+      "fold": 0,
+      "seed": 42,
+      "control_id": "resnet18_20261111_geometry_f0_s42",
+      "status": "independently_verified",
+      "metrics": {
+        "auroc": 0.9368637724550899,
+        "loss": 0.4793137842054027,
+        "f1": 0.8028846153846154,
+        "precision": 0.6706827309236948,
+        "sensitivity": 1.0,
+        "balanced_accuracy": 0.9145833333333333,
+        "samples": 647,
+        "confusion_matrix": [
+          [
+            398,
+            82
+          ],
+          [
+            0,
+            167
+          ]
+        ],
+        "specificity": 0.8291666666666667,
+        "threshold": 0.5,
+        "accuracy": 0.8732612055641422
+      },
+      "selected_epoch": 18,
+      "epochs_completed": 25,
+      "training_seconds": 634.5401450669997,
+      "peak_gpu_memory_mib": 578.33544921875,
+      "max_train_balanced_accuracy": 1.0,
+      "worst_defined_patient_ba": 0.5,
+      "original_checkpoint_sha256": "9f25aff5ac3c093867c7f5b4cc6ececa8e77c141d9461da1585f6ac07df404a2",
+      "published_checkpoint_sha256": "cc3c51a0a30fdc05d94344d8e42d92dc2885755188be867c094606d4132d66a7"
+    },
+    {
+      "run_id": "resnet18_20261125_rotation_f0_s43",
+      "axis": "rotation",
+      "role": "seed_confirmation",
+      "rule_status": "within_confirmed_scope",
+      "fold": 0,
+      "seed": 43,
+      "control_id": "resnet18_20261111_geometry_f0_s43",
+      "status": "independently_verified",
+      "metrics": {
+        "auroc": 0.9219810379241516,
+        "loss": 0.3503470669940781,
+        "f1": 0.7859078590785907,
+        "precision": 0.7178217821782178,
+        "sensitivity": 0.8682634730538922,
+        "balanced_accuracy": 0.8747567365269461,
+        "samples": 647,
+        "confusion_matrix": [
+          [
+            423,
+            57
+          ],
+          [
+            22,
+            145
+          ]
+        ],
+        "specificity": 0.88125,
+        "threshold": 0.5,
+        "accuracy": 0.8778979907264297
+      },
+      "selected_epoch": 9,
+      "epochs_completed": 16,
+      "training_seconds": 395.22333304600033,
+      "peak_gpu_memory_mib": 578.33544921875,
+      "max_train_balanced_accuracy": 1.0,
+      "worst_defined_patient_ba": 0.5895833333333333,
+      "original_checkpoint_sha256": "44214e8dd0aded7091c4d8df6e22c649548e48757b70a5b40bbfeacc69477cdd",
+      "published_checkpoint_sha256": "6af27e3baecc1b874a9223f0021671e2ce978118de87e01a6630d06c529afcb1"
+    },
+    {
+      "run_id": "resnet18_20261125_rotation_f1_s42",
+      "axis": "rotation",
+      "role": "fold_confirmation",
+      "rule_status": "within_confirmed_scope",
+      "fold": 1,
+      "seed": 42,
+      "control_id": "resnet18_20261111_geometry_f1_s42",
+      "status": "independently_verified",
+      "metrics": {
+        "auroc": 0.914882535460993,
+        "loss": 0.5243642327862038,
+        "f1": 0.8338028169014085,
+        "precision": 0.8862275449101796,
+        "sensitivity": 0.7872340425531915,
+        "balanced_accuracy": 0.873825354609929,
+        "samples": 668,
+        "confusion_matrix": [
+          [
+            461,
+            19
+          ],
+          [
+            40,
+            148
+          ]
+        ],
+        "specificity": 0.9604166666666667,
+        "threshold": 0.5,
+        "accuracy": 0.9116766467065869
+      },
+      "selected_epoch": 26,
+      "epochs_completed": 30,
+      "training_seconds": 740.8202134010003,
+      "peak_gpu_memory_mib": 576.58544921875,
+      "max_train_balanced_accuracy": 1.0,
+      "worst_defined_patient_ba": 0.5,
+      "original_checkpoint_sha256": "0548f2304b52c9c5fd17167eff2879b31452ef8604b8525db298405b9aafa119",
+      "published_checkpoint_sha256": "0ed0d5da7340679b0351f9aaf561b1e9518efff2619312e90f1e68aae0d621a1"
+    },
+    {
+      "run_id": "resnet18_20261125_brightness_f1_s42",
+      "axis": "brightness",
+      "role": "conditional_fold_confirmation",
+      "rule_status": "unconfirmed_exploratory_only",
+      "fold": 1,
+      "seed": 42,
+      "control_id": "resnet18_20261111_geometry_f1_s42",
+      "status": "independently_verified",
+      "metrics": {
+        "auroc": 0.9680186170212766,
+        "loss": 0.49792434070091685,
+        "f1": 0.8682634730538922,
+        "precision": 0.9931506849315068,
+        "sensitivity": 0.7712765957446809,
+        "balanced_accuracy": 0.8845966312056738,
+        "samples": 668,
+        "confusion_matrix": [
+          [
+            479,
+            1
+          ],
+          [
+            43,
+            145
+          ]
+        ],
+        "specificity": 0.9979166666666667,
+        "threshold": 0.5,
+        "accuracy": 0.9341317365269461
+      },
+      "selected_epoch": 6,
+      "epochs_completed": 13,
+      "training_seconds": 322.5657355600006,
+      "peak_gpu_memory_mib": 576.58544921875,
+      "max_train_balanced_accuracy": 1.0,
+      "worst_defined_patient_ba": 0.5,
+      "original_checkpoint_sha256": "0c5be6e333d90b84e150a191c5b72a152824e5f3b5cc9fbb22deffc1535fb4a1",
+      "published_checkpoint_sha256": "e66452c44731f0219cd552749fa167d992c55af174ab5e31027971142a1b4cd1"
+    },
+    {
+      "run_id": "resnet18_20261125_brightness_f0_s43",
+      "axis": "brightness",
+      "role": "conditional_seed_confirmation",
+      "rule_status": "unconfirmed_exploratory_only",
+      "fold": 0,
+      "seed": 43,
+      "control_id": "resnet18_20261111_geometry_f0_s43",
+      "status": "independently_verified",
+      "metrics": {
+        "auroc": 0.9043288423153693,
+        "loss": 0.5967793623488779,
+        "f1": 0.7711442786069652,
+        "precision": 0.6595744680851063,
+        "sensitivity": 0.9281437125748503,
+        "balanced_accuracy": 0.8807385229540918,
+        "samples": 647,
+        "confusion_matrix": [
+          [
+            400,
+            80
+          ],
+          [
+            12,
+            155
+          ]
+        ],
+        "specificity": 0.8333333333333334,
+        "threshold": 0.5,
+        "accuracy": 0.8578052550231839
+      },
+      "selected_epoch": 14,
+      "epochs_completed": 21,
+      "training_seconds": 533.1423570550005,
+      "peak_gpu_memory_mib": 578.33544921875,
+      "max_train_balanced_accuracy": 1.0,
+      "worst_defined_patient_ba": 0.5,
+      "original_checkpoint_sha256": "695027b11c7133a8a0a276692b521f27083a4d821816999da48af98bedcd1592",
+      "published_checkpoint_sha256": "92cbebfe7505316094289f3221843a3f40fa512e1f785cf08f1c65beef089dfc"
+    }
+  ],
+  "comparisons": [
+    {
+      "procedure": "fixed_threshold_0.5_matched_training",
+      "axis": "lr1e4",
+      "role": "discovery",
+      "fold": 0,
+      "seed": 42,
+      "source_scope": "previous_20261124_completed",
+      "rule_status": "within_confirmed_scope",
+      "control_id": "resnet18_20261124_reference_f0_s42",
+      "candidate_id": "resnet18_20261124_lr1e4_f0_s42",
+      "config_differences": {
+        "learning_rate": [
+          0.0003,
+          0.0001
+        ]
+      },
+      "control_ba": 0.4755364271457086,
+      "candidate_ba": 0.5644273952095809,
+      "delta_ba": 0.08889096806387226,
+      "positive_recall_delta": -0.6826347305389222,
+      "negative_recall_delta": 0.8604166666666667,
+      "training_time_ratio": 0.8771440296619335,
+      "control_training_seconds": 214.7990706710002,
+      "candidate_training_seconds": 188.40972241599957,
+      "time_scope": "whole run including different early-stop epochs and newer per-epoch resume-state I/O; not isolated per-step cost",
+      "improved": 2,
+      "tied": 2,
+      "worsened": 2
+    },
+    {
+      "procedure": "fixed_threshold_0.5_matched_training",
+      "axis": "lr1e4",
+      "role": "conditional_fold_confirmation",
+      "fold": 1,
+      "seed": 42,
+      "source_scope": "previous_20261124_completed",
+      "rule_status": "within_confirmed_scope",
+      "control_id": "resnet18_20261111_control_f1_s42",
+      "candidate_id": "resnet18_20261124_lr1e4_f1_s42",
+      "config_differences": {
+        "learning_rate": [
+          0.0003,
+          0.0001
+        ]
+      },
+      "control_ba": 0.6504654255319149,
+      "candidate_ba": 0.7128324468085107,
+      "delta_ba": 0.06236702127659577,
+      "positive_recall_delta": 0.03723404255319146,
+      "negative_recall_delta": 0.08750000000000002,
+      "training_time_ratio": 2.3805644379955138,
+      "control_training_seconds": 184.75786334199984,
+      "candidate_training_seconds": 439.8279991119998,
+      "time_scope": "whole run including different early-stop epochs and newer per-epoch resume-state I/O; not isolated per-step cost",
+      "improved": 3,
+      "tied": 1,
+      "worsened": 2
+    },
+    {
+      "procedure": "fixed_threshold_0.5_matched_training",
+      "axis": "rotation",
+      "role": "discovery",
+      "fold": 0,
+      "seed": 42,
+      "source_scope": "new_20261125_completed",
+      "rule_status": "within_confirmed_scope",
+      "control_id": "resnet18_20261111_geometry_f0_s42",
+      "candidate_id": "resnet18_20261125_rotation_f0_s42",
+      "config_differences": {
+        "geometric_horizontal_flip": [
+          true,
+          false
+        ]
+      },
+      "control_ba": 0.904690618762475,
+      "candidate_ba": 0.9020833333333333,
+      "delta_ba": -0.0026072854291416814,
+      "positive_recall_delta": 0.0239520958083832,
+      "negative_recall_delta": -0.029166666666666674,
+      "training_time_ratio": 0.8461109198651432,
+      "control_training_seconds": 329.4246442409999,
+      "candidate_training_seconds": 278.72978876499997,
+      "time_scope": "whole run including different early-stop epochs and newer per-epoch resume-state I/O; not isolated per-step cost",
+      "improved": 1,
+      "tied": 4,
+      "worsened": 1
+    },
+    {
+      "procedure": "fixed_threshold_0.5_matched_training",
+      "axis": "lr1e4",
+      "role": "additional_seed_no_augmentation",
+      "fold": 0,
+      "seed": 43,
+      "source_scope": "new_20261125_completed",
+      "rule_status": "within_confirmed_scope",
+      "control_id": "resnet18_20261111_control_f0_s43",
+      "candidate_id": "resnet18_20261125_lr1e4_f0_s43",
+      "config_differences": {
+        "learning_rate": [
+          0.0003,
+          0.0001
+        ]
+      },
+      "control_ba": 0.6011040419161677,
+      "candidate_ba": 0.6393712574850299,
+      "delta_ba": 0.038267215568862145,
+      "positive_recall_delta": 0.10778443113772451,
+      "negative_recall_delta": -0.03125,
+      "training_time_ratio": 1.318145974870679,
+      "control_training_seconds": 213.51126440500002,
+      "candidate_training_seconds": 281.439013765,
+      "time_scope": "whole run including different early-stop epochs and newer per-epoch resume-state I/O; not isolated per-step cost",
+      "improved": 3,
+      "tied": 2,
+      "worsened": 1
+    },
+    {
+      "procedure": "fixed_threshold_0.5_matched_training",
+      "axis": "brightness",
+      "role": "discovery",
+      "fold": 0,
+      "seed": 42,
+      "source_scope": "new_20261125_completed",
+      "rule_status": "unconfirmed_exploratory_only",
+      "control_id": "resnet18_20261111_geometry_f0_s42",
+      "candidate_id": "resnet18_20261125_brightness_f0_s42",
+      "config_differences": {
+        "brightness_jitter": [
+          0.0,
+          0.15
+        ]
+      },
+      "control_ba": 0.904690618762475,
+      "candidate_ba": 0.9181137724550898,
+      "delta_ba": 0.01342315369261482,
+      "positive_recall_delta": -0.08982035928143717,
+      "negative_recall_delta": 0.11666666666666659,
+      "training_time_ratio": 0.6982078249881385,
+      "control_training_seconds": 329.4246442409999,
+      "candidate_training_seconds": 230.00686435299986,
+      "time_scope": "whole run including different early-stop epochs and newer per-epoch resume-state I/O; not isolated per-step cost",
+      "improved": 3,
+      "tied": 1,
+      "worsened": 2
+    },
+    {
+      "procedure": "fixed_threshold_0.5_matched_training",
+      "axis": "contrast",
+      "role": "discovery",
+      "fold": 0,
+      "seed": 42,
+      "source_scope": "new_20261125_completed",
+      "rule_status": "unconfirmed_exploratory_only",
+      "control_id": "resnet18_20261111_geometry_f0_s42",
+      "candidate_id": "resnet18_20261125_contrast_f0_s42",
+      "config_differences": {
+        "contrast_jitter": [
+          0.0,
+          0.15
+        ]
+      },
+      "control_ba": 0.904690618762475,
+      "candidate_ba": 0.9145833333333333,
+      "delta_ba": 0.009892714570858274,
+      "positive_recall_delta": 0.0239520958083832,
+      "negative_recall_delta": -0.004166666666666652,
+      "training_time_ratio": 1.9262072712531608,
+      "control_training_seconds": 329.4246442409999,
+      "candidate_training_seconds": 634.5401450669997,
+      "time_scope": "whole run including different early-stop epochs and newer per-epoch resume-state I/O; not isolated per-step cost",
+      "improved": 2,
+      "tied": 4,
+      "worsened": 0
+    },
+    {
+      "procedure": "fixed_threshold_0.5_matched_training",
+      "axis": "rotation",
+      "role": "seed_confirmation",
+      "fold": 0,
+      "seed": 43,
+      "source_scope": "new_20261125_completed",
+      "rule_status": "within_confirmed_scope",
+      "control_id": "resnet18_20261111_geometry_f0_s43",
+      "candidate_id": "resnet18_20261125_rotation_f0_s43",
+      "config_differences": {
+        "geometric_horizontal_flip": [
+          true,
+          false
+        ]
+      },
+      "control_ba": 0.9016966067864272,
+      "candidate_ba": 0.8747567365269461,
+      "delta_ba": -0.02693987025948108,
+      "positive_recall_delta": -0.10179640718562877,
+      "negative_recall_delta": 0.04791666666666661,
+      "training_time_ratio": 1.0498356681836363,
+      "control_training_seconds": 376.46209309100004,
+      "candidate_training_seconds": 395.22333304600033,
+      "time_scope": "whole run including different early-stop epochs and newer per-epoch resume-state I/O; not isolated per-step cost",
+      "improved": 1,
+      "tied": 0,
+      "worsened": 5
+    },
+    {
+      "procedure": "fixed_threshold_0.5_matched_training",
+      "axis": "rotation",
+      "role": "fold_confirmation",
+      "fold": 1,
+      "seed": 42,
+      "source_scope": "new_20261125_completed",
+      "rule_status": "within_confirmed_scope",
+      "control_id": "resnet18_20261111_geometry_f1_s42",
+      "candidate_id": "resnet18_20261125_rotation_f1_s42",
+      "config_differences": {
+        "geometric_horizontal_flip": [
+          true,
+          false
+        ]
+      },
+      "control_ba": 0.8875664893617021,
+      "candidate_ba": 0.873825354609929,
+      "delta_ba": -0.013741134751773076,
+      "positive_recall_delta": -0.06914893617021278,
+      "negative_recall_delta": 0.04166666666666674,
+      "training_time_ratio": 2.108955871335474,
+      "control_training_seconds": 351.27345406799986,
+      "candidate_training_seconds": 740.8202134010003,
+      "time_scope": "whole run including different early-stop epochs and newer per-epoch resume-state I/O; not isolated per-step cost",
+      "improved": 1,
+      "tied": 1,
+      "worsened": 4
+    },
+    {
+      "procedure": "fixed_threshold_0.5_matched_training",
+      "axis": "brightness",
+      "role": "conditional_fold_confirmation",
+      "fold": 1,
+      "seed": 42,
+      "source_scope": "new_20261125_completed",
+      "rule_status": "unconfirmed_exploratory_only",
+      "control_id": "resnet18_20261111_geometry_f1_s42",
+      "candidate_id": "resnet18_20261125_brightness_f1_s42",
+      "config_differences": {
+        "brightness_jitter": [
+          0.0,
+          0.15
+        ]
+      },
+      "control_ba": 0.8875664893617021,
+      "candidate_ba": 0.8845966312056738,
+      "delta_ba": -0.002969858156028349,
+      "positive_recall_delta": -0.08510638297872342,
+      "negative_recall_delta": 0.07916666666666672,
+      "training_time_ratio": 0.9182752975622177,
+      "control_training_seconds": 351.27345406799986,
+      "candidate_training_seconds": 322.5657355600006,
+      "time_scope": "whole run including different early-stop epochs and newer per-epoch resume-state I/O; not isolated per-step cost",
+      "improved": 1,
+      "tied": 2,
+      "worsened": 3
+    },
+    {
+      "procedure": "fixed_threshold_0.5_matched_training",
+      "axis": "brightness",
+      "role": "conditional_seed_confirmation",
+      "fold": 0,
+      "seed": 43,
+      "source_scope": "new_20261125_completed",
+      "rule_status": "unconfirmed_exploratory_only",
+      "control_id": "resnet18_20261111_geometry_f0_s43",
+      "candidate_id": "resnet18_20261125_brightness_f0_s43",
+      "config_differences": {
+        "brightness_jitter": [
+          0.0,
+          0.15
+        ]
+      },
+      "control_ba": 0.9016966067864272,
+      "candidate_ba": 0.8807385229540918,
+      "delta_ba": -0.020958083832335328,
+      "positive_recall_delta": -0.041916167664670656,
+      "negative_recall_delta": 0.0,
+      "training_time_ratio": 1.4161913426065105,
+      "control_training_seconds": 376.46209309100004,
+      "candidate_training_seconds": 533.1423570550005,
+      "time_scope": "whole run including different early-stop epochs and newer per-epoch resume-state I/O; not isolated per-step cost",
+      "improved": 1,
+      "tied": 4,
+      "worsened": 1
+    }
+  ],
+  "axis_summaries": [
+    {
+      "axis": "rotation",
+      "name": "회전 단독",
+      "change": "flip+rotation → rotation only",
+      "matched_conditions": 3,
+      "mean_control_ba": 0.8979845716368681,
+      "mean_candidate_ba": 0.8835551414900695,
+      "mean_delta_ba": -0.014429430146798613,
+      "delta_sample_sd": 0.012180886012295073,
+      "positive_conditions": 0,
+      "numeric_adoption_gate_passed": false,
+      "submission_eligible": true,
+      "conclusion": "수치 gate 실패; 이 변경의 안정적 개선 근거 부족",
+      "variability_scope": "descriptive matched-condition sample SD; same-fold seeds share patients, not three independent cohorts or a confidence interval"
+    },
+    {
+      "axis": "lr1e4",
+      "name": "무증강 LR",
+      "change": "3e-4 → 1e-4; augmentation OFF",
+      "matched_conditions": 3,
+      "mean_control_ba": 0.5757019648645971,
+      "mean_candidate_ba": 0.6388770331677072,
+      "mean_delta_ba": 0.06317506830311005,
+      "delta_sample_sd": 0.02532154782328293,
+      "positive_conditions": 3,
+      "numeric_adoption_gate_passed": true,
+      "submission_eligible": true,
+      "conclusion": "수치 gate 통과; 환자별 악화·recall·비용 검토 필요",
+      "variability_scope": "descriptive matched-condition sample SD; same-fold seeds share patients, not three independent cohorts or a confidence interval"
+    },
+    {
+      "axis": "brightness",
+      "name": "밝기",
+      "change": "geometry + brightness factor U[.85,1.15]",
+      "matched_conditions": 3,
+      "mean_control_ba": 0.8979845716368681,
+      "mean_candidate_ba": 0.8944829755382852,
+      "mean_delta_ba": -0.003501596098582952,
+      "delta_sample_sd": 0.017196785524231678,
+      "positive_conditions": 1,
+      "numeric_adoption_gate_passed": false,
+      "submission_eligible": false,
+      "conclusion": "수치 gate 실패; 이 변경의 안정적 개선 근거 부족; 공식 허용 미확정, 제출 설정 채택 제외",
+      "variability_scope": "descriptive matched-condition sample SD; same-fold seeds share patients, not three independent cohorts or a confidence interval"
+    },
+    {
+      "axis": "contrast",
+      "name": "대비",
+      "change": "geometry + contrast factor U[.85,1.15]",
+      "matched_conditions": 1,
+      "mean_control_ba": 0.904690618762475,
+      "mean_candidate_ba": 0.9145833333333333,
+      "mean_delta_ba": 0.009892714570858274,
+      "delta_sample_sd": null,
+      "positive_conditions": 1,
+      "numeric_adoption_gate_passed": false,
+      "submission_eligible": false,
+      "conclusion": "확인 조건 부족; 단발 결과로 채택하지 않음; 공식 허용 미확정, 제출 설정 채택 제외",
+      "variability_scope": "descriptive matched-condition sample SD; same-fold seeds share patients, not three independent cohorts or a confidence interval"
+    }
+  ],
+  "omitted_runs": [
+    {
+      "id": "resnet18_20261125_contrast_f1_s42",
+      "axis": "contrast",
+      "status": "not_run_predeclared_gate",
+      "role": "conditional_fold_confirmation"
+    },
+    {
+      "id": "resnet18_20261125_contrast_f0_s43",
+      "axis": "contrast",
+      "status": "not_run_predeclared_gate",
+      "role": "conditional_seed_confirmation"
+    }
+  ],
+  "checkpoint_repackaging": "Only config.data_root/output_root changed in published copies; all model tensors and prediction metadata are exact; original local files are immutable.",
+  "config_recorded_note": "Original machine data/output paths are omitted; other recorded values are preserved. config.json is a separate portable recipe for task2/experiments/20261125/code.",
+  "threshold_status": "exploratory conditional LOPO diagnosis only; deployment threshold remains .5 and no threshold map is distributed",
+  "limitations": [
+    "All metrics use development validation, not private/final Test; validation also selects checkpoint epochs.",
+    "Fold0 seed42/43 share patients; mean/sample SD describe three conditions, not three independent patient cohorts or confidence intervals.",
+    "Rotation-only versus combined augmentation isolates removing horizontal flip from this policy; it is not a flip-only comparison or an isolated rotation contribution.",
+    "Photometric confirmation is selected from two fold0 discoveries; budget selection and repeated validation introduce selection bias.",
+    "Brightness/contrast and threshold deployment permissions remain unconfirmed, so experimental gains do not authorize submission adoption.",
+    "LOPO calibration is conditional on checkpoints already selected by the full validation set, has no deployment threshold, and is not comparable as a matched effect to fixed-.5 training changes.",
+    "Whole-run time ratios include early stopping and newer per-epoch resumable-state I/O, not pure transformation or LR computation costs.",
+    "Local original source and all twenty older checkpoints were preserved; remote publication is a separate operation."
+  ]
+}

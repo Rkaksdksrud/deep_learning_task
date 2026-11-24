@@ -1,0 +1,8 @@
+{
+  "all_checks_passed": true,
+  "historical_checkpoint_count": 20,
+  "canonical_source_files_preserved": 13,
+  "workspace_source_files_preserved": 13,
+  "frozen_suite_inputs_preserved": 18,
+  "verified_new_states_checked": 8
+}

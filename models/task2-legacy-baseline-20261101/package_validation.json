@@ -1,0 +1,19 @@
+{
+  "all_checks_passed": true,
+  "models_checked": 1,
+  "offline_download_and_all_checksums_passed": true,
+  "all122_tensors_exact": true,
+  "only_two_config_paths_changed": true,
+  "other_metadata_exact": true,
+  "synthetic_RGB_L_RGBA_CPU_probability_and_binary_parity": true,
+  "actual_CLI_matches_probabilities": true,
+  "existing_CSV_preserved": true,
+  "original_checkpoint_preserved": true,
+  "original_checkpoint_sha256": "5e42a1b56ea37086742628c69770d31662a092aa40f78e34356defc9442c00d9",
+  "published_checkpoint_sha256": "18fab64e80e123b7a97357a6fed94d4ba021ed9f3d7f8f848a44db3eaad62572",
+  "archive_sha256": "6428c1012344e4663a6aeb555b259d90cf5d703f097d250c2dcc200760ec9a36",
+  "assignment_performance_measured_this_check": false,
+  "original_training_source_snapshot_available": false,
+  "direct_legacy_full_reinference_performed_this_check": false,
+  "scope": "Synthetic package checks and parity only; historical validation described separately"
+}
