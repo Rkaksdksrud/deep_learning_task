@@ -1,0 +1,1141 @@
+{
+  "format_version": 1,
+  "experiment_date": "2026-11-24",
+  "publication_status": "prepared; verify actual branch/Release publication separately",
+  "release_tag": "task2-training-settings-20261124-v1",
+  "completed_full_runs": 8,
+  "verified_full_runs": 8,
+  "total_training_seconds": 2827.7509532089985,
+  "base_config_recorded": {
+    "data_root": "data/raw",
+    "output_root": "runs",
+    "seed": 42,
+    "n_splits": 5,
+    "val_fold": 0,
+    "image_size": 224,
+    "batch_size": 16,
+    "num_workers": 0,
+    "cpu_threads": 4,
+    "device": "cuda",
+    "epochs": 30,
+    "patience": 7,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "class_weighted_loss": true,
+    "aux_loss_weight": 0.3,
+    "threshold": 0.5,
+    "geometric_augmentation": false,
+    "lr_scheduler": "cosine",
+    "validation_class_weighted_loss": true
+  },
+  "confirmation_policy": {
+    "max_fold_confirmations": 2,
+    "f0_abs_delta_min": 0.01,
+    "ranking": "descending absolute f0 BA difference, tie by primary order; negative effects can be confirmed to test whether reference setting helps",
+    "max_seed_confirmations": 1,
+    "seed_gate": "same sign f0/f1 changes and abs(mean delta)>=0.01; prefer positive stable candidate, else most consistent negative effect",
+    "adoption_gate": "three matched conditions mean delta >=0.01, at least two positive, none below -0.01; then examine recalls/patients/time; no mandatory adoption from gate alone"
+  },
+  "runs": [
+    {
+      "run_id": "resnet18_20261124_reference_f0_s42",
+      "axis": "reference",
+      "role": "reference",
+      "fold": 0,
+      "seed": 42,
+      "changed": {},
+      "control_id": "resnet18_20261124_reference_f0_s42",
+      "status": "independently_verified",
+      "metrics": {
+        "balanced_accuracy": 0.4755364271457086,
+        "accuracy": 0.2797527047913447,
+        "sensitivity": 0.8802395209580839,
+        "specificity": 0.07083333333333333,
+        "precision": 0.2478920741989882,
+        "f1": 0.3868421052631579,
+        "auroc": 0.32520583832335326,
+        "confusion_matrix": [
+          [
+            34,
+            446
+          ],
+          [
+            20,
+            147
+          ]
+        ],
+        "samples": 647,
+        "threshold": 0.5,
+        "loss": 3.1857114594218277
+      },
+      "best_epoch": 2,
+      "epochs_completed": 9,
+      "training_seconds": 214.7990706710002,
+      "peak_gpu_memory_mib": 578.33544921875,
+      "state_save_seconds": 1.0136292859997411,
+      "resumed_from_epoch": 0,
+      "validation_patient_count": 6,
+      "single_class_patient_count": 0,
+      "worst_two_class_patient_ba": 0.25925925925925924,
+      "checkpoint_sha256": "fb6f1982f48ef510c1a349c53c8760d4e23a070f493eca48820ffe0d45a3ea11",
+      "inference_package_registry": "../../models/task2-training-settings-20261124/manifest.json",
+      "resume_scope": "selected best package is inference-only; separate last training state remains local; same-environment epoch-boundary resume only"
+    },
+    {
+      "run_id": "resnet18_20261124_unweighted_f0_s42",
+      "axis": "class_weighted_loss",
+      "role": "discovery",
+      "fold": 0,
+      "seed": 42,
+      "changed": {
+        "class_weighted_loss": false
+      },
+      "control_id": "resnet18_20261124_reference_f0_s42",
+      "status": "independently_verified",
+      "metrics": {
+        "balanced_accuracy": 0.5965319361277446,
+        "accuracy": 0.5780525502318392,
+        "sensitivity": 0.6347305389221557,
+        "specificity": 0.5583333333333333,
+        "precision": 0.3333333333333333,
+        "f1": 0.43711340206185567,
+        "auroc": 0.5801521956087824,
+        "confusion_matrix": [
+          [
+            268,
+            212
+          ],
+          [
+            61,
+            106
+          ]
+        ],
+        "samples": 647,
+        "threshold": 0.5,
+        "loss": 2.2799481216358184
+      },
+      "best_epoch": 20,
+      "epochs_completed": 27,
+      "training_seconds": 642.0584778960001,
+      "peak_gpu_memory_mib": 578.33544921875,
+      "state_save_seconds": 3.152578610001001,
+      "resumed_from_epoch": 0,
+      "validation_patient_count": 6,
+      "single_class_patient_count": 0,
+      "worst_two_class_patient_ba": 0.46875,
+      "checkpoint_sha256": "dc2bf4f0ef3fab6b98c77106b63ae131a05bd7c2824dccda35a4e86e6b9749dc",
+      "inference_package_registry": "../../models/task2-training-settings-20261124/manifest.json",
+      "resume_scope": "selected best package is inference-only; separate last training state remains local; same-environment epoch-boundary resume only"
+    },
+    {
+      "run_id": "resnet18_20261124_lr1e4_f0_s42",
+      "axis": "learning_rate",
+      "role": "discovery",
+      "fold": 0,
+      "seed": 42,
+      "changed": {
+        "learning_rate": 0.0001
+      },
+      "control_id": "resnet18_20261124_reference_f0_s42",
+      "status": "independently_verified",
+      "metrics": {
+        "balanced_accuracy": 0.5644273952095809,
+        "accuracy": 0.7418856259659969,
+        "sensitivity": 0.19760479041916168,
+        "specificity": 0.93125,
+        "precision": 0.5,
+        "f1": 0.2832618025751073,
+        "auroc": 0.5105913173652695,
+        "confusion_matrix": [
+          [
+            447,
+            33
+          ],
+          [
+            134,
+            33
+          ]
+        ],
+        "samples": 647,
+        "threshold": 0.5,
+        "loss": 1.8870563483907226
+      },
+      "best_epoch": 1,
+      "epochs_completed": 8,
+      "training_seconds": 188.40972241599957,
+      "peak_gpu_memory_mib": 578.33544921875,
+      "state_save_seconds": 0.8939027500005068,
+      "resumed_from_epoch": 0,
+      "validation_patient_count": 6,
+      "single_class_patient_count": 0,
+      "worst_two_class_patient_ba": 0.3,
+      "checkpoint_sha256": "eb99a481f58a4e14fec511d85f6fea1a51fd6cb341ddedcfd96b6824bcc78664",
+      "inference_package_registry": "../../models/task2-training-settings-20261124/manifest.json",
+      "resume_scope": "selected best package is inference-only; separate last training state remains local; same-environment epoch-boundary resume only"
+    },
+    {
+      "run_id": "resnet18_20261124_wd0_f0_s42",
+      "axis": "weight_decay",
+      "role": "discovery",
+      "fold": 0,
+      "seed": 42,
+      "changed": {
+        "weight_decay": 0.0
+      },
+      "control_id": "resnet18_20261124_reference_f0_s42",
+      "status": "independently_verified",
+      "metrics": {
+        "balanced_accuracy": 0.5394211576846307,
+        "accuracy": 0.6816074188562596,
+        "sensitivity": 0.24550898203592814,
+        "specificity": 0.8333333333333334,
+        "precision": 0.33884297520661155,
+        "f1": 0.2847222222222222,
+        "auroc": 0.544748003992016,
+        "confusion_matrix": [
+          [
+            400,
+            80
+          ],
+          [
+            126,
+            41
+          ]
+        ],
+        "samples": 647,
+        "threshold": 0.5,
+        "loss": 2.3953388347778466
+      },
+      "best_epoch": 1,
+      "epochs_completed": 8,
+      "training_seconds": 189.6905793850001,
+      "peak_gpu_memory_mib": 578.33544921875,
+      "state_save_seconds": 0.9350475110004481,
+      "resumed_from_epoch": 0,
+      "validation_patient_count": 6,
+      "single_class_patient_count": 0,
+      "worst_two_class_patient_ba": 0.42857142857142855,
+      "checkpoint_sha256": "278dcd4f1d94544293c35bd23fb4bea9356d3a766d42f4bbf3762e2524573709",
+      "inference_package_registry": "../../models/task2-training-settings-20261124/manifest.json",
+      "resume_scope": "selected best package is inference-only; separate last training state remains local; same-environment epoch-boundary resume only"
+    },
+    {
+      "run_id": "resnet18_20261124_constant_f0_s42",
+      "axis": "lr_scheduler",
+      "role": "discovery",
+      "fold": 0,
+      "seed": 42,
+      "changed": {
+        "lr_scheduler": "constant"
+      },
+      "control_id": "resnet18_20261124_reference_f0_s42",
+      "status": "independently_verified",
+      "metrics": {
+        "balanced_accuracy": 0.5388597804391217,
+        "accuracy": 0.5301391035548686,
+        "sensitivity": 0.5568862275449101,
+        "specificity": 0.5208333333333334,
+        "precision": 0.28792569659442724,
+        "f1": 0.3795918367346939,
+        "auroc": 0.506686626746507,
+        "confusion_matrix": [
+          [
+            250,
+            230
+          ],
+          [
+            74,
+            93
+          ]
+        ],
+        "samples": 647,
+        "threshold": 0.5,
+        "loss": 2.929444053627047
+      },
+      "best_epoch": 11,
+      "epochs_completed": 18,
+      "training_seconds": 430.18808135499967,
+      "peak_gpu_memory_mib": 578.33544921875,
+      "state_save_seconds": 2.293552062001254,
+      "resumed_from_epoch": 0,
+      "validation_patient_count": 6,
+      "single_class_patient_count": 0,
+      "worst_two_class_patient_ba": 0.0,
+      "checkpoint_sha256": "c2d64b2ec730660cb97c4aa4b6be62911fffc69edff0bb0b2e6d905ae317415b",
+      "inference_package_registry": "../../models/task2-training-settings-20261124/manifest.json",
+      "resume_scope": "selected best package is inference-only; separate last training state remains local; same-environment epoch-boundary resume only"
+    },
+    {
+      "run_id": "resnet18_20261124_unweighted_f1_s42",
+      "axis": "class_weighted_loss",
+      "role": "conditional_fold_confirmation",
+      "fold": 1,
+      "seed": 42,
+      "changed": {
+        "class_weighted_loss": false
+      },
+      "control_id": "resnet18_20261111_control_f1_s42",
+      "status": "independently_verified",
+      "metrics": {
+        "balanced_accuracy": 0.7827349290780141,
+        "accuracy": 0.7784431137724551,
+        "sensitivity": 0.7925531914893617,
+        "specificity": 0.7729166666666667,
+        "precision": 0.5775193798449613,
+        "f1": 0.6681614349775785,
+        "auroc": 0.7021276595744681,
+        "confusion_matrix": [
+          [
+            371,
+            109
+          ],
+          [
+            39,
+            149
+          ]
+        ],
+        "samples": 668,
+        "threshold": 0.5,
+        "loss": 1.509813258833651
+      },
+      "best_epoch": 13,
+      "epochs_completed": 20,
+      "training_seconds": 490.76951397299945,
+      "peak_gpu_memory_mib": 576.58544921875,
+      "state_save_seconds": 2.4515244889989845,
+      "resumed_from_epoch": 0,
+      "validation_patient_count": 6,
+      "single_class_patient_count": 0,
+      "worst_two_class_patient_ba": 0.5,
+      "checkpoint_sha256": "1a438136d6da68eaf2f959d3f81e678c9e947ab1119a5e83ceb87304aceef64b",
+      "inference_package_registry": "../../models/task2-training-settings-20261124/manifest.json",
+      "resume_scope": "selected best package is inference-only; separate last training state remains local; same-environment epoch-boundary resume only"
+    },
+    {
+      "run_id": "resnet18_20261124_unweighted_f0_s43",
+      "axis": "class_weighted_loss",
+      "role": "conditional_seed_confirmation",
+      "fold": 0,
+      "seed": 43,
+      "changed": {
+        "class_weighted_loss": false
+      },
+      "control_id": "resnet18_20261111_control_f0_s43",
+      "status": "independently_verified",
+      "metrics": {
+        "balanced_accuracy": 0.5480975548902196,
+        "accuracy": 0.517774343122102,
+        "sensitivity": 0.6107784431137725,
+        "specificity": 0.48541666666666666,
+        "precision": 0.2922636103151863,
+        "f1": 0.3953488372093023,
+        "auroc": 0.5452033433133733,
+        "confusion_matrix": [
+          [
+            233,
+            247
+          ],
+          [
+            65,
+            102
+          ]
+        ],
+        "samples": 647,
+        "threshold": 0.5,
+        "loss": 1.7377333751173238
+      },
+      "best_epoch": 3,
+      "epochs_completed": 10,
+      "training_seconds": 232.00750840099954,
+      "peak_gpu_memory_mib": 578.33544921875,
+      "state_save_seconds": 1.0794727049988069,
+      "resumed_from_epoch": 0,
+      "validation_patient_count": 6,
+      "single_class_patient_count": 0,
+      "worst_two_class_patient_ba": 0.0,
+      "checkpoint_sha256": "834084ee9ccdeefb72df2f820cf6e681883dc868415254c471ca0bbd5f2f9edd",
+      "inference_package_registry": "../../models/task2-training-settings-20261124/manifest.json",
+      "resume_scope": "selected best package is inference-only; separate last training state remains local; same-environment epoch-boundary resume only"
+    },
+    {
+      "run_id": "resnet18_20261124_lr1e4_f1_s42",
+      "axis": "learning_rate",
+      "role": "conditional_fold_confirmation",
+      "fold": 1,
+      "seed": 42,
+      "changed": {
+        "learning_rate": 0.0001
+      },
+      "control_id": "resnet18_20261111_control_f1_s42",
+      "status": "independently_verified",
+      "metrics": {
+        "balanced_accuracy": 0.7128324468085107,
+        "accuracy": 0.7919161676646707,
+        "sensitivity": 0.5319148936170213,
+        "specificity": 0.89375,
+        "precision": 0.6622516556291391,
+        "f1": 0.5899705014749262,
+        "auroc": 0.6815602836879433,
+        "confusion_matrix": [
+          [
+            429,
+            51
+          ],
+          [
+            88,
+            100
+          ]
+        ],
+        "samples": 668,
+        "threshold": 0.5,
+        "loss": 1.4905264176071873
+      },
+      "best_epoch": 12,
+      "epochs_completed": 19,
+      "training_seconds": 439.8279991119998,
+      "peak_gpu_memory_mib": 576.58544921875,
+      "state_save_seconds": 2.1720658499998535,
+      "resumed_from_epoch": 0,
+      "validation_patient_count": 6,
+      "single_class_patient_count": 0,
+      "worst_two_class_patient_ba": 0.5,
+      "checkpoint_sha256": "abcfffbd2efac4741f8e8e13716056046cd641a65523dc1c638378e6e1052b6b",
+      "inference_package_registry": "../../models/task2-training-settings-20261124/manifest.json",
+      "resume_scope": "selected best package is inference-only; separate last training state remains local; same-environment epoch-boundary resume only"
+    }
+  ],
+  "axis_summaries": [
+    {
+      "axis": "class_weighted_loss",
+      "name": "학습 클래스 가중치",
+      "change": "weighted CE → 일반 CE",
+      "matched_conditions": 3,
+      "mean_delta_ba": 0.06675284183406237,
+      "delta_sample_sd": 0.10386769649466449,
+      "numeric_adoption_gate_passed": false,
+      "conclusion": "조건에 따라 방향이 바뀜; 현재 reference 유지",
+      "mean_control_ba": 0.5757019648645971,
+      "mean_candidate_ba": 0.6424548066986594,
+      "adopted_automatically": false,
+      "pairs": [
+        {
+          "axis": "class_weighted_loss",
+          "role": "discovery",
+          "fold": 0,
+          "seed": 42,
+          "control_id": "resnet18_20261124_reference_f0_s42",
+          "candidate_id": "resnet18_20261124_unweighted_f0_s42",
+          "config_differences": {
+            "class_weighted_loss": [
+              true,
+              false
+            ]
+          },
+          "control_ba": 0.4755364271457086,
+          "candidate_ba": 0.5965319361277446,
+          "delta_ba": 0.12099550898203598,
+          "positive_recall_delta": -0.2455089820359282,
+          "negative_recall_delta": 0.48750000000000004,
+          "training_time_ratio": 2.9891119914546436,
+          "time_scope": "whole selected-policy run; completed epochs may differ; historical controls omit per-epoch last-state save, so not isolated per-step compute cost",
+          "improved": 3,
+          "tied": 2,
+          "worsened": 1,
+          "delta_ba_pp": 12.099550898203598,
+          "largest_drop": {
+            "before_ba": 0.5933467741935483,
+            "after_ba": 0.5,
+            "delta_ba": -0.09334677419354831
+          },
+          "baseline_worst_patient_change": {
+            "before_ba": 0.25925925925925924,
+            "after_ba": 0.46875,
+            "delta_ba": 0.20949074074074076
+          }
+        },
+        {
+          "axis": "class_weighted_loss",
+          "role": "conditional_fold_confirmation",
+          "fold": 1,
+          "seed": 42,
+          "control_id": "resnet18_20261111_control_f1_s42",
+          "candidate_id": "resnet18_20261124_unweighted_f1_s42",
+          "config_differences": {
+            "class_weighted_loss": [
+              true,
+              false
+            ]
+          },
+          "control_ba": 0.6504654255319149,
+          "candidate_ba": 0.7827349290780141,
+          "delta_ba": 0.13226950354609923,
+          "positive_recall_delta": 0.29787234042553185,
+          "negative_recall_delta": -0.033333333333333326,
+          "training_time_ratio": 2.6562848535683186,
+          "time_scope": "whole selected-policy run; completed epochs may differ; historical controls omit per-epoch last-state save, so not isolated per-step compute cost",
+          "improved": 4,
+          "tied": 0,
+          "worsened": 2,
+          "delta_ba_pp": 13.226950354609922,
+          "largest_drop": {
+            "before_ba": 0.7625,
+            "after_ba": 0.5,
+            "delta_ba": -0.26249999999999996
+          },
+          "baseline_worst_patient_change": {
+            "before_ba": 0.35625,
+            "after_ba": 0.5,
+            "delta_ba": 0.14375
+          }
+        },
+        {
+          "axis": "class_weighted_loss",
+          "role": "conditional_seed_confirmation",
+          "fold": 0,
+          "seed": 43,
+          "control_id": "resnet18_20261111_control_f0_s43",
+          "candidate_id": "resnet18_20261124_unweighted_f0_s43",
+          "config_differences": {
+            "class_weighted_loss": [
+              true,
+              false
+            ]
+          },
+          "control_ba": 0.6011040419161677,
+          "candidate_ba": 0.5480975548902196,
+          "delta_ba": -0.053006487025948124,
+          "positive_recall_delta": 0.08982035928143717,
+          "negative_recall_delta": -0.19583333333333336,
+          "training_time_ratio": 1.0866288907404662,
+          "time_scope": "whole selected-policy run; completed epochs may differ; historical controls omit per-epoch last-state save, so not isolated per-step compute cost",
+          "improved": 2,
+          "tied": 1,
+          "worsened": 3,
+          "delta_ba_pp": -5.300648702594812,
+          "largest_drop": {
+            "before_ba": 0.2857142857142857,
+            "after_ba": 0.0,
+            "delta_ba": -0.2857142857142857
+          },
+          "baseline_worst_patient_change": {
+            "before_ba": 0.2857142857142857,
+            "after_ba": 0.0,
+            "delta_ba": -0.2857142857142857
+          }
+        }
+      ]
+    },
+    {
+      "axis": "learning_rate",
+      "name": "학습률",
+      "change": "3e-4 → 1e-4",
+      "matched_conditions": 2,
+      "mean_delta_ba": 0.07562899467023401,
+      "delta_sample_sd": 0.018755262637114346,
+      "numeric_adoption_gate_passed": false,
+      "conclusion": "두 개발 fold 상승; 추가 seed·환자 악화 확인 전 채택 보류",
+      "mean_control_ba": 0.5630009263388117,
+      "mean_candidate_ba": 0.6386299210090458,
+      "adopted_automatically": false,
+      "pairs": [
+        {
+          "axis": "learning_rate",
+          "role": "discovery",
+          "fold": 0,
+          "seed": 42,
+          "control_id": "resnet18_20261124_reference_f0_s42",
+          "candidate_id": "resnet18_20261124_lr1e4_f0_s42",
+          "config_differences": {
+            "learning_rate": [
+              0.0003,
+              0.0001
+            ]
+          },
+          "control_ba": 0.4755364271457086,
+          "candidate_ba": 0.5644273952095809,
+          "delta_ba": 0.08889096806387226,
+          "positive_recall_delta": -0.6826347305389222,
+          "negative_recall_delta": 0.8604166666666667,
+          "training_time_ratio": 0.8771440296619335,
+          "time_scope": "whole selected-policy run; completed epochs may differ; historical controls omit per-epoch last-state save, so not isolated per-step compute cost",
+          "improved": 2,
+          "tied": 2,
+          "worsened": 2,
+          "delta_ba_pp": 8.889096806387226,
+          "largest_drop": {
+            "before_ba": 0.5,
+            "after_ba": 0.3,
+            "delta_ba": -0.2
+          },
+          "baseline_worst_patient_change": {
+            "before_ba": 0.25925925925925924,
+            "after_ba": 0.5,
+            "delta_ba": 0.24074074074074076
+          }
+        },
+        {
+          "axis": "learning_rate",
+          "role": "conditional_fold_confirmation",
+          "fold": 1,
+          "seed": 42,
+          "control_id": "resnet18_20261111_control_f1_s42",
+          "candidate_id": "resnet18_20261124_lr1e4_f1_s42",
+          "config_differences": {
+            "learning_rate": [
+              0.0003,
+              0.0001
+            ]
+          },
+          "control_ba": 0.6504654255319149,
+          "candidate_ba": 0.7128324468085107,
+          "delta_ba": 0.06236702127659577,
+          "positive_recall_delta": 0.03723404255319146,
+          "negative_recall_delta": 0.08750000000000002,
+          "training_time_ratio": 2.3805644379955138,
+          "time_scope": "whole selected-policy run; completed epochs may differ; historical controls omit per-epoch last-state save, so not isolated per-step compute cost",
+          "improved": 3,
+          "tied": 1,
+          "worsened": 2,
+          "delta_ba_pp": 6.236702127659576,
+          "largest_drop": {
+            "before_ba": 0.6521739130434783,
+            "after_ba": 0.5,
+            "delta_ba": -0.15217391304347827
+          },
+          "baseline_worst_patient_change": {
+            "before_ba": 0.35625,
+            "after_ba": 0.5,
+            "delta_ba": 0.14375
+          }
+        }
+      ]
+    },
+    {
+      "axis": "weight_decay",
+      "name": "Weight decay",
+      "change": "1e-4 → 0",
+      "matched_conditions": 1,
+      "mean_delta_ba": 0.06388473053892213,
+      "delta_sample_sd": null,
+      "numeric_adoption_gate_passed": false,
+      "conclusion": "fold0 단발 탐색 결과; 일반적 우열·안정성 미확인",
+      "mean_control_ba": 0.4755364271457086,
+      "mean_candidate_ba": 0.5394211576846307,
+      "adopted_automatically": false,
+      "pairs": [
+        {
+          "axis": "weight_decay",
+          "role": "discovery",
+          "fold": 0,
+          "seed": 42,
+          "control_id": "resnet18_20261124_reference_f0_s42",
+          "candidate_id": "resnet18_20261124_wd0_f0_s42",
+          "config_differences": {
+            "weight_decay": [
+              0.0001,
+              0.0
+            ]
+          },
+          "control_ba": 0.4755364271457086,
+          "candidate_ba": 0.5394211576846307,
+          "delta_ba": 0.06388473053892213,
+          "positive_recall_delta": -0.6347305389221558,
+          "negative_recall_delta": 0.7625000000000001,
+          "training_time_ratio": 0.88310707673192,
+          "time_scope": "whole selected-policy run; completed epochs may differ; historical controls omit per-epoch last-state save, so not isolated per-step compute cost",
+          "improved": 3,
+          "tied": 1,
+          "worsened": 2,
+          "delta_ba_pp": 6.388473053892213,
+          "largest_drop": {
+            "before_ba": 0.5933467741935483,
+            "after_ba": 0.5,
+            "delta_ba": -0.09334677419354831
+          },
+          "baseline_worst_patient_change": {
+            "before_ba": 0.25925925925925924,
+            "after_ba": 0.5,
+            "delta_ba": 0.24074074074074076
+          }
+        }
+      ]
+    },
+    {
+      "axis": "lr_scheduler",
+      "name": "스케줄",
+      "change": "cosine → constant",
+      "matched_conditions": 1,
+      "mean_delta_ba": 0.06332335329341315,
+      "delta_sample_sd": null,
+      "numeric_adoption_gate_passed": false,
+      "conclusion": "fold0 단발 탐색 결과; 일반적 우열·안정성 미확인",
+      "mean_control_ba": 0.4755364271457086,
+      "mean_candidate_ba": 0.5388597804391217,
+      "adopted_automatically": false,
+      "pairs": [
+        {
+          "axis": "lr_scheduler",
+          "role": "discovery",
+          "fold": 0,
+          "seed": 42,
+          "control_id": "resnet18_20261124_reference_f0_s42",
+          "candidate_id": "resnet18_20261124_constant_f0_s42",
+          "config_differences": {
+            "lr_scheduler": [
+              "cosine",
+              "constant"
+            ]
+          },
+          "control_ba": 0.4755364271457086,
+          "candidate_ba": 0.5388597804391217,
+          "delta_ba": 0.06332335329341315,
+          "positive_recall_delta": -0.32335329341317376,
+          "negative_recall_delta": 0.45000000000000007,
+          "training_time_ratio": 2.0027464737680494,
+          "time_scope": "whole selected-policy run; completed epochs may differ; historical controls omit per-epoch last-state save, so not isolated per-step compute cost",
+          "improved": 2,
+          "tied": 1,
+          "worsened": 3,
+          "delta_ba_pp": 6.332335329341316,
+          "largest_drop": {
+            "before_ba": 0.5,
+            "after_ba": 0.0,
+            "delta_ba": -0.5
+          },
+          "baseline_worst_patient_change": {
+            "before_ba": 0.25925925925925924,
+            "after_ba": 0.48125,
+            "delta_ba": 0.22199074074074077
+          }
+        }
+      ]
+    }
+  ],
+  "comparisons": [
+    {
+      "axis": "class_weighted_loss",
+      "role": "discovery",
+      "fold": 0,
+      "seed": 42,
+      "control_id": "resnet18_20261124_reference_f0_s42",
+      "candidate_id": "resnet18_20261124_unweighted_f0_s42",
+      "config_differences": {
+        "class_weighted_loss": [
+          true,
+          false
+        ]
+      },
+      "control_ba": 0.4755364271457086,
+      "candidate_ba": 0.5965319361277446,
+      "delta_ba": 0.12099550898203598,
+      "positive_recall_delta": -0.2455089820359282,
+      "negative_recall_delta": 0.48750000000000004,
+      "training_time_ratio": 2.9891119914546436,
+      "time_scope": "whole selected-policy run; completed epochs may differ; historical controls omit per-epoch last-state save, so not isolated per-step compute cost",
+      "improved": 3,
+      "tied": 2,
+      "worsened": 1,
+      "delta_ba_pp": 12.099550898203598,
+      "largest_drop": {
+        "before_ba": 0.5933467741935483,
+        "after_ba": 0.5,
+        "delta_ba": -0.09334677419354831
+      },
+      "baseline_worst_patient_change": {
+        "before_ba": 0.25925925925925924,
+        "after_ba": 0.46875,
+        "delta_ba": 0.20949074074074076
+      }
+    },
+    {
+      "axis": "learning_rate",
+      "role": "discovery",
+      "fold": 0,
+      "seed": 42,
+      "control_id": "resnet18_20261124_reference_f0_s42",
+      "candidate_id": "resnet18_20261124_lr1e4_f0_s42",
+      "config_differences": {
+        "learning_rate": [
+          0.0003,
+          0.0001
+        ]
+      },
+      "control_ba": 0.4755364271457086,
+      "candidate_ba": 0.5644273952095809,
+      "delta_ba": 0.08889096806387226,
+      "positive_recall_delta": -0.6826347305389222,
+      "negative_recall_delta": 0.8604166666666667,
+      "training_time_ratio": 0.8771440296619335,
+      "time_scope": "whole selected-policy run; completed epochs may differ; historical controls omit per-epoch last-state save, so not isolated per-step compute cost",
+      "improved": 2,
+      "tied": 2,
+      "worsened": 2,
+      "delta_ba_pp": 8.889096806387226,
+      "largest_drop": {
+        "before_ba": 0.5,
+        "after_ba": 0.3,
+        "delta_ba": -0.2
+      },
+      "baseline_worst_patient_change": {
+        "before_ba": 0.25925925925925924,
+        "after_ba": 0.5,
+        "delta_ba": 0.24074074074074076
+      }
+    },
+    {
+      "axis": "weight_decay",
+      "role": "discovery",
+      "fold": 0,
+      "seed": 42,
+      "control_id": "resnet18_20261124_reference_f0_s42",
+      "candidate_id": "resnet18_20261124_wd0_f0_s42",
+      "config_differences": {
+        "weight_decay": [
+          0.0001,
+          0.0
+        ]
+      },
+      "control_ba": 0.4755364271457086,
+      "candidate_ba": 0.5394211576846307,
+      "delta_ba": 0.06388473053892213,
+      "positive_recall_delta": -0.6347305389221558,
+      "negative_recall_delta": 0.7625000000000001,
+      "training_time_ratio": 0.88310707673192,
+      "time_scope": "whole selected-policy run; completed epochs may differ; historical controls omit per-epoch last-state save, so not isolated per-step compute cost",
+      "improved": 3,
+      "tied": 1,
+      "worsened": 2,
+      "delta_ba_pp": 6.388473053892213,
+      "largest_drop": {
+        "before_ba": 0.5933467741935483,
+        "after_ba": 0.5,
+        "delta_ba": -0.09334677419354831
+      },
+      "baseline_worst_patient_change": {
+        "before_ba": 0.25925925925925924,
+        "after_ba": 0.5,
+        "delta_ba": 0.24074074074074076
+      }
+    },
+    {
+      "axis": "lr_scheduler",
+      "role": "discovery",
+      "fold": 0,
+      "seed": 42,
+      "control_id": "resnet18_20261124_reference_f0_s42",
+      "candidate_id": "resnet18_20261124_constant_f0_s42",
+      "config_differences": {
+        "lr_scheduler": [
+          "cosine",
+          "constant"
+        ]
+      },
+      "control_ba": 0.4755364271457086,
+      "candidate_ba": 0.5388597804391217,
+      "delta_ba": 0.06332335329341315,
+      "positive_recall_delta": -0.32335329341317376,
+      "negative_recall_delta": 0.45000000000000007,
+      "training_time_ratio": 2.0027464737680494,
+      "time_scope": "whole selected-policy run; completed epochs may differ; historical controls omit per-epoch last-state save, so not isolated per-step compute cost",
+      "improved": 2,
+      "tied": 1,
+      "worsened": 3,
+      "delta_ba_pp": 6.332335329341316,
+      "largest_drop": {
+        "before_ba": 0.5,
+        "after_ba": 0.0,
+        "delta_ba": -0.5
+      },
+      "baseline_worst_patient_change": {
+        "before_ba": 0.25925925925925924,
+        "after_ba": 0.48125,
+        "delta_ba": 0.22199074074074077
+      }
+    },
+    {
+      "axis": "class_weighted_loss",
+      "role": "conditional_fold_confirmation",
+      "fold": 1,
+      "seed": 42,
+      "control_id": "resnet18_20261111_control_f1_s42",
+      "candidate_id": "resnet18_20261124_unweighted_f1_s42",
+      "config_differences": {
+        "class_weighted_loss": [
+          true,
+          false
+        ]
+      },
+      "control_ba": 0.6504654255319149,
+      "candidate_ba": 0.7827349290780141,
+      "delta_ba": 0.13226950354609923,
+      "positive_recall_delta": 0.29787234042553185,
+      "negative_recall_delta": -0.033333333333333326,
+      "training_time_ratio": 2.6562848535683186,
+      "time_scope": "whole selected-policy run; completed epochs may differ; historical controls omit per-epoch last-state save, so not isolated per-step compute cost",
+      "improved": 4,
+      "tied": 0,
+      "worsened": 2,
+      "delta_ba_pp": 13.226950354609922,
+      "largest_drop": {
+        "before_ba": 0.7625,
+        "after_ba": 0.5,
+        "delta_ba": -0.26249999999999996
+      },
+      "baseline_worst_patient_change": {
+        "before_ba": 0.35625,
+        "after_ba": 0.5,
+        "delta_ba": 0.14375
+      }
+    },
+    {
+      "axis": "class_weighted_loss",
+      "role": "conditional_seed_confirmation",
+      "fold": 0,
+      "seed": 43,
+      "control_id": "resnet18_20261111_control_f0_s43",
+      "candidate_id": "resnet18_20261124_unweighted_f0_s43",
+      "config_differences": {
+        "class_weighted_loss": [
+          true,
+          false
+        ]
+      },
+      "control_ba": 0.6011040419161677,
+      "candidate_ba": 0.5480975548902196,
+      "delta_ba": -0.053006487025948124,
+      "positive_recall_delta": 0.08982035928143717,
+      "negative_recall_delta": -0.19583333333333336,
+      "training_time_ratio": 1.0866288907404662,
+      "time_scope": "whole selected-policy run; completed epochs may differ; historical controls omit per-epoch last-state save, so not isolated per-step compute cost",
+      "improved": 2,
+      "tied": 1,
+      "worsened": 3,
+      "delta_ba_pp": -5.300648702594812,
+      "largest_drop": {
+        "before_ba": 0.2857142857142857,
+        "after_ba": 0.0,
+        "delta_ba": -0.2857142857142857
+      },
+      "baseline_worst_patient_change": {
+        "before_ba": 0.2857142857142857,
+        "after_ba": 0.0,
+        "delta_ba": -0.2857142857142857
+      }
+    },
+    {
+      "axis": "learning_rate",
+      "role": "conditional_fold_confirmation",
+      "fold": 1,
+      "seed": 42,
+      "control_id": "resnet18_20261111_control_f1_s42",
+      "candidate_id": "resnet18_20261124_lr1e4_f1_s42",
+      "config_differences": {
+        "learning_rate": [
+          0.0003,
+          0.0001
+        ]
+      },
+      "control_ba": 0.6504654255319149,
+      "candidate_ba": 0.7128324468085107,
+      "delta_ba": 0.06236702127659577,
+      "positive_recall_delta": 0.03723404255319146,
+      "negative_recall_delta": 0.08750000000000002,
+      "training_time_ratio": 2.3805644379955138,
+      "time_scope": "whole selected-policy run; completed epochs may differ; historical controls omit per-epoch last-state save, so not isolated per-step compute cost",
+      "improved": 3,
+      "tied": 1,
+      "worsened": 2,
+      "delta_ba_pp": 6.236702127659576,
+      "largest_drop": {
+        "before_ba": 0.6521739130434783,
+        "after_ba": 0.5,
+        "delta_ba": -0.15217391304347827
+      },
+      "baseline_worst_patient_change": {
+        "before_ba": 0.35625,
+        "after_ba": 0.5,
+        "delta_ba": 0.14375
+      }
+    }
+  ],
+  "run_statuses": [
+    {
+      "run_id": "resnet18_20261124_reference_f0_s42",
+      "axis": "reference",
+      "role": "reference",
+      "fold": 0,
+      "seed": 42,
+      "status": "검증 완료",
+      "reason": "completed and independently verified"
+    },
+    {
+      "run_id": "resnet18_20261124_unweighted_f0_s42",
+      "axis": "class_weighted_loss",
+      "role": "discovery",
+      "fold": 0,
+      "seed": 42,
+      "status": "검증 완료",
+      "reason": "completed and independently verified"
+    },
+    {
+      "run_id": "resnet18_20261124_lr1e4_f0_s42",
+      "axis": "learning_rate",
+      "role": "discovery",
+      "fold": 0,
+      "seed": 42,
+      "status": "검증 완료",
+      "reason": "completed and independently verified"
+    },
+    {
+      "run_id": "resnet18_20261124_wd0_f0_s42",
+      "axis": "weight_decay",
+      "role": "discovery",
+      "fold": 0,
+      "seed": 42,
+      "status": "검증 완료",
+      "reason": "completed and independently verified"
+    },
+    {
+      "run_id": "resnet18_20261124_constant_f0_s42",
+      "axis": "lr_scheduler",
+      "role": "discovery",
+      "fold": 0,
+      "seed": 42,
+      "status": "검증 완료",
+      "reason": "completed and independently verified"
+    },
+    {
+      "run_id": "resnet18_20261124_unweighted_f1_s42",
+      "axis": "class_weighted_loss",
+      "role": "conditional_fold_confirmation",
+      "fold": 1,
+      "seed": 42,
+      "status": "검증 완료",
+      "reason": "completed and independently verified"
+    },
+    {
+      "run_id": "resnet18_20261124_unweighted_f0_s43",
+      "axis": "class_weighted_loss",
+      "role": "conditional_seed_confirmation",
+      "fold": 0,
+      "seed": 43,
+      "status": "검증 완료",
+      "reason": "completed and independently verified"
+    },
+    {
+      "run_id": "resnet18_20261124_lr1e4_f1_s42",
+      "axis": "learning_rate",
+      "role": "conditional_fold_confirmation",
+      "fold": 1,
+      "seed": 42,
+      "status": "검증 완료",
+      "reason": "completed and independently verified"
+    },
+    {
+      "run_id": "resnet18_20261124_lr1e4_f0_s43",
+      "axis": "learning_rate",
+      "role": "conditional_seed_confirmation",
+      "fold": 0,
+      "seed": 43,
+      "status": "미실행·사전 gate/예산에 따라 제외",
+      "reason": "predeclared finite-budget selection"
+    },
+    {
+      "run_id": "resnet18_20261124_wd0_f1_s42",
+      "axis": "weight_decay",
+      "role": "conditional_fold_confirmation",
+      "fold": 1,
+      "seed": 42,
+      "status": "미실행·사전 gate/예산에 따라 제외",
+      "reason": "predeclared finite-budget selection"
+    },
+    {
+      "run_id": "resnet18_20261124_wd0_f0_s43",
+      "axis": "weight_decay",
+      "role": "conditional_seed_confirmation",
+      "fold": 0,
+      "seed": 43,
+      "status": "미실행·사전 gate/예산에 따라 제외",
+      "reason": "predeclared finite-budget selection"
+    },
+    {
+      "run_id": "resnet18_20261124_constant_f1_s42",
+      "axis": "lr_scheduler",
+      "role": "conditional_fold_confirmation",
+      "fold": 1,
+      "seed": 42,
+      "status": "미실행·사전 gate/예산에 따라 제외",
+      "reason": "predeclared finite-budget selection"
+    },
+    {
+      "run_id": "resnet18_20261124_constant_f0_s43",
+      "axis": "lr_scheduler",
+      "role": "conditional_seed_confirmation",
+      "fold": 0,
+      "seed": 43,
+      "status": "미실행·사전 gate/예산에 따라 제외",
+      "reason": "predeclared finite-budget selection"
+    }
+  ],
+  "selection": {
+    "fold_confirmation_selection": [
+      "class_weighted_loss",
+      "learning_rate"
+    ],
+    "seed_confirmation_selection": "class_weighted_loss",
+    "seed_confirmation_delta": -0.053006487025948124,
+    "discovery_effects": [
+      {
+        "axis": "class_weighted_loss",
+        "discovery_id": "resnet18_20261124_unweighted_f0_s42",
+        "order": 0,
+        "f0_delta": 0.12099550898203598
+      },
+      {
+        "axis": "learning_rate",
+        "discovery_id": "resnet18_20261124_lr1e4_f0_s42",
+        "order": 1,
+        "f0_delta": 0.08889096806387226
+      },
+      {
+        "axis": "weight_decay",
+        "discovery_id": "resnet18_20261124_wd0_f0_s42",
+        "order": 2,
+        "f0_delta": 0.06388473053892213
+      },
+      {
+        "axis": "lr_scheduler",
+        "discovery_id": "resnet18_20261124_constant_f0_s42",
+        "order": 3,
+        "f0_delta": 0.06332335329341315
+      }
+    ],
+    "confirmation_effects": [
+      {
+        "axis": "class_weighted_loss",
+        "discovery_id": "resnet18_20261124_unweighted_f0_s42",
+        "order": 0,
+        "f0_delta": 0.12099550898203598,
+        "f1_delta": 0.13226950354609923,
+        "two_condition_mean_delta": 0.1266325062640676
+      },
+      {
+        "axis": "learning_rate",
+        "discovery_id": "resnet18_20261124_lr1e4_f0_s42",
+        "order": 1,
+        "f0_delta": 0.08889096806387226,
+        "f1_delta": 0.06236702127659577,
+        "two_condition_mean_delta": 0.07562899467023401
+      }
+    ]
+  },
+  "historical_context": "12 previous full runs and their model files are preserved; geometry results are not the control for this unaugmented study",
+  "limitations": [
+    "One-factor changes around the current unaugmented ResNet18 recipe, not standalone additive contributions or a global optimum search.",
+    "Training class weights vary in one candidate; validation weights and loss tie-break remain fixed from Train counts.",
+    "Confirmation candidates are chosen by absolute fold0 delta, including decreases; axes receive different confirmation budgets and selection bias remains.",
+    "Repeated fold0 seeds are not independent patient cohorts; all folds are development validation, not independent private Test.",
+    "Full-run time includes early stopping and state I/O; historical controls omit the new per-epoch resume-state saves.",
+    "An adoption numeric gate alone does not settle patient-level degradation, recall tradeoffs or computation cost."
+  ]
+}

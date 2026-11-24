@@ -4,6 +4,8 @@
 
 11월11일 **ResNet18 7개**에 이어 11월18일 **GoogLeNet 1개·VGG11 3개·ResNet18·320 1개**의 full 학습과 저장가중치 검증을 완료했다. 모두 환자 holdout 모델이며 전체2,948장으로 재학습한 최종 제출 모델이 아니다. [후속 실험 결과](../experiments/task2-followups-20261118/README.md)와 [후속5개 모델](../models/task2-followups-20261118/README.md)을 함께 확인한다.
 
+11월24일에는 **무증강 ResNet18 학습 설정 8개**를 추가 실행·독립 검증했다. [새 설정 비교](../experiments/task2-training-settings-20261124/README.md)와 [8개 모델](../models/task2-training-settings-20261124/README.md)은 이전 증강 실험과 별개다. 일반 CE는 추가 seed에서 악화해 채택 보류, LR1e-4는 추가 확인 우선 후보이며 기존 기하 증강 참조 모델 선택은 유지한다.
+
 ## 환경과 데이터 위치
 
 원래 학습 환경: Python3.10.13, torch2.10.0+cu128, torchvision0.25.0+cu128, NumPy1.26.4, pandas2.3.3, Pillow12.1.0, scikit-learn1.7.2, RTX4060 Laptop GPU. 아래 명령은 **저장소 루트**에서 실행한다. Task1과 별도 가상환경을 권한다. `task2/requirements.txt`는 기존 Task1의 루트 requirements를 변경하지 않는다.
@@ -139,6 +141,17 @@ python task2/code/googlenet.py --config task2/configs/geometry.json --device cud
 작은 Conv+BN+Dropout 모델과 합성 RGB 영상으로 CPU 검증을 수행했다. 변경 전 코드와 새 코드의 연속 학습, 연속4epoch와 epoch2 원자 커밋 직후 중단→재개에서 선택 가중치·수학적 지표·optimizer/scheduler·RNG가 정확히 일치했다. 시간·처리량은 비교에서 제외했다. 이는 과제 모델의 성능이나 CUDA 재개 수치 일치 검증이 아니다. GoogLeNet/VGG11의 adaptive-pooling CUDA backward에서 비결정적 경고를 관측했으므로 기존 `warn_only=True`를 유지하며 GPU bitwise 일치를 주장하지 않는다.
 
 ## 원본 코드·config와의 차이 및 한계
+
+11월24일 학습 설정 비교를 위해 다음 옵션을 추가했다. [무증강 비교 기록](../experiments/task2-training-settings-20261124/README.md)과 [해당 모델 묶음](../models/task2-training-settings-20261124/README.md)은 이전 증강 실험과 별도 버전이다. 기존 모델·실험 기록은 보존한다.
+
+| 옵션 | 기본 동작 | 비교에서의 사용 |
+|---|---|---|
+| `lr_scheduler` | 미지정 시 기존 `cosine` | `constant`는 초기 학습률을 매 epoch 유지 |
+| `validation_class_weighted_loss` | 미지정 시 학습 가중치 선택을 따름 | `true`로 고정하여 모든 후보의 검증 loss와 BA 동률 판정 기준을 동일하게 유지 |
+
+새 비교의 `class_weighted_loss=false`는 **학습 손실만 일반 CE**로 바꾼다. checkpoint의 `class_weights`는 계속 학습용이고, 명시된 `validation_class_weights`는 Train 클래스 수에서 계산한 평가용이다. 독립 검증기는 새 평가용 값이 있으면 사용하고, 과거 checkpoint는 기존 값으로 처리한다. 정규화·임계값·모델 구조와 기본 cosine 동작은 유지했다. CPU 합성17검사 및 GPU 소규모 학습/독립 재로딩 검증을 완료했다. 테스트 점수를 과제 성능으로 보고하지 않는다.
+
+기존 epoch 경계 state를 재개할 때는 당시 source/config/environment가 일치해야 한다. 새 소스로 과거 state를 강제로 이어 학습하지 않는다. 저장된 추론 checkpoint를 불러 예측하는 경로는 유지한다.
 
 - `common.py`, `data.py`, 세 모델 진입점, `predict.py`는 원본 알고리즘을 유지한다. 배포 config는 경로만 이 저장소 구조에 맞췄고 policy/loss 플래그를 명시했다.
 - `validate.py`에는 명시적인 `--data-root` override와 사용 경로 기록을 추가했다. 학습·metric·모델 선택·전처리 계산은 변경하지 않았다. 새 배포 소스를 과거 checkpoint의 실제 실행 snapshot과 동일하다고 주장하지 않는다.

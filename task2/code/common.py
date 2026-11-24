@@ -178,6 +178,11 @@ def run_epoch(model: nn.Module, loader: DataLoader, device: torch.device,
 
 
 def validate_config(config: dict) -> None:
+    scheduler_name = config.get("lr_scheduler", "cosine")
+    if type(scheduler_name) is not str or scheduler_name not in {"cosine", "constant"}:
+        raise ValueError("lr_scheduler must be exactly 'cosine' or 'constant'")
+    if "validation_class_weighted_loss" in config and type(config["validation_class_weighted_loss"]) is not bool:
+        raise ValueError("validation_class_weighted_loss must be a boolean when specified")
     for key in ("epochs", "batch_size", "patience", "cpu_threads"):
         if type(config[key]) is not int or config[key] < 1:
             raise ValueError(f"{key} must be a positive integer")
@@ -203,6 +208,7 @@ def train(model_name: str, config: dict, smoke_test: bool = False, run_name: str
     if smoke_test:
         config.update(epochs=1, batch_size=2, image_size=96, num_workers=0)
     config.setdefault("geometric_augmentation", False)
+    config.setdefault("lr_scheduler", "cosine")
     if type(config["geometric_augmentation"]) is not bool:
         raise ValueError("geometric_augmentation must be a boolean")
     validate_config(config)
@@ -218,6 +224,12 @@ def train(model_name: str, config: dict, smoke_test: bool = False, run_name: str
     counts = parts["train"]["label"].value_counts().reindex([0, 1]).to_numpy()
     weights = len(parts["train"]) / (2 * counts) if config["class_weighted_loss"] else np.ones(2)
     class_weights = torch.tensor(weights, dtype=torch.float32, device=device)
+    # This optional evaluation-only override keeps checkpoint tie-breaking loss
+    # fixed while comparing different training objectives. Estimate weights
+    # exclusively from training counts; absent override preserves legacy behavior.
+    validation_weighted = config.get("validation_class_weighted_loss", config["class_weighted_loss"])
+    validation_weights = len(parts["train"]) / (2 * counts) if validation_weighted else np.ones(2)
+    validation_class_weights = torch.tensor(validation_weights, dtype=torch.float32, device=device)
     source_hashes = {
         str(source.relative_to(TASK_DIR)): hashlib.sha256(source.read_bytes()).hexdigest()
         for source in sorted((TASK_DIR / "code").glob("*.py"))
@@ -299,14 +311,17 @@ def train(model_name: str, config: dict, smoke_test: bool = False, run_name: str
     loaders = {split: make_loader(frame, config, split == "train") for split, frame in parts.items()}
     model = build_model(model_name).to(device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=config["learning_rate"], weight_decay=config["weight_decay"])
-    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=config["epochs"])
+    if config["lr_scheduler"] == "cosine":
+        scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=config["epochs"])
+    else:
+        scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, lr_lambda=lambda epoch: 1.0)
     history, best_score, best_loss, stale_epochs = [], -1.0, float("inf"), 0
     best_result = None
     weights_path = run_dir / f"{model_name}.pt"
     completed_epoch, previous_elapsed, save_seconds = 0, 0.0, 0.0
 
     def checkpoint_for_current(result: dict) -> dict:
-        return {
+        checkpoint = {
             "format_version": 1, "model_name": model_name, "architecture": ARCHITECTURES[model_name],
             "state_dict": model.state_dict(), "config": config, "epoch": result["epoch"],
             "valid_metrics": result["metrics"], "threshold": config["threshold"],
@@ -314,6 +329,9 @@ def train(model_name: str, config: dict, smoke_test: bool = False, run_name: str
             "initialization": "random; weights=None", "label_mapping": {0: "absent", 1: "present"},
             "preprocessing": {**PREPROCESSING, "image_size": config["image_size"]},
         }
+        if "validation_class_weighted_loss" in config:
+            checkpoint["validation_class_weights"] = validation_weights.tolist()
+        return checkpoint
 
     def write_best_records(result: dict, save_weights: bool) -> None:
         if save_weights:
@@ -357,7 +375,7 @@ def train(model_name: str, config: dict, smoke_test: bool = False, run_name: str
             torch.cuda.reset_peak_memory_stats(device)
         train_metrics, _ = run_epoch(model, loaders["train"], device, class_weights,
                                      config["threshold"], optimizer, config["aux_loss_weight"])
-        valid_metrics, probabilities = run_epoch(model, loaders["valid"], device, class_weights, config["threshold"])
+        valid_metrics, probabilities = run_epoch(model, loaders["valid"], device, validation_class_weights, config["threshold"])
         row = {"epoch": epoch, "learning_rate": optimizer.param_groups[0]["lr"]}
         row["peak_gpu_memory_mib"] = torch.cuda.max_memory_allocated(device) / 2**20 if device.type == "cuda" else None
         for prefix, metrics in (("train", train_metrics), ("valid", valid_metrics)):
@@ -392,6 +410,7 @@ def train(model_name: str, config: dict, smoke_test: bool = False, run_name: str
             break
     write_json(run_dir / "training_summary.json", {
         "model_name": model_name, "smoke_test": smoke_test, "epochs_completed": len(history),
+        "lr_scheduler": config["lr_scheduler"],
         "elapsed_seconds": previous_elapsed + time.perf_counter() - training_started,
         "best_valid_balanced_accuracy": best_score, "weights_path": str(weights_path),
         "resumable_state_path": str(run_dir / STATE_NAME), "state_save_seconds": save_seconds,

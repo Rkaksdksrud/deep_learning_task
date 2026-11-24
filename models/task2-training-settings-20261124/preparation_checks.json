@@ -1,0 +1,22 @@
+{
+  "scope": "Synthetic metadata/package fixtures with mocked checkpoint loader; no real model build, forward, training, GPU or network",
+  "tested_builder_sha256": "e1f68b7dd37a13092ef1e0f6922253c5e25f23dceb671661915de3e57c7acaf2",
+  "completed_eight_run_gate": true,
+  "optional_omissions_reason_without_scores": true,
+  "six_flat_files_internal_and_archive_hashes": true,
+  "original_checkpoint_bytes_preserved": true,
+  "offline_downloader_compatible": true,
+  "input_files_preserved": true,
+  "final_model_selection_not_inferred": true,
+  "active_controller_rejected": true,
+  "ninth_verified_run_rejected": true,
+  "unbound_checkpoint_sha_rejected": true,
+  "augmentation_change_rejected": true,
+  "archived_source_change_rejected": true,
+  "packaged_manifest_overwrite_rejected": true,
+  "output_inside_source_rejected": true,
+  "checkpoint_schema_guard_exercised_with_in_memory_loader": true,
+  "unexpected_top_level_and_nested_private_fields_rejected": true,
+  "nonrandom_initialization_rejected": true,
+  "all_checks_passed": true
+}

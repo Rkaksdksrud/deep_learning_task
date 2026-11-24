@@ -1,0 +1,37 @@
+{
+  "status": "검증 완료",
+  "passed": true,
+  "checks": {
+    "implicit_default_equals_explicit_cosine_exact": true,
+    "legacy_cosine_default_model_optimizer_schedule_rng_metrics_exact": true,
+    "constant_learning_rate_fixed_each_epoch_and_after_last_step": true,
+    "constant_lambda_schedule_serializes_weights_only": true,
+    "constant_interruption_resume_model_optimizer_schedule_rng_best_metrics_exact": true,
+    "scheduler_change_on_resume_rejected": true,
+    "invalid_scheduler_values_and_types_rejected": true,
+    "config_summary_best_and_last_state_record_scheduler": true,
+    "explicit_weighted_validation_preserves_weighted_baseline_exact": true,
+    "unweighted_train_weighted_validation_use_separate_train_estimated_weights": true,
+    "training_weight_metadata_meaning_preserved_with_optional_eval_weights": true,
+    "separate_train_eval_weight_objective_resumes_exactly": true,
+    "changed_validation_objective_on_resume_rejected": true,
+    "independent_validation_uses_explicit_eval_weights_and_matches_saved_loss": true,
+    "independent_validation_old_checkpoint_falls_back_to_train_weights": true,
+    "absent_validation_override_preserves_unweighted_legacy_exact": true,
+    "invalid_validation_weight_option_types_rejected": true
+  },
+  "scope": "CPU toy CNN/BN/dropout; 24 synthetic RGB images; no assignment data or GPU",
+  "constant_epoch_learning_rates": [
+    0.0003,
+    0.0003,
+    0.0003,
+    0.0003
+  ],
+  "canonical_common_sha256": "ce903a55caed21ee4191b27986649acc82b55faeac305765a5d2b2fdea6cd446",
+  "canonical_validate_sha256": "6a3d2053330ec315649d013eb5ac9f8b2461d409b4faa924b8ee22419fc87dbb",
+  "prechange_common_sha256": "148d1f5b90735e4f14e8402da891a05777d0728ed56984a4fbb36a0f6dfecf8b",
+  "limitations": [
+    "No actual-task performance or CUDA exact-resume claim",
+    "Existing runs and checkpoints were not modified"
+  ]
+}

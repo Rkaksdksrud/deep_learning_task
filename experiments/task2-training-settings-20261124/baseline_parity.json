@@ -1,0 +1,16 @@
+{
+  "all_required_checks_passed": true,
+  "model_state_exact": true,
+  "max_probability_difference": 2.9776000998182894e-08,
+  "old_reference": "resnet18_20261111_control_f0_s42",
+  "new_reference": "resnet18_20261124_reference_f0_s42",
+  "checks": {
+    "split_exact": true,
+    "selected_epoch_equal": true,
+    "confusion_matrix_equal": true,
+    "balanced_accuracy_equal": true,
+    "probability_close_1e5": true,
+    "predictions_equal": true
+  },
+  "checkpoint_file_equality": "not expected: new configuration/validation metadata differ despite checked prediction/model parity"
+}

@@ -1,0 +1,17 @@
+{
+  "all_checks_passed": true,
+  "checkpoint_sha256": "eb99a481f58a4e14fec511d85f6fea1a51fd6cb341ddedcfd96b6824bcc78664",
+  "checks": {
+    "manifest_matches_current_data": true,
+    "patient_groups_disjoint": true,
+    "sample_count_matches_checkpoint": true,
+    "probabilities_finite_and_in_range": true,
+    "saved_probabilities_match": true,
+    "max_absolute_probability_difference": 1.1102230246251565e-16,
+    "saved_prediction_mismatches": 0,
+    "saved_balanced_accuracy_matches": true
+  },
+  "source_snapshot_matches_freeze": true,
+  "metric_unit": "image",
+  "single_class_patient_ba": "undefined; available-class recall is meaningful"
+}

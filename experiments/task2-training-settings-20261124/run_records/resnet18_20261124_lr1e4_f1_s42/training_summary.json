@@ -1,0 +1,15 @@
+{
+  "run_id": "resnet18_20261124_lr1e4_f1_s42",
+  "axis": "learning_rate",
+  "role": "conditional_fold_confirmation",
+  "fold": 1,
+  "seed": 42,
+  "status": "independently_verified",
+  "best_epoch": 12,
+  "epochs_completed": 19,
+  "training_seconds": 439.8279991119998,
+  "peak_gpu_memory_mib": 576.58544921875,
+  "state_save_seconds": 2.1720658499998535,
+  "resumed_from_epoch": 0,
+  "resume_scope": "selected best package is inference-only; separate last training state remains local; same-environment epoch-boundary resume only"
+}

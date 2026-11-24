@@ -8,7 +8,8 @@
 | 기존 Task1 v1 | 단일 DNN 학습·배포 기록 보존 | [모델](models/task1-v1/README.md), [실험](experiments/task1-v1/README.md) |
 | Task2 ResNet18 | 전체7개 run 학습·저장가중치 검증 완료 | [실험 비교](experiments/task2-resnet18-20261111/README.md), [학습 코드](task2/README.md) |
 | Task2 후속 실험 | GoogLeNet·VGG11·ResNet320, 전체5개 run 학습·저장가중치 검증 완료 | [새 실험 비교](experiments/task2-followups-20261118/README.md) |
-| Task2 모든 full try의 가중치 | 기존7개 + 후속5개, run별 독립 모델 ZIP | [기존7개](models/task2-resnet18-20261111/README.md), [후속5개](models/task2-followups-20261118/README.md) |
+| Task2 학습 설정 비교 | 무증강 ResNet18 8개 full run·독립 검증 완료 | [설정 비교](experiments/task2-training-settings-20261124/README.md), [모델8개](models/task2-training-settings-20261124/README.md) |
+| Task2 모든 full try의 가중치 | 기존7개 + 후속5개 + 설정 비교8개, 총20개 단일 모델 ZIP | [기존7개](models/task2-resnet18-20261111/README.md), [후속5개](models/task2-followups-20261118/README.md), [설정 비교8개](models/task2-training-settings-20261124/README.md) |
 
 ## Task2 결과
 
@@ -33,6 +34,22 @@ ResNet18·224를 참조 설정으로 유지합니다. 낮춘 VGG 학습률의 �
 위 두 fold 평균을 학습률 개선의 평균 효과로 해석하지 않습니다. GoogLeNet에는 자체 무증강 full 대조군이 없습니다.
 모든 점수는 방법·checkpoint 선택에 사용한 개발용 validation 결과입니다.
 
+## 11월24일 무증강 학습 설정 비교
+
+사용자 요청에 따라 **반전과 회전을 모두 끄고**, 같은 ResNet18·환자 분할·seed에서 설정 하나씩만 바꿨습니다. 새 full run 8개를 GPU에서 순차 실행했고 실측 학습47.13분, 저장 모델 독립 검증8개 및 모든 실제 ZIP의 CPU 추론·체크섬 검증을 완료했습니다. 기존 실험을 대체하는 새 최고 모델을 채택하지 않았습니다.
+
+| reference에서 바꾼 것 | fold0/seed42 BA | 같은 reference 대비 | 추가 확인·판단 |
+|---|---:|---:|---|
+| 없음: weighted CE·lr3e-4·WD1e-4·cosine |47.55%|—|기존 대조군 가중치·예측 재현 확인|
+| 학습 weighted CE → 일반 CE |59.65%|+12.10%p|fold1 +13.23%p, 다른 seed -5.30%p. 사전 채택 gate 실패|
+| lr3e-4 → 1e-4 |56.44%|+8.89%p|fold1 +6.24%p, 두 fold 평균 +7.56%p. 추가 seed 미확인|
+| weight decay1e-4 → 0 |53.94%|+6.39%p|단일 조건 탐색, 최적 강도 미확인|
+| cosine → constant LR |53.89%|+6.33%p|단일 조건 탐색, 일반적 우열 미확인|
+
+학습률은 후속 확인 우선 후보입니다. 다만 fold0 양성 recall이19.76%이고, 일반 CE는 세 조건 평균 +6.68%p여도 seed에서 악화했습니다. 평균만으로 설정을 채택하지 않습니다. 설정별 비교 조건 수가 다르고 모든 점수는 개발용 validation입니다. 조합 효과·강도 최적값·증강 조건으로의 전이는 검증하지 않았습니다. 기존 기하 증강 ResNet18·224 참조 설정을 유지합니다.
+
+[새 결과 기록](experiments/task2-training-settings-20261124/README.md)에서 설정·epoch·시간·혼동행렬·채택 제한을 확인할 수 있습니다. 현재 새8개 ZIP은 로컬 검증 완료 상태이며 Release 게시 확인 중입니다.
+
 ## 팀원이 이번 브랜치와 모델 받기
 
 기존 작업 폴더와 분리해 내려받는 예시입니다.
@@ -56,6 +73,13 @@ python models/task2-followups-20261118/download.py --run googlenet_20261118_geom
 python downloads/task2/googlenet-followup/predict.py --images input_images --output googlenet_predictions.csv --device cpu
 ```
 
+학습 설정 비교8개는 세 번째 manifest와 Release를 사용합니다.
+
+```bash
+python models/task2-training-settings-20261124/download.py --list
+python models/task2-training-settings-20261124/download.py --run resnet18_20261124_lr1e4_f1_s42 --output downloads/task2/lr1e4-f1
+```
+
 Task2는 Python3.10.13에서 확인했습니다. Task1 환경과 분리해 필요한 패키지를 설치한 뒤 추론합니다.
 
 ```bash
@@ -63,7 +87,7 @@ python -m pip install -r task2/requirements.txt
 python downloads/task2/geometry_f0_s42/predict.py --images input_images --output predictions.csv --device cpu
 ```
 
-가중치는 Git commit에 넣지 않고 [기존 Release](https://github.com/Rkaksdksrud/deep_learning_task/releases/tag/task2-resnet18-20261111-v1)와 [후속 Release](https://github.com/Rkaksdksrud/deep_learning_task/releases/tag/task2-followups-20261118-v1)에 연결합니다. 다운로드 URL은 해당 Release가 게시되어 있어야 동작합니다.
+가중치는 Git commit에 넣지 않고 [기존 Release](https://github.com/Rkaksdksrud/deep_learning_task/releases/tag/task2-resnet18-20261111-v1), [후속 Release](https://github.com/Rkaksdksrud/deep_learning_task/releases/tag/task2-followups-20261118-v1), [학습 설정 Release](https://github.com/Rkaksdksrud/deep_learning_task/releases/tag/task2-training-settings-20261124-v1)에 연결합니다. 다운로드 URL은 해당 Release가 게시되어 있어야 동작합니다.
 원본 과제 데이터·영상/라벨·표본별 예측·분할표·영상이 포함된 노트북·과제 PDF는 이 공유본에 포함하지 않습니다.
 재학습/검증에는 허가받은 데이터를 각자 `data/task2/`에 준비합니다.
 

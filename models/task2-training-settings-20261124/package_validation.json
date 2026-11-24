@@ -1,0 +1,184 @@
+{
+  "checked_at_kst": "2026-11-24T21:56:05.121971+09:00",
+  "experiment_id": "training_settings_20261124",
+  "release_tag": "task2-training-settings-20261124-v1",
+  "models_checked": 8,
+  "models": [
+    {
+      "id": "resnet18_20261124_reference_f0_s42",
+      "archive_sha256": "fb851fccb9bb7435586131f6914b9f89c0e2e21c7abd200aeeccc22291a7f6f9",
+      "checkpoint_sha256": "fb6f1982f48ef510c1a349c53c8760d4e23a070f493eca48820ffe0d45a3ea11",
+      "offline_download_and_all_internal_sha256_passed": true,
+      "original_checkpoint_bytes_equal": true,
+      "checkpoint_schema_and_metadata_privacy_checked": true,
+      "train_and_fixed_validation_weight_semantics_checked": true,
+      "holdout_validation_bound_to_exact_checkpoint_bytes": true,
+      "synthetic_images": 3,
+      "synthetic_modes": [
+        "RGB",
+        "L",
+        "RGBA"
+      ],
+      "preprocessing_exact": true,
+      "cpu_probability_exact": true,
+      "binary_predictions_exact": true,
+      "actual_packaged_cli_exact": true,
+      "existing_cli_output_preserved": true
+    },
+    {
+      "id": "resnet18_20261124_unweighted_f0_s42",
+      "archive_sha256": "76bd4dccbf2765343f993d428daef210bd4857ff4266a7405ca4a0955174995f",
+      "checkpoint_sha256": "dc2bf4f0ef3fab6b98c77106b63ae131a05bd7c2824dccda35a4e86e6b9749dc",
+      "offline_download_and_all_internal_sha256_passed": true,
+      "original_checkpoint_bytes_equal": true,
+      "checkpoint_schema_and_metadata_privacy_checked": true,
+      "train_and_fixed_validation_weight_semantics_checked": true,
+      "holdout_validation_bound_to_exact_checkpoint_bytes": true,
+      "synthetic_images": 3,
+      "synthetic_modes": [
+        "RGB",
+        "L",
+        "RGBA"
+      ],
+      "preprocessing_exact": true,
+      "cpu_probability_exact": true,
+      "binary_predictions_exact": true,
+      "actual_packaged_cli_exact": true,
+      "existing_cli_output_preserved": true
+    },
+    {
+      "id": "resnet18_20261124_lr1e4_f0_s42",
+      "archive_sha256": "bf7bad8217873dace80142b8fb7947b934f3ce5dcdb3f852728b20fcea73492d",
+      "checkpoint_sha256": "eb99a481f58a4e14fec511d85f6fea1a51fd6cb341ddedcfd96b6824bcc78664",
+      "offline_download_and_all_internal_sha256_passed": true,
+      "original_checkpoint_bytes_equal": true,
+      "checkpoint_schema_and_metadata_privacy_checked": true,
+      "train_and_fixed_validation_weight_semantics_checked": true,
+      "holdout_validation_bound_to_exact_checkpoint_bytes": true,
+      "synthetic_images": 3,
+      "synthetic_modes": [
+        "RGB",
+        "L",
+        "RGBA"
+      ],
+      "preprocessing_exact": true,
+      "cpu_probability_exact": true,
+      "binary_predictions_exact": true,
+      "actual_packaged_cli_exact": true,
+      "existing_cli_output_preserved": true
+    },
+    {
+      "id": "resnet18_20261124_wd0_f0_s42",
+      "archive_sha256": "fef2984d8e1e0f6fc635548e829e5f3675ddffa84ec99e90a003e221840427cc",
+      "checkpoint_sha256": "278dcd4f1d94544293c35bd23fb4bea9356d3a766d42f4bbf3762e2524573709",
+      "offline_download_and_all_internal_sha256_passed": true,
+      "original_checkpoint_bytes_equal": true,
+      "checkpoint_schema_and_metadata_privacy_checked": true,
+      "train_and_fixed_validation_weight_semantics_checked": true,
+      "holdout_validation_bound_to_exact_checkpoint_bytes": true,
+      "synthetic_images": 3,
+      "synthetic_modes": [
+        "RGB",
+        "L",
+        "RGBA"
+      ],
+      "preprocessing_exact": true,
+      "cpu_probability_exact": true,
+      "binary_predictions_exact": true,
+      "actual_packaged_cli_exact": true,
+      "existing_cli_output_preserved": true
+    },
+    {
+      "id": "resnet18_20261124_constant_f0_s42",
+      "archive_sha256": "25a70b765839c599fd42144ee631bb110ec70867328594f9dffde54d0b9bce5a",
+      "checkpoint_sha256": "c2d64b2ec730660cb97c4aa4b6be62911fffc69edff0bb0b2e6d905ae317415b",
+      "offline_download_and_all_internal_sha256_passed": true,
+      "original_checkpoint_bytes_equal": true,
+      "checkpoint_schema_and_metadata_privacy_checked": true,
+      "train_and_fixed_validation_weight_semantics_checked": true,
+      "holdout_validation_bound_to_exact_checkpoint_bytes": true,
+      "synthetic_images": 3,
+      "synthetic_modes": [
+        "RGB",
+        "L",
+        "RGBA"
+      ],
+      "preprocessing_exact": true,
+      "cpu_probability_exact": true,
+      "binary_predictions_exact": true,
+      "actual_packaged_cli_exact": true,
+      "existing_cli_output_preserved": true
+    },
+    {
+      "id": "resnet18_20261124_unweighted_f1_s42",
+      "archive_sha256": "09775a1d45f1b01b821e99462e3d2e15dbf1a57e63b2b848df86731b5c200d7d",
+      "checkpoint_sha256": "1a438136d6da68eaf2f959d3f81e678c9e947ab1119a5e83ceb87304aceef64b",
+      "offline_download_and_all_internal_sha256_passed": true,
+      "original_checkpoint_bytes_equal": true,
+      "checkpoint_schema_and_metadata_privacy_checked": true,
+      "train_and_fixed_validation_weight_semantics_checked": true,
+      "holdout_validation_bound_to_exact_checkpoint_bytes": true,
+      "synthetic_images": 3,
+      "synthetic_modes": [
+        "RGB",
+        "L",
+        "RGBA"
+      ],
+      "preprocessing_exact": true,
+      "cpu_probability_exact": true,
+      "binary_predictions_exact": true,
+      "actual_packaged_cli_exact": true,
+      "existing_cli_output_preserved": true
+    },
+    {
+      "id": "resnet18_20261124_unweighted_f0_s43",
+      "archive_sha256": "14553eae4d9feb537fb649977521d3ef66f0682ccef372ba6fcab8f5528a749a",
+      "checkpoint_sha256": "834084ee9ccdeefb72df2f820cf6e681883dc868415254c471ca0bbd5f2f9edd",
+      "offline_download_and_all_internal_sha256_passed": true,
+      "original_checkpoint_bytes_equal": true,
+      "checkpoint_schema_and_metadata_privacy_checked": true,
+      "train_and_fixed_validation_weight_semantics_checked": true,
+      "holdout_validation_bound_to_exact_checkpoint_bytes": true,
+      "synthetic_images": 3,
+      "synthetic_modes": [
+        "RGB",
+        "L",
+        "RGBA"
+      ],
+      "preprocessing_exact": true,
+      "cpu_probability_exact": true,
+      "binary_predictions_exact": true,
+      "actual_packaged_cli_exact": true,
+      "existing_cli_output_preserved": true
+    },
+    {
+      "id": "resnet18_20261124_lr1e4_f1_s42",
+      "archive_sha256": "84f416b849ec90d95e3f4615a3953c26010a10130452eb3133fa4e45119b4c05",
+      "checkpoint_sha256": "abcfffbd2efac4741f8e8e13716056046cd641a65523dc1c638378e6e1052b6b",
+      "offline_download_and_all_internal_sha256_passed": true,
+      "original_checkpoint_bytes_equal": true,
+      "checkpoint_schema_and_metadata_privacy_checked": true,
+      "train_and_fixed_validation_weight_semantics_checked": true,
+      "holdout_validation_bound_to_exact_checkpoint_bytes": true,
+      "synthetic_images": 3,
+      "synthetic_modes": [
+        "RGB",
+        "L",
+        "RGBA"
+      ],
+      "preprocessing_exact": true,
+      "cpu_probability_exact": true,
+      "binary_predictions_exact": true,
+      "actual_packaged_cli_exact": true,
+      "existing_cli_output_preserved": true
+    }
+  ],
+  "all_checks_passed": true,
+  "actual_completed_controller_and_verified_id_set_checked": true,
+  "same_size_tampered_archive_rejected": true,
+  "existing_download_output_preserved": true,
+  "course_images_in_package_tests": false,
+  "new_training_performed": false,
+  "gpu_used_for_package_tests": false,
+  "limitation": "Exact CPU parity checks use three synthetic RGB/L/RGBA images per actual checkpoint. Original GPU patient-holdout audits are linked separately; exhaustive input parity and GPU bitwise training reproduction are not asserted."
+}

@@ -1,0 +1,76 @@
+{
+  "resnet18_20261111_control_f1_s42": {
+    "checkpoint_sha256": "15b7308bf55895ad7276d1779edb19a7b755615b415b24dc30eb1855445e9def",
+    "all_checks_passed": true,
+    "selected_epoch": 1,
+    "metrics": {
+      "balanced_accuracy": 0.6504654255319149,
+      "accuracy": 0.718562874251497,
+      "sensitivity": 0.4946808510638298,
+      "specificity": 0.80625,
+      "precision": 0.5,
+      "f1": 0.49732620320855614,
+      "auroc": 0.5875443262411348,
+      "confusion_matrix": [
+        [
+          387,
+          93
+        ],
+        [
+          95,
+          93
+        ]
+      ],
+      "samples": 668,
+      "threshold": 0.5,
+      "loss": 1.2509555134312513
+    },
+    "checks": {
+      "manifest_matches_current_data": true,
+      "patient_groups_disjoint": true,
+      "sample_count_matches_checkpoint": true,
+      "probabilities_finite_and_in_range": true,
+      "saved_probabilities_match": true,
+      "max_absolute_probability_difference": 2.9093933151536078e-08,
+      "saved_prediction_mismatches": 0,
+      "saved_balanced_accuracy_matches": true
+    }
+  },
+  "resnet18_20261111_control_f0_s43": {
+    "checkpoint_sha256": "923503c77e5c71eba39c7f39f13354546ad0a2123db0425f2e55c011fd72b473",
+    "all_checks_passed": true,
+    "selected_epoch": 2,
+    "metrics": {
+      "balanced_accuracy": 0.6011040419161677,
+      "accuracy": 0.6398763523956723,
+      "sensitivity": 0.5209580838323353,
+      "specificity": 0.68125,
+      "precision": 0.3625,
+      "f1": 0.4275184275184275,
+      "auroc": 0.5435815868263474,
+      "confusion_matrix": [
+        [
+          327,
+          153
+        ],
+        [
+          80,
+          87
+        ]
+      ],
+      "samples": 647,
+      "threshold": 0.5,
+      "loss": 1.9978528974787493
+    },
+    "checks": {
+      "manifest_matches_current_data": true,
+      "patient_groups_disjoint": true,
+      "sample_count_matches_checkpoint": true,
+      "probabilities_finite_and_in_range": true,
+      "saved_probabilities_match": true,
+      "max_absolute_probability_difference": 2.9117584232629667e-08,
+      "saved_prediction_mismatches": 0,
+      "saved_balanced_accuracy_matches": true
+    }
+  }
+}

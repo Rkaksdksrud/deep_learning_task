@@ -105,7 +105,7 @@ def validate_checkpoint(weights: str | Path, device: str = "auto",
         valid = selected
     if set(valid["label"]) != {0, 1}:
         raise ValueError("Validation must contain both classes")
-    class_weights = torch.tensor(checkpoint["class_weights"], dtype=torch.float32, device=resolved_device)
+    class_weights = torch.tensor(checkpoint.get("validation_class_weights", checkpoint["class_weights"]), dtype=torch.float32, device=resolved_device)
     if class_weights.shape != (2,) or not bool(torch.isfinite(class_weights).all()) or not bool((class_weights > 0).all()):
         raise ValueError("Checkpoint class weights must be two finite positive values")
     loader = DataLoader(ImageDataset(valid, data_root, config["image_size"]),
