@@ -1,0 +1,117 @@
+{
+  "status": "published_and_verified",
+  "checked_at": "2026-11-25T06:55:18.724396+09:00",
+  "repository": "Rkaksdksrud/deep_learning_task",
+  "branch": "ktg_tried",
+  "code_commit": "7aab8fac28f1a1d341ae57a797e28dcfd0de617f",
+  "release_tag": "task2-augmentation-lr-20261125-v1",
+  "release_url": "https://github.com/Rkaksdksrud/deep_learning_task/releases/tag/task2-augmentation-lr-20261125-v1",
+  "release_is_draft": false,
+  "newly_published_models": 9,
+  "newly_trained_models": 8,
+  "legacy_preserved_models": 1,
+  "total_task2_model_archives": 29,
+  "new_release_assets_verified": 11,
+  "all_new_remote_asset_size_and_sha256_match": true,
+  "all_previous20_remote_model_size_and_sha256_match": true,
+  "public_unauthenticated_download_checks": [
+    {
+      "run_id": "resnet18_20261125_rotation_f0_s42",
+      "unauthenticated_public_download_verified": true,
+      "archive_and_all_inner_hashes_verified": true,
+      "published_checkpoint_sha256": "3363c0f725dae40492551d63102e8de7467403a5f93df4d3a57b51c487503127"
+    },
+    {
+      "run_id": "resnet18_baseline_20261101",
+      "unauthenticated_public_download_verified": true,
+      "archive_and_all_inner_hashes_verified": true,
+      "published_checkpoint_sha256": "18fab64e80e123b7a97357a6fed94d4ba021ed9f3d7f8f848a44db3eaad62572"
+    }
+  ],
+  "new_release_assets": [
+    {
+      "name": "resnet18_20261125_rotation_f0_s42.zip",
+      "size": 41559074,
+      "sha256": "7a0bb9a4188d316e105eb44d9c89cd62a9a820b8657fd89fcfae469132d566fb"
+    },
+    {
+      "name": "resnet18_20261125_lr1e4_f0_s43.zip",
+      "size": 41552065,
+      "sha256": "98133073b44bd46bfd5d0f03ac66363de852344b817faf7d9c124c5b1a90ff34"
+    },
+    {
+      "name": "resnet18_20261125_brightness_f0_s42.zip",
+      "size": 41554935,
+      "sha256": "19f5aa59d845d773b9c4a8ddcf7fe3eff7ae1bda6db974b26846f2f6e61a9eb5"
+    },
+    {
+      "name": "resnet18_20261125_contrast_f0_s42.zip",
+      "size": 41562883,
+      "sha256": "f76922ad6faf648d8e8ac3d52a13d3435e7c50b828c0ae94243c3b5d663af05f"
+    },
+    {
+      "name": "resnet18_20261125_rotation_f0_s43.zip",
+      "size": 41560614,
+      "sha256": "8b2845bd5523043faccc0ca0ed81d8c8c352364d19279143c3dd1fb43e48fe16"
+    },
+    {
+      "name": "resnet18_20261125_rotation_f1_s42.zip",
+      "size": 41562629,
+      "sha256": "b9c73c3a5ce895cb4c2126d11f9249b95f75a66595454c1fda04f4134b4b3d3d"
+    },
+    {
+      "name": "resnet18_20261125_brightness_f1_s42.zip",
+      "size": 41559004,
+      "sha256": "8b6527d542a5ee4a960d1d5add06db2c6fc8a7fd18faa76ff6fb4277a46a0e27"
+    },
+    {
+      "name": "resnet18_20261125_brightness_f0_s43.zip",
+      "size": 41562555,
+      "sha256": "766e58492ac3bff0ad24d5ba370dbb0f5597fb8e5f85105de3669686857097c9"
+    },
+    {
+      "name": "manifest.json",
+      "size": 10914,
+      "sha256": "324d7aef262e34342a8af15a2cc6c06962b29a3795f07a44b43eb74961a776e1"
+    },
+    {
+      "name": "resnet18_baseline_20261101.zip",
+      "size": 41553794,
+      "sha256": "6428c1012344e4663a6aeb555b259d90cf5d703f097d250c2dcc200760ec9a36"
+    },
+    {
+      "name": "legacy_baseline_manifest.json",
+      "size": 2255,
+      "sha256": "0fe615730c8588661b9e18d21d267113804cfa8fee34769315462bb5bfca8099"
+    }
+  ],
+  "previous_model_releases": [
+    {
+      "tag": "task2-resnet18-20261111-v1",
+      "public": true,
+      "archive_sizes_and_remote_sha256_match": true,
+      "models": 7,
+      "url": "https://github.com/Rkaksdksrud/deep_learning_task/releases/tag/task2-resnet18-20261111-v1"
+    },
+    {
+      "tag": "task2-followups-20261118-v1",
+      "public": true,
+      "archive_sizes_and_remote_sha256_match": true,
+      "models": 5,
+      "url": "https://github.com/Rkaksdksrud/deep_learning_task/releases/tag/task2-followups-20261118-v1"
+    },
+    {
+      "tag": "task2-training-settings-20261124-v1",
+      "public": true,
+      "archive_sizes_and_remote_sha256_match": true,
+      "models": 8,
+      "url": "https://github.com/Rkaksdksrud/deep_learning_task/releases/tag/task2-training-settings-20261124-v1"
+    }
+  ],
+  "raw_training_data_included": false,
+  "training_resume_state_included": false,
+  "task1_preserved": true,
+  "threshold_changed": false,
+  "photometric_and_threshold_rule_status": "unconfirmed exploratory; excluded from submission selection",
+  "documentation_note": "This status verifies publication. Packaging-time metrics/manifest notes retain their original build scope."
+}

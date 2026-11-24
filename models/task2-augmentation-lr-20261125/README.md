@@ -1,7 +1,7 @@
 # Task2 회전·학습률·밝기/대비 모델 — 2026-11-25
 
 완료·독립 검증한8개 holdout 모델의 패키지입니다. [manifest.json](manifest.json)에 원본/배포 가중치 및 ZIP 해시를 기록했습니다.
-Release 다운로드는 `task2-augmentation-lr-20261125-v1` 공개 후 동작합니다. 기존20개 모델은 보존합니다.
+Release `task2-augmentation-lr-20261125-v1`을 공개했고 모든 원격 파일 크기·SHA256과 대표 모델의 로그인 없는 실제 다운로드를 확인했습니다. [게시 기록](../../experiments/task2-augmentation-lr-20261125/SHARING_STATUS.json)을 참고하세요. 기존20개 모델은 보존합니다.
 
 | Run | 검증 BA | 규칙 상태 | 다운로드 |
 |---|---:|---|---|

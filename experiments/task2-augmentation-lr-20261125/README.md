@@ -1,6 +1,6 @@
 # Task2 회전·학습률·밝기/대비·임계값 비교 — 2026-11-25
 
-**학습·독립 검증 완료 / GitHub 모델 공유 준비 상태.** 신규8개 full run을 최대8개 사전 예산 안에서 GPU 한 작업씩 실행했다. 총137epoch, 실측 학습3,416.467451초(56.94분)다. 코드·config·집계 지표와 모든 실제 try의 모델을 공유 대상으로 준비하며, 이 README는 push나 Release 게시 성공을 확인한 기록이 아니다.
+**학습·독립 검증·GitHub 모델 공개 완료.** 신규8개 full run을 최대8개 사전 예산 안에서 GPU 한 작업씩 실행했다. 총137epoch, 실측 학습3,416.467451초(56.94분)다. 코드·config·집계 지표를 push했고 신규8개와 초기 원형1개를 Release로 게시했다. 모든11개 자산의 원격 크기·SHA256이 일치하며 대표 최신 모델과 초기 원형은 로그인 없는 실제 다운로드도 검증했다. [게시 확인 기록](SHARING_STATUS.json)을 참고한다.
 
 [집계 JSON](metrics_summary.json) · [matched 비교 CSV](comparison.csv) · [실행별 기록](run_records/) · [버전 코드와 재실행](../../task2/experiments/20261125/README.md) · [모델 manifest](../../models/task2-augmentation-lr-20261125/manifest.json) · [전체 실험 노트북](../../task2/notebooks/task2_experiment_overview.ipynb).
 
@@ -11,8 +11,8 @@
 | 분류 | 개수 | 상태·공유 범위 |
 |---|---:|---|
 | 기존11/11·11/18·11/24 전체 실험 |20|기존 모델·기록 보존|
-| 이번11/25 신규 full run |8|학습·독립 검증 완료, 새 모델 manifest로 공유 준비|
-| 초기11/01 baseline 원형 |1|재검증 완료, legacy 별도 모델 manifest로 공유 준비|
+| 이번11/25 신규 full run |8|학습·독립 검증 완료, 새 모델 manifest로 다운로드 가능|
+| 초기11/01 baseline 원형 |1|재검증 완료, legacy 별도 모델 manifest로 다운로드 가능|
 | `smoke_geometry_20261111`, `smoke_resnet18_20261124_oat` |2|1epoch 기능 점검·검증 완료, 성과/모델 배포 제외|
 | `smoke_resnet_check`, `smoke_vgg_check`, `smoke_googlenet_check` |3|smoke 표시와 best 가중치는 있으나 종료 summary/검증 기록 부족, 성과/모델 배포 제외|
 
@@ -114,7 +114,7 @@ run별 `history.csv`, `best_metrics.json`, 경로를 정리한 `config_recorded.
 ```bash
 python task2/experiments/20261125/code/resnet.py --config task2/experiments/20261125/configs/rotation_f0_s42.json --device cuda --run-name your_unique_rotation_run
 python models/task2-augmentation-lr-20261125/download.py --list
-# 새 Release가 실제 공개된 후
+# 공개된 Release에서 단일 모델 다운로드
 python models/task2-augmentation-lr-20261125/download.py --run resnet18_20261125_lr1e4_f0_s43 --output downloads/task2/lr1e4-s43
 python downloads/task2/lr1e4-s43/predict.py --images input_images --output predictions.csv --device cpu
 ```

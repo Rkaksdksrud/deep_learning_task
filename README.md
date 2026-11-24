@@ -10,9 +10,9 @@
 | Task2 · 11/24 | 무증강 학습 설정 비교 8개 | [결과](experiments/task2-training-settings-20261124/README.md) / [8개 모델](models/task2-training-settings-20261124/README.md) |
 | Task2 · 11/25 | 회전 단독·LR 추가 seed·밝기/대비 8개 | [새 결과](experiments/task2-augmentation-lr-20261125/README.md) / [새 모델 manifest](models/task2-augmentation-lr-20261125/manifest.json) |
 | Task2 · 초기 원형 | 11/01 ResNet18 baseline, 재검증 완료 | [legacy 모델·provenance](models/task2-legacy-baseline-20261101/README.md) |
-| Task2 전체 | **29개 모델 공유 관리** | 기존20개 보존 + 신규8개 + 초기 원형1개 공유 준비 |
+| Task2 전체 | **29개 모델 공유 관리** | 기존20개 보존 + 신규8개 + 초기 원형1개 **다운로드 가능** |
 
-새8개와 legacy 원형1개, 총9개 ZIP은 같은 Release 태그 `task2-augmentation-lr-20261125-v1`에 연결합니다. 신규8개 manifest와 [legacy 별도 manifest](models/task2-legacy-baseline-20261101/manifest.json)를 구분합니다. 현재 이 문서는 **모델 공유 준비 상태**를 기록하며 새 Release 게시 성공을 뜻하지 않습니다. 다운로드는 해당 Release가 실제 공개된 뒤 가능합니다. 모든 모델은 단일 환자 holdout 모델이며 **전체 데이터로 재학습한 최종 제출 모델은 아직 없습니다.**
+새8개와 legacy 원형1개, 총9개 ZIP은 같은 Release 태그 `task2-augmentation-lr-20261125-v1`에 연결합니다. 신규8개 manifest와 [legacy 별도 manifest](models/task2-legacy-baseline-20261101/manifest.json)를 구분합니다. **[모델 Release](https://github.com/Rkaksdksrud/deep_learning_task/releases/tag/task2-augmentation-lr-20261125-v1) 공개와 11개 자산의 크기·SHA256 검증을 완료했습니다.** 최신 모델과 초기 원형은 로그인 없는 실제 다운로드·내부 체크섬 검사도 통과했습니다. [게시 확인 기록](experiments/task2-augmentation-lr-20261125/SHARING_STATUS.json)을 확인할 수 있습니다. 모든 모델은 단일 환자 holdout 모델이며 **전체 데이터로 재학습한 최종 제출 모델은 아직 없습니다.**
 
 ## Task2에서 현재 유지하는 설정
 
@@ -71,7 +71,7 @@ python models/task2-legacy-baseline-20261101/download.py --list
 모든 실제 try를 결과가 나빠도 별도 ZIP으로 보관하며, 미실행 template에는 가중치나 점수가 없습니다. 각 manifest에 ZIP·모델 SHA256·지표를 연결하고 가중치 ZIP은 Git 대신 Releases에 둡니다. 여러 모델의 공유는 앙상블 사용을 뜻하지 않습니다.
 
 ```bash
-# 새 Release 공개 후, 11/25 추가 LR seed 모델 하나를 받는 예시
+# 11/25 추가 LR seed 모델 하나를 받는 예시
 python models/task2-augmentation-lr-20261125/download.py --run resnet18_20261125_lr1e4_f0_s43 --output downloads/task2/lr1e4-s43
 python -m pip install -r downloads/task2/lr1e4-s43/requirements.txt
 python downloads/task2/lr1e4-s43/predict.py --images input_images --output predictions.csv --device cpu

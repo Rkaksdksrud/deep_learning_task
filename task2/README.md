@@ -13,13 +13,13 @@
 - 밝기는 세 조건 평균−0.35±1.72%p로 개선이 유지되지 않았고, 대비는 단발+0.99%p로 추가 확인 gate 미달이다. 밝기/대비와 threshold 변경은 공식 허용 미확정인 탐색 기록이며 제출 설정 채택에서 제외한다. 새 모델 추론 threshold는.5다.
 - 기존 geometry 모델의 LOPO threshold 진단은 checkpoint 선택에 사용한 validation을 다시 쓰는 조건부 분석이다. 독립 Test·nested 검증·환자별 배포 정책이 아니며 단일 배포 threshold를 고르지 않았다.
 
-새8개 모델은 **공유 준비 상태**다. Release 태그 `task2-augmentation-lr-20261125-v1`의 실제 게시 확인은 모델 manifest/배포 기록을 따른다. 새 공개 checkpoint는 개인 경로 두 값만 portable하게 바꾸므로 원본/공개 SHA가 다를 수 있고, 원본 로컬 모델과 tensor·추론 동등성 검증을 구분한다. 기존20개 모델은 보존한다.
+새8개 모델은 **공개 게시·원격 체크섬 검증 완료** 상태다. Release 태그 `task2-augmentation-lr-20261125-v1`의 [게시 확인 기록](../experiments/task2-augmentation-lr-20261125/SHARING_STATUS.json)을 참고한다. 새 공개 checkpoint는 개인 경로 두 값만 portable하게 바꾸므로 원본/공개 SHA가 다를 수 있고, 원본 로컬 모델과 tensor·추론 동등성 검증을 구분한다. 기존20개 모델은 보존한다.
 
 ## 초기 baseline 원형과 전체 inventory
 
 [11/01 legacy baseline](../models/task2-legacy-baseline-20261101/README.md)은 새 학습8개에 포함하지 않는 초기 full run이다. BA47.5536%, 9epoch/best2, 학습216.043초이며 기존 독립 재검증이 통과했다. 이번 CPU 비교에서는11/11 재학습 대조군과 모든 tensor·저장 예측·split bytes가 일치했다. 원본 checkpoint bytes/SHA는 다르고 당시 source snapshot이 없어 원래 실행 소스라고 소급 주장하지 않는다.
 
-이번 Release 태그 `task2-augmentation-lr-20261125-v1`에 신규8개와 legacy1개 총9개 ZIP을 연결하고, [legacy 별도 manifest](../models/task2-legacy-baseline-20261101/manifest.json)를 제공한다. 공유 준비 상태이며 실제 게시·패키지 검사 범위는 해당 모델 기록을 따른다. 로컬 `runs/`는 full29개+smoke5개다. smoke는 성과·배포 모델에서 제외하며2개는 기능 검증 완료,3개는 완료 기록 부족이다. [분류 근거](../experiments/task2-augmentation-lr-20261125/README.md)를 참고한다.
+이번 Release 태그 `task2-augmentation-lr-20261125-v1`에 신규8개와 legacy1개 총9개 ZIP을 연결하고, [legacy 별도 manifest](../models/task2-legacy-baseline-20261101/manifest.json)를 제공한다. 공개 게시와 모든 원격 파일 체크섬을 확인했으며 패키지 검사 범위는 해당 모델 기록을 따른다. 로컬 `runs/`는 full29개+smoke5개다. smoke는 성과·배포 모델에서 제외하며2개는 기능 검증 완료,3개는 완료 기록 부족이다. [분류 근거](../experiments/task2-augmentation-lr-20261125/README.md)를 참고한다.
 
 ## 환경과 데이터 위치
 

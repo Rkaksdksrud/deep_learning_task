@@ -24,3 +24,5 @@ ZIP은 `model.pt`, 독립 `predict.py`, `requirements.txt`, 집계 `metadata.jso
 ```bash
 python tools/build_task2_legacy_baseline_package.py --source-task2 /path/to/private/task2 --output /path/to/new/artifacts
 ```
+
+공개 게시 후 원격 크기·SHA256과 로그인 없는 실제 다운로드·내부 체크섬 검사를 완료했다. [게시 기록](../../experiments/task2-augmentation-lr-20261125/SHARING_STATUS.json)을 참고한다.

@@ -17,5 +17,7 @@
   "new_models_package_validation": "../../models/task2-augmentation-lr-20261125/package_validation.json",
   "legacy_package_validation": "../../models/task2-legacy-baseline-20261101/package_validation.json",
   "existing_remote_models_size_and_sha256_match": 20,
-  "github_publication_status": "pending"
+  "github_publication_status": "published_and_verified",
+  "new_release_remote_assets_verified": 11,
+  "public_unauthenticated_download_checks_passed": 2
 }
